@@ -44,10 +44,13 @@
             filter: blur(25px);
         }
         
-        .img-login{
-            left: -70px;
+        .img-signup{
             width: 500px; 
             height: 500px;
+            position: absolute;
+            top: 50px;
+            left: -40px;
+
         }
 
 
@@ -85,27 +88,20 @@
         }
         
         .login-form {
-            width: 65%;
+            width: 75%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .login-deco-container {
-            width: 35%;
-            /* background: rgb(0, 0, 0); */
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         
         .login-form-items {
-            width: 70%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: absolute;
+            top: 50px;
+            left: 145px;
             
         }
         
@@ -121,7 +117,7 @@
             width: 200px;
             display: flex;
             flex-direction: column;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         
         .form-label {
@@ -159,10 +155,11 @@
             background-color: white;
         }
         
-        .login-deco {
-            position: relative;
-            left: 60px;
-        }
+        /* .login-deco {
+            position: relative; 
+            left: 160px;
+            right: -150px;
+        } */
         
         
         span.footer {
@@ -196,7 +193,7 @@
         <div class="login-container">
             <div class="login-form">
                 <div class="login-deco" >
-                    <img src="Assets/Signup-page-img.png" class="img-login" alt="homepage" width="425px">
+                    <img src="Assets/Signup-page-img.png" class="img-signup" alt="homepage">
                 </div>
                     <form action="loginpage.html" method="get"></form>
                         <div class="login-form-items">
