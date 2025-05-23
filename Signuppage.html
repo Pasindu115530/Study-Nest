@@ -168,7 +168,14 @@
             right: -150px;
         } */
         
-        
+        .home-text{
+            color: aliceblue;
+            text-align: center;
+            position: absolute;
+            bottom: 50px;
+            left: 130px;
+        }
+
         span.footer {
            position: absolute;
            bottom: 15px;
@@ -185,13 +192,11 @@
         }
         input:focus {
             outline: none;
-        }</style>
+        }
+        
+        </style>
 
     
-        
-
-        
-
 </head>
 <body>
     <div class="container">
@@ -201,7 +206,12 @@
         <div class="login-container">
             <div class="login-form">
                 <div class="login-deco" >
+                    <div class="home-text">
+                        <span class="homepage-text">Happy Learning with</span>
+                        <a href="HomePage.html" class="studynest-text"><br> STUDY NEST </a> 
+                    </div>
                     <img src="Assets/Signup-page-img.png" class="img-signup" alt="homepage">
+                    
                 </div>
                     <form action="loginpage.html" method="get"></form>
                         <div class="login-form-items">
@@ -214,6 +224,14 @@
                             <div class="text-input-container">
                                 <label class="form-label">Last Name</label>
                                 <input type="text" class="text-style" id="lname" required>
+                            </div>
+                            <div class="text-input-container">
+                                <label class="form-label">Department</label>
+                                <select>
+                                    <option>CS</option>
+                                    <option>SE</option>
+                                    <option>IS</option>
+                                </select>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">User Name</label>
@@ -236,8 +254,7 @@
                                 <input type="text" class="text-style" id="pwconfirm" required>
                             </div>
                             <button class="login-btn">SIGN UP</button>
-                            <span class="form-label">Happy Learning with</span>
-                            <a href="HomePage.html" class="studynest-text"> STUDY NEST </a>                   
+                                              
                         
                         </div>
                     </form>
