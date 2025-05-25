@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body{
+    background-color: #000;
+}
+
 .main{
     width: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(1.jpg);
@@ -12,9 +16,10 @@
 }
 
 .navbar{
-    width: 1200px;
+    width: 1100px;
     height: 75px;
     margin: auto;
+    cursor: default;
 }
 
 .icon{
@@ -29,14 +34,17 @@
     font-family: Poppins;
     padding-left: 40px;
     float: right;
-    padding-top: 10px;
-    margin-top: 5px
+    padding-top: 22px;
+    margin-top: 0px;
+    cursor: default;
 }
 
 .menu{
-    width: 400px;
+    width: 300px;
     float: left;
     height: 70px;
+    
+    
 }
 
 ul{
@@ -44,12 +52,13 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 ul li{
     list-style: none;
     margin-left: 62px;
-    margin-top: 27px;
+    margin-top: 29px;
     font-size: 14px;
 }
 
@@ -62,7 +71,10 @@ ul li a{
 }
 
 ul li a:hover{
-    color: #ff7200;
+    text-decoration: none;
+    border-bottom: 1px solid #ff7200;
+    padding-bottom: 4px;
+    transition: border-bottom 0.2s, color 0.2s;
 }
 
 .search{
@@ -73,8 +85,8 @@ ul li a:hover{
 
 .srch{
     font-family: 'Times New Roman';
-    width: 200px;
-    height: 40px;
+    width: 20px;
+    height: 1px;
     background: transparent;
     border: 1px solid #ff7200;
     margin-top: 13px;
@@ -119,6 +131,7 @@ ul li a:hover{
     color: #fff;
     font-family: Poppins;
     position: relative;
+    cursor: default;
 }
 
 .content .par{

@@ -18,16 +18,16 @@
 
             <div class="menu">
                 <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">Dash Board</a></li>
+                    <li><a href="..\.php">HOME</a></li>
+                    <li><a href="#">DASH&nbsp;BOARD</a></li>
                     <li><a href="#">ABOUT</a></li>
                     <li><a href="#">CONTACT</a></li>
                 </ul>
             </div>
 
             <div class="search">
-                <input class="srch" type="search" name="" placeholder="Type To text">
-                <a href="#"> <button class="btn">Search</button></a>
+                <input type="text" placeholder="Type To text" />
+                <button>Search</button>
             </div>
 
         </div> 
