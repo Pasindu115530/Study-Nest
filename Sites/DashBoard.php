@@ -1,11 +1,11 @@
  <!DOCTYPE html>
 <html>
 <head>
-    <title>Webpage Design</title>
-    <link rel="stylesheet" href="CSS\style.css">
-    <link rel="stylesheet" href="CSS\home.css">
+    <title>Dash Board | StudyNest</title>
+    <link rel="stylesheet" href="..\CSS\style.css">
+    <link rel="stylesheet" href="..\CSS\home.css">
 </head>
-<body bgcolor="#0b0b0b">
+<body>
     <div class="main">
         <div class="navbar">
             <div class="icon">
@@ -19,8 +19,8 @@
             <div class="menu">
                 <ul>
                     <li><a href="#">HOME</a></li>
-                    <li><a href="Sites/DashBoard.php">Dash Board</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Dash Board</a></li>
+                    <li><a href="#">ABOUT</a></li>
                     <li><a href="#">CONTACT</a></li>
                 </ul>
             </div>
@@ -38,11 +38,8 @@
                 sanctuary of knowledge. Dive into our carefully curated <br>
                 collection of textbooks, study guides, and expert resources</p>
 
-                <a href="Sites\loginpage.php"><button class="cn">LOG IN</button></a>
-                <a href="Sites\Signuppage.php"><button class="cn">SIGN UP</button></a>
-
                 <div class="form">
-                    <img src="Assets/homepage.jpg" alt="homepage" width="600" align="right">
+                    <img src="..\Assets\homepage.jpg" alt="homepage" width="600" align="right">
                     </div>
 
                 </div>
