@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | STUDYNEST </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS\style.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
         body {
@@ -193,7 +193,7 @@
         <div class="login-container">
             <div class="login-form">
                 <div class="login-deco" >
-                    <img src="Assets/METAGRAPHY (14).png" class="img-login" alt="homepage" width="425px">
+                    <img src="../Assets/METAGRAPHY (14).png" class="img-login" alt="homepage" width="425px">
                 </div>
                 <div class="login-form-items">
                 
@@ -213,7 +213,7 @@
                     
                     <span class="form-label">Don't have an account? </span>
                     
-                    <a class="signup" href="Signuppage.html">Sign Up</a>
+                    <a class="signup" href="Signuppage.php">Sign Up</a>
                 </div>
             </div>
         </div>

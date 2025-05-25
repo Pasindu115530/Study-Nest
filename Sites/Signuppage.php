@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup | STUDYNEST </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS\style.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
         body {
@@ -201,44 +201,51 @@
         <div class="login-container">
             <div class="login-form">
                 <div class="login-deco" >
-                    <img src="Assets/Signup-page-img.png" class="img-signup" alt="homepage">
+                    <img src="../Assets/Signup-page-img.png" class="img-signup" alt="homepage">
                 </div>
-                    <form action="loginpage.html" method="get"></form>
+                    <form action="PHP/test.php" method="POST">
                         <div class="login-form-items">
-                        
                             <span class="login-label">SIGNUP</span>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="text-style" id="fname" required>
+                                <input type="text" class="text-style" id="fname" name="fname" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="text-style" id="lname" required>
+                                <input type="text" class="text-style" id="lname" name="lname" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">User Name</label>
-                                <input type="text" class="text-style" id="uname" required>
+                                <input type="text" class="text-style" id="uname" name="uname" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">Mail Address</label>
-                                <input type="text" class="text-style" id="mailaddress" required>
+                                <input type="email" class="text-style" id="mailaddress" name="mail" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">Phone Number</label>
-                                <input type="text" class="text-style" id="pnumber" required>
+                                <input type="tel" class="text-style" id="pnumber" name="pnumber" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">Password</label>
-                                <input type="text" class="text-style" id="pw" required>
+                                <input type="password" class="text-style" id="pw" name="password" required>
                             </div>
+                            
                             <div class="text-input-container">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="text" class="text-style" id="pwconfirm" required>
+                                <input type="password" class="text-style" id="pwconfirm" name="password_confirm" required>
                             </div>
-                            <button class="login-btn">SIGN UP</button>
+                            
+                            <button class="login-btn" type="submit">SIGN UP</button>
+                            
                             <span class="form-label">Happy Learning with</span>
-                            <a href="HomePage.html" class="studynest-text"> STUDY NEST </a>                   
-                        
+                            <a href="..\index.php" class="studynest-text"> STUDY NEST </a>
                         </div>
                     </form>
             </div>

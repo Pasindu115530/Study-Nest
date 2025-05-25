@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Webpage Design</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS\style.css">
+    <link rel="stylesheet" href="CSS\home.css">
 </head>
-<body bgcolor="000000">
-
+<body>
     <div class="main">
         <div class="navbar">
             <div class="icon">
@@ -38,9 +38,6 @@
             <p class="par">At StudyNest, we believe every learner deserves a <br> 
                 sanctuary of knowledge. Dive into our carefully curated <br>
                 collection of textbooks, study guides, and expert resources</p>
-
-                <a href="loginpage.html"><button class="cn">LOG IN</button></a>
-                <a href="Signuppage.html"><button class="cn">SIGN UP</button></a>
 
                 <div class="form">
                     <img src="Assets/homepage.jpg" alt="homepage" width="600" align="right">
