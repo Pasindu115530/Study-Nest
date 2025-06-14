@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDY NEST - Course Materials Repository</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn {
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            background-color: #1e40af;
+        }
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background: #f2f2f2;
+            display: flex;
+            gap: 20px;
+        }
+        .menu ul li {
+            display: inline;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        .menu ul li a:hover {
+            background: #ddd;
+            border-radius: 4px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="menu">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="leacture.html">Letures Details</a></li>
+            <li><a href="HomePage.html" >Logout</a></li>
+        </ul>
+    </div>
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="flex justify-center mb-4">
+                <div class="bg-blue-600 p-3 rounded-full shadow-lg">
+                    <i class="fas fa-book-open text-white text-3xl"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold text-blue-800 mb-2">Welcome to STUDY NEST</h1>
+            <p class="text-gray-600 text-lg">Download Your Course Materials</p>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div class="relative w-full md:w-1/2">
+                <input 
+                    type="text" 
+                    placeholder="Search courses..." 
+                    class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="searchInput"
+                >
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <select 
+                class="w-full md:w-auto px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                id="departmentFilter"
+            >
+                <option value="">All Departments</option>
+                <option value="Computing">Computing</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Business">Business</option>
+                <option value="Science">Science</option>
+                <option value="Arts">Arts</option>
+            </select>
+        </div>
+
+        <!-- Course Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="courseGrid">
+            <!-- Courses will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-12">
+            <i class="fas fa-spinner fa-spin text-blue-600 text-4xl mb-4"></i>
+            <p class="text-gray-600">Loading course materials...</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample course data
+        const courses = [
+            {
+                title: "Programming Fundamentals",
+                department: "Computing",
+                semester: "Fall 2023",
+                code: "CS101",
+                file: "programming-fundamentals.zip"
+            },
+            {
+                title: "Data Structures & Algorithms",
+                department: "Computing",
+                semester: "Spring 2023",
+                code: "CS201",
+                file: "data-structures-algorithms.zip"
+            },
+            {
+                title: "Database Systems",
+                department: "Computing",
+                semester: "Fall 2023",
+                code: "CS301",
+                file: "database-systems.zip"
+            },
+            {
+                title: "Calculus I",
+                department: "Science",
+                semester: "Fall 2023",
+                code: "MATH101",
+                file: "calculus-I.zip"
+            },
+            {
+                title: "Principles of Marketing",
+                department: "Business",
+                semester: "Spring 2023",
+                code: "BUS202",
+                file: "marketing-principles.zip"
+            },
+            {
+                title: "Electrical Circuits",
+                department: "Engineering",
+                semester: "Fall 2023",
+                code: "ENG105",
+                file: "electrical-circuits.zip"
+            },
+            {
+                title: "Modern Art History",
+                department: "Arts",
+                semester: "Spring 2023",
+                code: "ART210",
+                file: "modern-art-history.zip"
+            },
+            {
+                title: "Organic Chemistry",
+                department: "Science",
+                semester: "Fall 2023",
+                code: "CHEM202",
+                file: "organic-chemistry.zip"
+            },
+            {
+                title: "Financial Accounting",
+                department: "Business",
+                semester: "Spring 2023",
+                code: "BUS105",
+                file: "financial-accounting.zip"
+            }
+        ];
+
+        // Function to render courses
+        function renderCourses(filteredCourses = courses) {
+            const courseGrid = document.getElementById('courseGrid');
+            const loading = document.getElementById('loading');
+            
+            // Hide loading
+            loading.style.display = 'none';
+            
+            // Clear existing courses
+            courseGrid.innerHTML = '';
+            
+            if (filteredCourses.length === 0) {
+                courseGrid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-book-open text-gray-400 text-5xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">No courses found</h3>
+                        <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Add courses to grid
+            filteredCourses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100';
+                card.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">${course.title}</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">${course.code}</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="fas fa-university mr-2"></i>
+                            <span>${course.department}</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>${course.semester}</span>
+                        </div>
+                        <button 
+                            class="download-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center"
+                            onclick="downloadFile('${course.file}')"
+                        >
+                            <i class="fas fa-download mr-2"></i> Download Materials
+                        </button>
+                    </div>
+                `;
+                courseGrid.appendChild(card);
+            });
+        }
+
+        // Simulate download function
+        function downloadFile(filename) {
+            // In a real app, this would trigger a file download
+            alert(`Downloading: ${filename}\n\nThis is a demo. In a real application, the file would download automatically.`);
+            
+            // For demo purposes, we'll show a success message after a delay
+            setTimeout(() => {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center';
+                toast.innerHTML = `
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${filename} downloaded successfully!</span>
+                `;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }, 500);
+        }
+
+        // Filter courses based on search and department
+        function filterCourses() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const department = document.getElementById('departmentFilter').value;
+            
+            const filtered = courses.filter(course => {
+                const matchesSearch = course.title.toLowerCase().includes(searchTerm) || 
+                                     course.code.toLowerCase().includes(searchTerm);
+                const matchesDept = department === '' || course.department === department;
+                return matchesSearch && matchesDept;
+            });
+            
+            renderCourses(filtered);
+        }
+
+        // Event listeners for filtering
+        document.getElementById('searchInput').addEventListener('input', filterCourses);
+        document.getElementById('departmentFilter').addEventListener('change', filterCourses);
+
+        // Initial render with a slight delay to simulate loading
+        setTimeout(() => {
+            renderCourses();
+        }, 800);
+    </script>
+
+    <div class="menu">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </div>
+
+    <h1>Welcome to your Dashboard!</h1>
+    <p>This is your dashboard page. Use the menu above to navigate.</p>
+</body>
+</html>
