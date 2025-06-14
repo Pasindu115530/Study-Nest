@@ -213,47 +213,47 @@
                     <img src="Assets/Signup-page-img.png" class="img-signup" alt="homepage">
                     
                 </div>
-                    <form action="loginpage.html" method="get"></form>
+                    <form action="signuppage.php" method="POST">
                         <div class="login-form-items">
                         
                             <span class="login-label">SIGNUP</span>
                             <div class="text-input-container">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="text-style" id="fname" required>
+                                <input type="text" class="text-style" id="fname" name="fname" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="text-style" id="lname" required>
+                                <input type="text" class="text-style" id="lname" name="lname" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Department</label>
-                                <select>
-                                    <option>CS</option>
-                                    <option>SE</option>
-                                    <option>IS</option>
+                                <select name="department" required>
+                                    <option value="CS">CS</option>
+                                    <option value="SE">SE</option>
+                                    <option value="IS">IS</option>
                                 </select>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">User Name</label>
-                                <input type="text" class="text-style" id="uname" required>
+                                <input type="text" class="text-style" id="uname" name="username" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Mail Address</label>
-                                <input type="text" class="text-style" id="mailaddress" required>
+                                <input type="email" class="text-style" id="mailaddress" name="mailaddress" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Phone Number</label>
-                                <input type="text" class="text-style" id="pnumber" required>
+                                <input type="text" class="text-style" id="pnumber" name="pnumber" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="text-style" id="pw" required>
+                                <input type="password" class="text-style" id="password" name="password" required>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="text-style" id="pwconfirm" required>
+                                <input type="password" class="text-style" id="pwconfirm" name="pwconfirm" required>
                             </div>
-                            <button class="login-btn">SIGN UP</button>
+                            <button class="login-btn" type="submit">SIGN UP</button>
                                               
                         
                         </div>

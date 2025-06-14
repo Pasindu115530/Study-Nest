@@ -196,24 +196,25 @@
                     <img src="Assets/METAGRAPHY (14).png" class="img-login" alt="homepage" width="425px">
                 </div>
                 <div class="login-form-items">
-                
-                    <span class="login-label">LOGIN</span>
-                    
-                    <div class="text-input-container">
-                        <label class="form-label">USERNAME</label>
-                        <input type="text" class="text-style">
-                    </div>
-                    
-                    <div class="text-input-container">
-                        <label class="form-label">PASSWORD</label>
-                        <input type="password" class="text-style">
-                    </div>
-                    
-                    <button class="login-btn">SIGN IN</button>
-                    
+                   <form action="loginpage.php" method="POST" style="display: contents;">
+                            <span class="login-label">LOGIN</span>
+                            
+                            <div class="text-input-container">
+                                <label class="form-label" for="username">USERNAME</label>
+                                <input type="text" name="username" class="text-style" id="username" required>
+                            </div>
+                            
+                            <div class="text-input-container">
+                                <label class="form-label" for="password">PASSWORD</label>
+                                <input type="password" name="password" class="text-style" id="password" required>
+                            </div>
+                            
+                            <button class="login-btn" type="submit">SIGN IN</button>
+                 </form>
+
                     <span class="form-label">Don't have an account? </span>
                     
-                    <a class="signup" href="Signuppage.html">Sign Up</a>
+                    <a class="signup" href="signup.html">Sign Up</a>
                 </div>
             </div>
         </div>
