@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="..\CSS\dashboard.css">
 </head>
 <body>
+
+    /*Testing */
+    <div class="left-semicircle"></div>
+    <div class="middle-circle"></div>
+    <div class="right"></div>
+
     <div class="main">
         <div class="navbar">
             <div class="icon">

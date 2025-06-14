@@ -1,7 +1,4 @@
 
-body {
-  
-}
 
 .search{
     margin-top: 15px;
@@ -65,4 +62,26 @@ body {
 
 .widget{
   color:white;
+}
+
+.left-semicircle {
+  position: absolute;
+  width: 600px; 
+  height: 500px;
+  background: linear-gradient(to right, #ff7200 50%, #f3a05d 80%, #ff7200 100%);
+  border-radius: 50%;
+  bottom: 282px;
+  left: -70px;
+  filter: blur(25px);
+}
+
+.middle-circle {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to right, #ff7200 50%, #f5b641 100%);
+  border-radius: 50%;
+  position: absolute;
+  left: 1050px;
+  top: 430px;
+  filter: blur(25px);
 }
