@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Analytics Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Website Analytics Report</h1>
+            <p class="text-gray-600">Last updated: <span id="current-date"></span></p>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="card bg-white p-6 rounded-xl shadow-sm animate-fade-in">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-indigo-100 text-indigo-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Visitors</p>
+                        <h3 class="text-2xl font-semibold">24,532</h3>
+                        <p class="text-sm text-green-500">↑ 12.5% from last month</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl shadow-sm animate-fade-in delay-1">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Page Views</p>
+                        <h3 class="text-2xl font-semibold">89,421</h3>
+                        <p class="text-sm text-green-500">↑ 8.3% from last month</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl shadow-sm animate-fade-in delay-2">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-amber-100 text-amber-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Bounce Rate</p>
+                        <h3 class="text-2xl font-semibold">42.8%</h3>
+                        <p class="text-sm text-red-500">↑ 3.2% from last month</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl shadow-sm animate-fade-in delay-3">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-emerald-100 text-emerald-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Avg. Session Time</p>
+                        <h3 class="text-2xl font-semibold">3m 42s</h3>
+                        <p class="text-sm text-green-500">↑ 14.7% from last month</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Bar Chart -->
+            <div class="bg-white p-6 rounded-xl shadow-sm animate-fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold">Monthly Visitors</h2>
+                    <select class="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1 text-sm">
+                        <option>Last 6 Months</option>
+                        <option>Last 12 Months</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="bg-white p-6 rounded-xl shadow-sm animate-fade-in delay-1">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold">Traffic Sources</h2>
+                    <select class="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1 text-sm">
+                        <option>Current Month</option>
+                        <option>Last Month</option>
+                        <option>Last Quarter</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pieChart" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Pages Table -->
+        <div class="bg-white p-6 rounded-xl shadow-sm animate-fade-in delay-2">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Top Pages</h2>
+                <button class="bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg px-3 py-1 text-sm">
+                    Export CSV
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Page Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Time</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bounce Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Homepage</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12,456</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2m 15s</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">48.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Product Catalog</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8,932</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4m 37s</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">32.1%</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Blog</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">7,845</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5m 12s</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">28.7%</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">About Us</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5,673</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1m 45s</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">56.3%</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Contact</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4,321</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1m 12s</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">62.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Bar Chart
+        function drawBarChart() {
+            const canvas = document.getElementById('barChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+            const visitors = [3200, 4200, 5100, 5800, 7200, 8900];
+            const maxVisitors = Math.max(...visitors) * 1.1;
+            
+            const width = canvas.width;
+            const height = canvas.height;
+            const margin = { top: 40, right: 30, bottom: 50, left: 60 };
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
+            
+            // Draw chart area
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw axes
+            ctx.beginPath();
+            ctx.moveTo(margin.left, margin.top);
+            ctx.lineTo(margin.left, height - margin.bottom);
+            ctx.lineTo(width - margin.right, height - margin.bottom);
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw grid lines
+            const gridLines = 5;
+            ctx.strokeStyle = '#f1f5f9';
+            ctx.lineWidth = 1;
+            
+            for (let i = 0; i <= gridLines; i++) {
+                const y = margin.top + (chartHeight - (i / gridLines) * chartHeight);
+                ctx.beginPath();
+                ctx.moveTo(margin.left, y);
+                ctx.lineTo(width - margin.right, y);
+                ctx.stroke();
+                
+                // Y-axis labels
+                ctx.fillStyle = '#64748b';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(Math.round((i / gridLines) * maxVisitors).toLocaleString(), margin.left - 10, y + 4);
+            }
+            
+            // Draw bars
+            const barWidth = chartWidth / months.length * 0.6;
+            const barSpacing = chartWidth / months.length * 0.4;
+            
+            for (let i = 0; i < months.length; i++) {
+                const x = margin.left + (i * (barWidth + barSpacing)) + barSpacing / 2;
+                const barHeight = (visitors[i] / maxVisitors) * chartHeight;
+                const y = height - margin.bottom - barHeight;
+                
+                // Gradient fill
+                const gradient = ctx.createLinearGradient(0, y, 0, y + barHeight);
+                gradient.addColorStop(0, '#6366f1');
+                gradient.addColorStop(1, '#8b5cf6');
+                
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.roundRect(x, y, barWidth, barHeight, [4, 4, 0, 0]);
+                ctx.fill();
+                
+                // Month labels
+                ctx.fillStyle = '#64748b';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(months[i], x + barWidth / 2, height - margin.bottom + 20);
+                
+                // Value labels
+                ctx.fillStyle = '#1e293b';
+                ctx.fillText(visitors[i].toLocaleString(), x + barWidth / 2, y - 8);
+            }
+            
+            // Chart title
+            ctx.fillStyle = '#1e293b';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Monthly Visitors Overview', width / 2, margin.top - 10);
+        }
+        
+        // Pie Chart
+        function drawPieChart() {
+            const canvas = document.getElementById('pieChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            const data = [
+                { label: 'Direct', value: 35, color: '#6366f1' },
+                { label: 'Referral', value: 25, color: '#8b5cf6' },
+                { label: 'Social', value: 20, color: '#a78bfa' },
+                { label: 'Organic', value: 20, color: '#c4b5fd' }
+            ];
+            
+            const width = canvas.width;
+            const height = canvas.height;
+            const radius = Math.min(width, height) / 2 * 0.7;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // Calculate total value
+            const total = data.reduce((sum, item) => sum + item.value, 0);
+            
+            // Draw pie slices
+            let startAngle = 0;
+            
+            for (let i = 0; i < data.length; i++) {
+                const sliceAngle = (data[i].value / total) * 2 * Math.PI;
+                const midAngle = startAngle + sliceAngle / 2;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+                
+                ctx.fillStyle = data[i].color;
+                ctx.fill();
+                
+                // Draw labels
+                const labelX = centerX + Math.cos(midAngle) * (radius + 20);
+                const labelY = centerY + Math.sin(midAngle) * (radius + 20);
+                
+                ctx.fillStyle = '#1e293b';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`${data[i].label} (${data[i].value}%)`, labelX, labelY);
+                
+                startAngle += sliceAngle;
+            }
+            
+            // Draw center circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.6, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            // Draw center text
+            ctx.fillStyle = '#1e293b';
+            ctx.font = 'bold 16px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Traffic', centerX, centerY - 10);
+            ctx.fillText('Sources', centerX, centerY + 10);
+            
+            // Chart title
+            ctx.fillStyle = '#1e293b';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Traffic Sources Breakdown', width / 2, 20);
+        }
+        
+        // Initialize charts when page loads
+        window.addEventListener('load', () => {
+            drawBarChart();
+            drawPieChart();
+        });
+        
+        // Redraw charts on window resize
+        window.addEventListener('resize', () => {
+            drawBarChart();
+            drawPieChart();
+        });
+    </script>
+</body>
+</html>
