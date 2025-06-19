@@ -1,9 +1,5 @@
 <?php
-<<<<<<< Updated upstream
 // Simple login logic using database
-=======
-// Simple login logic for demonstration purposes only
->>>>>>> Stashed changes
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
