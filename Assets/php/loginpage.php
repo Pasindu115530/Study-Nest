@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password === $db_password) { // For plain text passwords
             // Redirect based on role
             if ($role === 'admin') {
-                header('Location: adminportal.html');
+                header('Location: ../../adminportal.html');
             } else {
-                header('Location: dashboard.html');
+                header('Location: ../../userportal.html');
             }
             exit();
         } else {
