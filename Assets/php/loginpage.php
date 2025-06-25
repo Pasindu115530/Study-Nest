@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password === $db_password) { // For plain text passwords
             // Redirect based on role
             if ($role === 'admin') {
-                header('Location: ../../dashboard.html');
+                header('Location: /Study Nest/dashboardadmin.html');
             } else {
-                header('Location: ../../userportal.html');
+                header('Location: /Study Nest/dashboarduser.html');
             }
             exit();
         } else {
