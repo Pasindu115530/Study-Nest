@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%);
+
+}
+
+.contact {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.contact_form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 100px;
+}
+
+.contact_title h2 {
+    font-family: 'Century Gothic';
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: rgb(255, 114, 0);
+}
+
+.contact_title hr {
+    width: 200px;
+    height: 5px;
+    background-color: rgb(255, 114, 0);
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+.contact_form input {
+    width: 400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: rgb(26, 26, 24);
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+.contact_form textarea {
+    height: 140px;
+    width: 400px;
+    padding-top: 15px;
+    border-radius: 20px;
+    padding-left: 25px;
+    font-weight: 500;
+    color: rgb(79, 76, 73);
+    border: none;
+    outline: none;
+    margin-bottom: 5px;
+
+}
+
+.contact_form input:focus,
+.contact_form textarea:focus {
+    border: 2px solid rgb(255, 114, 0);
+    color: rgb(18, 17, 17);
+}
+
+.contact_form input::placeholder,
+.contact_form textarea::placeholder {
+    color: rgb(27, 19, 11);
+}
+
+.contact_form button {
+    padding: 12px 40px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(270deg, rgb(255, 114, 0), rgb(154, 87, 11));
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact_img {
+    width: 500px;
+    height: 500px;
+
+}
