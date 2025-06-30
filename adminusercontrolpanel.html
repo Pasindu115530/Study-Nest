@@ -521,7 +521,7 @@
             </div>
         </div>
 
-        <!-- ================= Main Content =================== -->
+        <!-- ================= Main Content ===================
         <div class="container" style="padding: 20px;">
             <h1>Admin & User Control Panel</h1>
             
@@ -608,7 +608,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             
             <div class="card">
                 <h2>New Admin Add Form</h2>
@@ -658,77 +658,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Toggle menu
-        const toggle = document.querySelector('.toggle');
-        const navigation = document.querySelector('.navigation');
-        const main = document.querySelector('.main');
-
-        toggle.onclick = function() {
-            navigation.classList.toggle('active');
-            main.classList.toggle('active');
-        }
-
-        // Handle form submission
-        document.getElementById('adminForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const firstName = document.getElementById('fname').value;
-            const lastName = document.getElementById('lname').value;
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('mailaddress').value;
-            const phone = document.getElementById('pnumber').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('pwconfirm').value;
-            
-            // Simple validation
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-            
-            // In a real app, you would send this data to the server
-            console.log('New admin submitted:', {
-                firstName,
-                lastName,
-                username,
-                email,
-                phone,
-                password
-            });
-            
-            // Reset form
-            this.reset();
-            alert('Admin added successfully!');
-        });
-        
-        // Handle edit and delete buttons
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const cells = row.querySelectorAll('td');
-                const username = cells[0].textContent;
-                
-                console.log('Edit button clicked for:', username);
-                // In a real app, you would open a modal or form to edit this user
-            });
-        });
-        
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const cells = row.querySelectorAll('td');
-                const username = cells[0].textContent;
-                
-                if (confirm(`Are you sure you want to delete ${username}?`)) {
-                    console.log('Delete button clicked for:', username);
-                    // In a real app, you would send a delete request to the server
-                    row.remove();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
