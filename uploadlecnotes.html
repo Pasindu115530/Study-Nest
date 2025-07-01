@@ -5,75 +5,153 @@
     <title>Upload Lecture Notes</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background: #c1ccd9;
+        }
+
+        body {
             font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #ff7200;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 40px 20px;
         }
 
         .upload-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            padding: 35px 30px;
+            max-width: 420px;
             width: 100%;
-            max-width: 400px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .upload-card h2 {
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 25px;
+            color: #fff;
         }
 
-        .upload-card input[type="file"] {
-            margin: 15px 0;
+        .upload-card label {
+            display: block;
+            text-align: left;
+            margin: 12px 0 6px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .upload-card input[type="file"],
+        .upload-card select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid #ff7200;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .upload-card input[type="file"]::file-selector-button {
+            background-color: #ff7200;
+            border: none;
+            padding: 8px 12px;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .upload-card select option {
+            color: #000;
         }
 
         .upload-card input[type="submit"] {
-            background: #007bff;
+            background: #ff7200;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 12px 0;
+            width: 100%;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background 0.3s;
             font-size: 16px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
         }
 
         .upload-card input[type="submit"]:hover {
-            background: #0056b3;
+            background: #fff;
+            color: #ff7200;
         }
 
-        label {
-            font-weight: 500;
-            color: #444;
+        footer {
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        @media (max-width: 480px) {
+            .upload-card {
+                padding: 25px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="upload-card">
-        <h2>Upload Lecture Notes</h2>
-        <form action="upload.php" method="POST" enctype="multipart/form-data">
-            <label for="file">Select a PDF file:</label><br>
-            <input type="file" name="file" accept="application/pdf" required><br>
-            <label for="module">Select Module</label>
-            <select name="module" id="module" required>
-                <option value="" disabled selected>Select a module</option>
-                <option value="ai">Artificial Intelligent</option>
-                <option value="sda">Software Design Architecture</option>
-                <option value="fmsd">Formal Methods in Software Development</option>
-                <option value="dcn">Data Communication & Networking</option>
-                <option value="wt">Web Technologies</option>
-            </select>
-            <br><br>
-            <input type="submit" value="Upload">
-        </form>
-    </div>
+    <header>
+        Study Nest
+    </header>
+
+    <main>
+        <div class="upload-card">
+            <h2>Upload Lecture Notes</h2>
+            <form action="upload.php" method="POST" enctype="multipart/form-data">
+                <label for="file">Select a PDF file:</label>
+                <input type="file" id="file" name="file" accept="application/pdf" required>
+
+                <label for="module">Select Module</label>
+                <select name="module" id="module" required>
+                    <option value="" disabled selected>Select a module</option>
+                    <option value="ai">Artificial Intelligence</option>
+                    <option value="sda">Software Design Architecture</option>
+                    <option value="fmsd">Formal Methods in Software Development</option>
+                    <option value="dcn">Data Communication & Networking</option>
+                    <option value="wt">Web Technologies</option>
+                </select>
+
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Study Nest. All Rights Reserved.
+    </footer>
 </body>
 </html>
