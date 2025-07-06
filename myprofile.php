@@ -1,127 +1,115 @@
 <?php
 session_start(); // Start the session
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile | STUDYNEST</title>
-    <link rel="stylesheet" href="">
+    
     <style>
-        * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+              
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+      }
 
-body {
-  background-color: #f5f7fa;
-  padding: 20px;
-}
+      body {
+        background: radial-gradient(circle at bottom left, #ff6a00, #000000);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-.container {
-  max-width: 700px;
-  margin: auto;
-}
+      .container {
+        background: rgba(20, 20, 20, 0.9);
+        width: 80%;
+        max-width: 900px;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 0 50px rgba(255, 102, 0, 0.3);
+      }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
 
-header h1 {
-  font-size: 28px;
-  color: #333;
-}
+      header h1 {
+        font-size: 32px;
+        color: #ff6a00;
+      }
 
-.icons span {
-  margin-left: 15px;
-  font-size: 22px;
-  cursor: pointer;
-}
+      .icons {
+        display: flex;
+        gap: 15px;
+        font-size: 22px;
+      }
 
-.profile-card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-  text-align: center;
-}
+      .middle-section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
 
-.avatar {
-  position: relative;
-  display: inline-block;
-}
+      .profile img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+      }
 
- img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 4px solid #88461a;
-}
+      .name-section h2 {
+        font-size: 26px;
+        color: #fff;
+        margin-bottom: 10px;
+      }
 
-.edit-icon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: #5c6bc0;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
+      .name-section h3 {
+        font-size: 18px;
+        color: #ccc;
+        margin: 0;
+      }
 
-h2 {
-  margin-top: 15px;
-  font-size: 22px;
-  color: #222;
-}
+      .info-section {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+      }
 
-.subtitle {
-  color: #666;
-  margin-bottom: 8px;
-}
+      .info-section h3 {
+        color: #ff6a00;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
 
-.student-id {
-  display: inline-block;
-  background-color: #e0e7ff;
-  color: #3f51b5;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+      .info-item {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-left: 3px solid #ff6a00;
+        background-color: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        color: #eee;
+      }
 
-.info-section {
-  text-align: left;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-}
-
-.info-section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.info-item {
-  margin: 10px 0;
-  font-size: 16px;
-  color: #444;
-}
 
     </style>
 </head>
 <body>
     
   <div class="container">
+
     <header>
       <h1>My Profile</h1>
       <div class="icons">
@@ -131,11 +119,13 @@ h2 {
       </div>
     </header>  
 
-  <div class="middle-section">
-    <div class="profile">
-        <img src="Assets\Signup-page-img.png">
-    </div>  
-        <?php
+    <div class="middle-section">
+      <div class="profile">
+        <img src="Assets\img\METAGRAPHY (13).png" alt="my photo">
+      </div>  
+
+      <div class="name-section">
+      <?php
                             $servername = "localhost";
                             $dbusername = "root";
                             $dbpassword = "";
@@ -161,14 +151,22 @@ h2 {
 }
 
   ?>
-  <p>Registration Number:FCxxxxx</p>
+      <h3>Registration Number:FCxxxxx</h3>
+      </div>
 
-  </div>  
+    </div>  
   
-  <div class="info-section">
+   <div class="info-section">
     <h3>Personal Information</h3>
     <br>
-
+    
+    <?php
+    if (isset($row['fname']) && isset($row['lname'])) {
+      echo '<div class="info-item"><strong>Name</strong><br>' . htmlspecialchars($row['fname'] . ' ' . $row['lname']) . '</div>';
+    } else {
+      echo '<div class="info-item"><strong>Name</strong><br>Not available</div>';
+    }
+    ?>
     <?php
     if (isset($row['email'])) {
       echo '<div class="info-item"><strong>Email</strong><br>' . htmlspecialchars($row['email']) . '</div>';
@@ -183,8 +181,6 @@ h2 {
       echo '<div class="info-item"><strong>Phone</strong><br>Not available</div>';
     }
     ?>
-    <div class="info-item"><strong>Date of birth</strong><br>September 15,2002</div>
-    <div class="info-item"><strong>Address</strong><br>No.45 Gangodawila,Nugegoda</div>
     <?php
     if (isset($row['department'])) {
       echo '<div class="info-item"><strong>Department</strong><br>' . htmlspecialchars($row['department']) . '</div>';
@@ -192,8 +188,11 @@ h2 {
       echo '<div class="info-item"><strong>Department</strong><br>Not available</div>';
     }
     ?>
-    <div class="info-item"><strong>Year:</strong><br>2nd Year</div>
-    <div class="info-item"><strong>Joined:</strong><br>April 2024</div>
+    <div class="info-item"><strong>Year</strong><br>2nd Year</div>
+    <div class="info-item"><strong>Joined</strong><br>April 2024</div>
     
 
   </div>
+
+</body>
+</html> 
