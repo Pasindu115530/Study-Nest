@@ -138,7 +138,7 @@ session_start(); // Start the session
     if (isset($_SESSION['username'])) {
     $username = $conn->real_escape_string($_SESSION["username"]);
     
-    $sql = "SELECT fname, lname, email ,department, pnumber, username,password, role FROM users WHERE username = '$username'";
+    $sql = "SELECT fname, lname, email ,department, pnumber, username,password, role,year,signuptime FROM users WHERE username = '$username'";
     $result = $conn->query($sql);
 
     if ($result && $row = $result->fetch_assoc()) {
@@ -188,8 +188,21 @@ session_start(); // Start the session
       echo '<div class="info-item"><strong>Department</strong><br>Not available</div>';
     }
     ?>
-    <div class="info-item"><strong>Year</strong><br>2nd Year</div>
-    <div class="info-item"><strong>Joined</strong><br>April 2024</div>
+    <?php
+    if (isset($row['year'])) {
+      echo '<div class="info-item"><strong>Year</strong><br>' . htmlspecialchars($row['year']) . '</div>';
+    } else {
+      echo '<div class="info-item"><strong>Year</strong><br>Not available</div>';
+    }
+    ?>
+    <?php
+    if (isset($row['signuptime'])) {
+      $date = date('F Y', strtotime($row['signuptime']));
+      echo '<div class="info-item"><strong>Joined</strong><br>' . htmlspecialchars($date) . '</div>';
+    } else {
+      echo '<div class="info-item"><strong>Joined</strong><br>Not available</div>';
+    }
+    ?>
     
 
   </div>
