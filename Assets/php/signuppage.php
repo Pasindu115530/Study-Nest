@@ -26,7 +26,10 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        else{
+
+            // Hash the password for security
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
         // Prepare and bind
         $role = 'user';
         $stmt = $conn->prepare("INSERT INTO users (fname, lname, department, username, email, pnumber, password , role  ) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
@@ -38,7 +41,7 @@
         $stmt->close();
         $conn->close();
         }
-    }
+    
 
 ?>
 
