@@ -223,6 +223,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 1rem;
+        
         }
 
         th, td {
@@ -521,95 +522,53 @@
             </div>
         </div>
 
-        <!-- ================= Main Content =================== -->
+         ================= Main Content ===================
         <div class="container" style="padding: 20px;">
             <h1>Admin & User Control Panel</h1>
             
             <div class="card">
-                <h2>Admin Control</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Username</th>
                             <th>Password</th>
-                            <th>Last Seen</th>
+                            <th>Role</th>
                             <th>Edit</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>admin1</td>
-                            <td>••••••••</td>
-                            <td>2023-05-15 14:30</td>
-                            <td><button class="action-btn edit-btn">✏️</button></td>
-                            <td><button class="action-btn delete-btn">🗑️</button></td>
-                        </tr>
-                        <tr>
-                            <td>superadmin</td>
-                            <td>••••••••</td>
-                            <td>2023-05-16 09:15</td>
-                            <td><button class="action-btn edit-btn">✏️</button></td>
-                            <td><button class="action-btn delete-btn">🗑️</button></td>
-                        </tr>
-                        <tr>
-                            <td>moderator</td>
-                            <td>••••••••</td>
-                            <td>2023-05-14 18:45</td>
-                            <td><button class="action-btn edit-btn">✏️</button></td>
-                            <td><button class="action-btn delete-btn">🗑️</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="card">
-                <h2>User Control</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date Created</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>2023-05-10</td>
-                            <td>Subscriber</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>
-                                <button class="action-btn edit-btn">✏️</button>
-                                <button class="action-btn delete-btn">🗑️</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>2023-05-12</td>
-                            <td>Editor</td>
-                            <td><span class="status inactive">Inactive</span></td>
-                            <td>
-                                <button class="action-btn edit-btn">✏️</button>
-                                <button class="action-btn delete-btn">🗑️</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Bob Johnson</td>
-                            <td>2023-05-14</td>
-                            <td>Author</td>
-                            <td><span class="status pending">Pending</span></td>
-                            <td>
-                                <button class="action-btn edit-btn">✏️</button>
-                                <button class="action-btn delete-btn">🗑️</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
+
+                    <?php
+                            $servername = "localhost";
+                            $dbusername = "root";
+                            $dbpassword = "";
+                            $dbname = "userportal";
+                            $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
+                            if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }                           
+                            $sql = "SELECT username, password , role FROM users";
+                            $result = $conn->query($sql);
+
+                           if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . htmlspecialchars($row['username']) . "</td>
+                <td>" . htmlspecialchars($row['password']) . "</td>
+                <td>" . htmlspecialchars($row['role']) . "</td>
+                <td><button class='action-btn edit-btn'>✏️</button></td>
+                <td><button class='action-btn delete-btn'>🗑️</button></td>
+              </tr>";
+    }
+} else {
+    echo "<tr><td colspan='4'>No admins found.</td></tr>";
+}
+$conn->close();
+                    ?>
+                    </table>
+                    </div>
+</div>
             <div class="card">
                 <h2>New Admin Add Form</h2>
                 <form id="adminForm" action="Assets/php/addadmin.php" method="POST">
@@ -658,77 +617,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Toggle menu
-        const toggle = document.querySelector('.toggle');
-        const navigation = document.querySelector('.navigation');
-        const main = document.querySelector('.main');
-
-        toggle.onclick = function() {
-            navigation.classList.toggle('active');
-            main.classList.toggle('active');
-        }
-
-        // Handle form submission
-        document.getElementById('adminForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const firstName = document.getElementById('fname').value;
-            const lastName = document.getElementById('lname').value;
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('mailaddress').value;
-            const phone = document.getElementById('pnumber').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('pwconfirm').value;
-            
-            // Simple validation
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-            
-            // In a real app, you would send this data to the server
-            console.log('New admin submitted:', {
-                firstName,
-                lastName,
-                username,
-                email,
-                phone,
-                password
-            });
-            
-            // Reset form
-            this.reset();
-            alert('Admin added successfully!');
-        });
-        
-        // Handle edit and delete buttons
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const cells = row.querySelectorAll('td');
-                const username = cells[0].textContent;
-                
-                console.log('Edit button clicked for:', username);
-                // In a real app, you would open a modal or form to edit this user
-            });
-        });
-        
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const cells = row.querySelectorAll('td');
-                const username = cells[0].textContent;
-                
-                if (confirm(`Are you sure you want to delete ${username}?`)) {
-                    console.log('Delete button clicked for:', username);
-                    // In a real app, you would send a delete request to the server
-                    row.remove();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
