@@ -1,10 +1,12 @@
 <?php
 // Simple login logic using database
-
+session_start(); // Start the session
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
+    $_SESSION["username"] = $username; // Store username in session
+    
     // Database connection
     $conn = new mysqli('localhost', 'root', '', 'userportal');
     if ($conn->connect_error) {
