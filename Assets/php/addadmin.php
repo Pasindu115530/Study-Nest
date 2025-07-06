@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $department = '';
     $year = '';
     $stmt = $conn->prepare("INSERT INTO users (fname, lname, department, username, email, pnumber, password, role,year,signuptime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? , ?)");
-    $stmt->bind_param("ssssssss", $fname, $lname, $department, $username, $mailaddress, $pnumber, $hashed_password, $role,$year, $signup_date);
+    $stmt->bind_param("ssssssssss", $fname, $lname, $department, $username, $mailaddress, $pnumber, $hashed_password, $role,$year, $signup_date);
     $stmt->execute();
-    header('Location: /study%20Nest/adminusercontrolpanel.html');
+    header('Location: ../../adminusercontrolpanel.php?message=Admin added successfully');
     exit();
     $stmt->close();
     $conn->close();
