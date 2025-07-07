@@ -1,0 +1,172 @@
+<?php
+session_start();
+// Display success message if redirected from upload
+if (isset($_SESSION['uploadSuccess'])) {
+    $successMsg = $_SESSION['uploadSuccess'];
+    unset($_SESSION['uploadSuccess']);
+}
+
+// Database connection
+$conn = new mysqli("localhost", "root", "", "userportal");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get all notes from database
+$notes = [];
+$result = $conn->query("SELECT id, filename, module, upload_date FROM lecture_notes ORDER BY upload_date DESC");
+if ($result) {
+    $notes = $result->fetch_all(MYSQLI_ASSOC);
+}
+$conn->close();
+
+// Module names for display
+$moduleNames = [
+    'ai' => 'Artificial Intelligence',
+    'sda' => 'Software Design Architecture',
+    'fmsd' => 'Formal Methods in Software Development',
+    'dcn' => 'Data Communication & Networking',
+    'wt' => 'Web Technologies',
+    'ecl' => 'Essentials of Computer Law',
+    'mc' => 'Mathematics for Computing',
+    'gp' => 'Group Project'
+];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Lecture Notes | StudyNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .note-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .note-card:hover {
+            transform: translateY(-5px);
+        }
+        .module-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .note-title {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .note-date {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #3e8e41;
+        }
+        .upload-btn {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .upload-btn:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lecture Notes</h1>
+            <a href="main.html" class="upload-btn">Upload New Notes</a>
+        </div>
+
+        <?php if (!empty($successMsg)): ?>
+            <div class="success-message"><?= htmlspecialchars($successMsg) ?></div>
+        <?php endif; ?>
+
+        <?php if (empty($notes)): ?>
+            <p>No lecture notes found. Be the first to upload!</p>
+        <?php else: ?>
+            <div class="notes-grid">
+                <?php foreach ($notes as $note): ?>
+                    <div class="note-card">
+                        <span class="module-badge" style="background: <?= getModuleColor($note['module']) ?>">
+                            <?= htmlspecialchars($moduleNames[$note['module']] ?? $note['module']) ?>
+                        </span>
+                        <h3 class="note-title"><?= htmlspecialchars($note['filename']) ?></h3>
+                        <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
+                        <a href="dowload.php?id=<?= $note['id'] ?>" class="download-btn">Download</a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+</html>
+
+<?php
+function getModuleColor($module) {
+    $colors = [
+        'ai' => '#FF9AA2',
+        'sda' => '#FFB7B2',
+        'fmsd' => '#FFDAC1',
+        'dcn' => '#E2F0CB',
+        'wt' => '#B5EAD7',
+        'ecl' => '#C7CEEA',
+        'mc' => '#F8B195',
+        'gp' => '#F67280'
+    ];
+    return $colors[$module] ?? '#CCCCCC';
+}
+?>

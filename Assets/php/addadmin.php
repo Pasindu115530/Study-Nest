@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pnumber = $_POST["pnumber"] ?? null;
     $password = $_POST["password"] ?? null;
     $pwconfirm = $_POST["pwconfirm"] ?? null;
+    $signup_date = date('Y-m-d H:i:s')?? null; 
 
     // Validation: check if required fields are filled
     if (!$fname || !$lname || !$username || !$mailaddress || !$password || !$pwconfirm) {
@@ -37,10 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare and bind
     $role = 'admin';
     $department = '';
-    $stmt = $conn->prepare("INSERT INTO users (fname, lname, department, username, email, pnumber, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $fname, $lname, $department, $username, $mailaddress, $pnumber, $hashed_password, $role);
+    $year = '';
+    $stmt = $conn->prepare("INSERT INTO users (fname, lname, department, username, email, pnumber, password, role,year,signuptime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? , ?)");
+    $stmt->bind_param("ssssssssss", $fname, $lname, $department, $username, $mailaddress, $pnumber, $hashed_password, $role,$year, $signup_date);
     $stmt->execute();
-    header('Location: /study%20Nest/adminusercontrolpanel.html');
+    header('Location: ../../adminusercontrolpanel.php?message=Admin added successfully');
     exit();
     $stmt->close();
     $conn->close();

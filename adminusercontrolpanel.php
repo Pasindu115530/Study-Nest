@@ -223,7 +223,6 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 1rem;
-        
         }
 
         th, td {
@@ -355,6 +354,45 @@
         h2 {
             font-size: 1.5rem;
             margin-top: 2rem;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: linear-gradient(to top right, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.8) 30%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgb(255 255 255 / 50%);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 7px 25px rgba(255, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--blue);
+        }
+
+        .close-popup:hover {
+            color: var(--danger);
         }
 
         /* Responsive Design */
@@ -522,7 +560,7 @@
             </div>
         </div>
 
-         ================= Main Content ===================
+        <!-- ================= Main Content =================== -->
         <div class="container" style="padding: 20px;">
             <h1>Admin & User Control Panel</h1>
             
@@ -539,36 +577,36 @@
                     </thead>
 
                     <?php
-                            $servername = "localhost";
-                            $dbusername = "root";
-                            $dbpassword = "";
-                            $dbname = "userportal";
-                            $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+                    $servername = "localhost";
+                    $dbusername = "root";
+                    $dbpassword = "";
+                    $dbname = "userportal";
+                    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-                            if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }                           
-                            $sql = "SELECT username, password , role FROM users";
-                            $result = $conn->query($sql);
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }                           
+                    $sql = "SELECT username, password, role FROM users";
+                    $result = $conn->query($sql);
 
-                           if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . htmlspecialchars($row['username']) . "</td>
-                <td>" . htmlspecialchars($row['password']) . "</td>
-                <td>" . htmlspecialchars($row['role']) . "</td>
-                <td><button class='action-btn edit-btn'>✏️</button></td>
-                <td><button class='action-btn delete-btn'>🗑️</button></td>
-              </tr>";
-    }
-} else {
-    echo "<tr><td colspan='4'>No admins found.</td></tr>";
-}
-$conn->close();
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td>" . htmlspecialchars($row['username']) . "</td>
+                                    <td>" . htmlspecialchars($row['password']) . "</td>
+                                    <td>" . htmlspecialchars($row['role']) . "</td>
+                                    <td><button class='action-btn edit-btn' data-username='".htmlspecialchars($row['username'])."' data-password='".htmlspecialchars($row['password'])."' data-role='".htmlspecialchars($row['role'])."'>✏️</button></td>
+                                    <td><button class='action-btn delete-btn'>🗑️</button></td>
+                                  </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>No users found.</td></tr>";
+                    }
+                    $conn->close();
                     ?>
-                    </table>
-                    </div>
-</div>
+                </table>
+            </div>
+            
             <div class="card">
                 <h2>New Admin Add Form</h2>
                 <form id="adminForm" action="Assets/php/addadmin.php" method="POST">
@@ -579,14 +617,14 @@ $conn->close();
                         </div>
                         <div class="form-group">
                             <label for="lname">Last Name</label>
-                            <input type="text" id="lname" name="lname"  required>
+                            <input type="text" id="lname" name="lname" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username"  required>
+                            <input type="text" id="username" name="username" required>
                         </div>
                         <div class="form-group">
                             <label for="mailaddress">Email Address</label>
@@ -604,7 +642,7 @@ $conn->close();
                     <div class="form-row">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password"  required>
+                            <input type="password" id="password" name="password" required>
                         </div>
                         <div class="form-group">
                             <label for="pwconfirm">Confirm Password</label>
@@ -617,5 +655,79 @@ $conn->close();
             </div>
         </div>
     </div>
+
+    <!-- Edit User Popup -->
+    <div class="popup-overlay" id="editPopup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Edit User</h2>
+            <form id="editUserForm" action="Assets/php/update_user.php" method="POST">
+                <input type="hidden" id="edit_username" name="username">
+                
+                <div class="form-group">
+                    <label for="edit_password">Password</label>
+                    <input type="password" id="edit_password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_role">Role</label>
+                    <select id="edit_role" name="role" required>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Edit button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButtons = document.querySelectorAll('.edit-btn');
+            const popup = document.getElementById('editPopup');
+            const closePopup = document.querySelector('.close-popup');
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get data from data attributes
+                    const username = this.getAttribute('data-username');
+                    const password = this.getAttribute('data-password');
+                    const role = this.getAttribute('data-role');
+                    
+                    // Fill the form with existing data
+                    document.getElementById('edit_username').value = username;
+                    document.getElementById('edit_password').value = password;
+                    document.getElementById('edit_role').value = role;
+                    
+                    // Show the popup
+                    popup.style.display = 'flex';
+                });
+            });
+            
+            // Close popup when X is clicked
+            closePopup.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+            
+            // Close popup when clicking outside the content
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+
+        // Toggle navigation
+        const toggle = document.querySelector('.toggle');
+        const navigation = document.querySelector('.navigation');
+        const main = document.querySelector('.main');
+
+        toggle.addEventListener('click', function() {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
