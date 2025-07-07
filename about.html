@@ -1,46 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Study Nest</title>
-    <link rel="stylesheet" href="about.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Study Nest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Assets/css/about.css" />
 </head>
 <body>
-    <header>
-        <h1>About Study Nest</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <div class="main">
+    <nav class="navbar">
+      <div class="logo">StudyNest</div>
+      <ul class="menu">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICE</a></li>
+        <li><a href="#">DESIGN</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+      <div class="search">
+        <input class="srch" type="search" placeholder="Type to search" aria-label="Search" />
+        <button class="btn">Search</button>
+      </div>
+    </nav>
 
-    <main>
-        <section class="about">
-            <h2>Welcome to Study Nest</h2>
-            <p>
-                Study Nest is a centralized web-based platform designed to streamline access to university course materials for students across all departments. It offers a structured repository where students can find lecture notes, past papers, presentations, and more, all organized by course and semester.
-            </p>
+    <section class="about">
+      <div class="card welcome-card">
+  <h2>Welcome to Study Nest</h2>
+  <p>
+    <strong>Study Nest</strong> is a centralized online platform that simplifies student access to university study materials. 
+    It allows students from various departments to find lecture notes, past papers, presentations, and course-related documents — 
+    all sorted by semester and subject. With an intuitive interface and robust organization, Study Nest helps students stay 
+    prepared, reduce stress, and perform better.
+  </p>
+</div>
 
-            <h3>Our Objectives</h3>
-            <ul>
-                <li>Centralize and preserve academic resources.</li>
-                <li>Provide easy and secure access to course materials.</li>
-                <li>Enable smooth navigation between departments and courses.</li>
-                <li>Support students in long-term academic planning and revision.</li>
-            </ul>
 
-            <h3>Key Features</h3>
-            <p>
-                The platform includes user authentication, role-based access (student/admin), and downloadable content. Users can browse materials by department and semester, and admins can update or manage the materials.
-            </p>
-        </section>
-    </main>
+      <div class="feature-grid">
+        <div class="card">
+          <h3>Our Objectives</h3>
+          <ul>
+            <li>Centralize and preserve academic resources.</li>
+            <li>Provide secure and easy access to study content.</li>
+            <li>Enable smooth navigation by department and semester.</li>
+            <li>Support long-term academic planning and revisions.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Key Features</h3>
+          <ul>
+            <li>User authentication with student/admin roles.</li>
+            <li>Downloadable PDFs, slides, and past papers.</li>
+            <li>Department-wise and semester-wise filtering.</li>
+            <li>Mobile responsive user interface.</li>
+            <li>Secure and reliable access 24/7.</li>
+            <li>Admin tools for content upload and updates.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Study Nest | Developed by Web Technologies Group</p>
+      <p>&copy; 2025 Study Nest | Developed by Web Technologies Group</p>
     </footer>
+  </div>
 </body>
 </html>

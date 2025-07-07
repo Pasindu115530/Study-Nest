@@ -1,0 +1,258 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Fonts */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: #000;
+}
+
+/* Background */
+.main {
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url('../images/1.jpg');
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  max-width: 1200px;
+  width: 95%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: #ff7200;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Menu */
+ ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+ ul li a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+ ul li a:hover {
+  color: #ff7200;
+}
+
+/* Search */
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.srch {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ff7200;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: transparent;
+  color: #fff;
+}
+
+.srch::placeholder {
+  color: #ffb366;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #ff7200;
+  border: 2px solid #ff7200;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e05b00;
+  color: #000;
+}
+
+/* About Section */
+.about {
+  max-width: 1100px;
+  background-color: rgba(0, 0, 0, 0.75);
+  margin: 40px auto;
+  padding: 40px 30px;
+  border-radius: 12px;
+  line-height: 1.7;
+  box-shadow: 0 0 15px rgba(255, 114, 0, 0.5);
+}
+
+.about h2 {
+  color: #ff7200;
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.about .intro {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+/* Features Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Cards */
+.welcome-card {
+  grid-column: 1 / -1;
+  margin-bottom: 30px;
+  background-color: #1a1a1a;
+  border-left: 5px solid #ff7200;
+}
+
+.welcome-card h2 {
+  font-size: 26px;
+  color: #ff7200;
+  margin-bottom: 15px;
+}
+
+.welcome-card p {
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.welcome-card:hover {
+  transform: none;
+  box-shadow: 0 0 25px rgba(255, 114, 0, 0.4);
+}
+
+.card {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 0 10px rgba(255, 114, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(255, 114, 0, 0.5);
+}
+
+.card h3 {
+  color: #ffa94d;
+  margin-bottom: 15px;
+  font-size: 20px;
+  border-bottom: 1px solid #ff7200;
+  padding-bottom: 8px;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  color: #eee;
+  font-size: 15px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.card ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 16px;
+  color: #ff7200;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.card ul li:hover {
+  transform: translateX(5px);
+  color: #ffa94d;
+}
+
+.card ul li:hover::before {
+  transform: scale(1.2);
+  color: #ffa94d;
+}
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px 10px;
+  background-color: #111;
+  color: #888;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .search {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .srch,
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+
+  .about {
+    margin: 20px 10px;
+    padding: 30px 20px;
+  }
+}
