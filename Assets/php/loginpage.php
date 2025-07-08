@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION["username"] = $username; // Store username in session
     
     // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'userportal');
+    $conn = new mysqli('127.0.0.1', 'root', '', 'userportal');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password === $db_password) { // For plain text passwords
             // Redirect based on role
             if ($role === 'admin') {
-                header('Location: /Study Nest/view_notes.php');
+                header('Location: /StudyNest/view_notes.php');
             } else {
-                header('Location: /Study Nest/view_notes_user.php');          }
+                header('Location: /StudyNest/view_notes_user.php');          }
             exit();
         } else {
             $error = "Invalid username or password.";
