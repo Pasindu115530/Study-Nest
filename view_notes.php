@@ -1,17 +1,9 @@
 <?php
 session_start();
-// Display success/error messages if redirected from upload/delete
+// Display success message if redirected from upload
 if (isset($_SESSION['uploadSuccess'])) {
     $successMsg = $_SESSION['uploadSuccess'];
     unset($_SESSION['uploadSuccess']);
-}
-if (isset($_SESSION['deleteSuccess'])) {
-    $successMsg = $_SESSION['deleteSuccess'];
-    unset($_SESSION['deleteSuccess']);
-}
-if (isset($_SESSION['deleteError'])) {
-    $errorMsg = $_SESSION['deleteError'];
-    unset($_SESSION['deleteError']);
 }
 
 // Database connection
@@ -19,6 +11,7 @@ $conn = new mysqli("localhost", "root", "", "userportal");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 
 // Get all notes from database
 $notes = [];
@@ -28,7 +21,7 @@ if ($result) {
 }
 $conn->close();
 
-// Department and course structure
+// Module names for display
 $departmentCourses = [
     'cs' => [
         '1-1' => ["Professional English", "Principles of Management", "Introductory Statistics", "Discrete Mathematics", 
@@ -118,13 +111,20 @@ $departmentNames = [
 ];
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f5f5f5;
@@ -234,7 +234,6 @@ $departmentNames = [
             text-decoration: none;
             font-size: 14px;
             transition: background 0.3s;
-            cursor: pointer;
         }
         .delete-btn:hover {
             background: #d32f2f;
@@ -251,8 +250,7 @@ $departmentNames = [
         }
         .upload-btn:hover {
             background: #0b7dda;
-        }
-        .department-filter {
+        }.department-filter {
             margin-bottom: 20px;
         }
         .filter-btn {
@@ -270,6 +268,102 @@ $departmentNames = [
     </style>
 </head>
 <body>
+    <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <img src="assets/images/image01.png" alt="Logo">
+                            </span>
+                            <span class="title">Study Nest</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="adminusercontrolpanel.php">
+                            <span class="icon">
+                                <ion-icon name="people-outline"></ion-icon>
+                            </span>
+                            <span class="title">Manage Users</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="uploadlecnotes.html">
+                            <span class="icon">
+                                <ion-icon name="chatbubble-outline"></ion-icon>
+                            </span>
+                            <span class="title">Manage Content</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="report.html">
+                            <span class="icon">
+                                <ion-icon name="help-outline"></ion-icon>
+                            </span>
+                            <span class="title">Reports</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <span class="icon">
+                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                            </span>
+                            <span class="title">Lecture Details</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="myprofile.php">
+                            <span class="icon">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </span>
+                            <span class="title">Settings</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="logout.php" onclick="signOut()">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="main">
+                <!-- <div class="left-semicircle"></div>
+                <div class="middle-circle"></div>
+                <div class="right"></div> -->
+                <div class="topbar">
+                    <div class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+
+                    <div class="search">
+                        <label>
+                            <input type="text" placeholder="Search Courses">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </div>
+
+                    <div class="user">
+                        <img src="assets/images/image02.jpg" alt="">
+                    </div>
+                </div>
+
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
@@ -318,7 +412,6 @@ $departmentNames = [
             </div>
         <?php endif; ?>
     </div>
-
     <script>
         // Department filter functionality
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -340,6 +433,24 @@ $departmentNames = [
             });
         });
     </script>
+    <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>
+
 </body>
 </html>
 
