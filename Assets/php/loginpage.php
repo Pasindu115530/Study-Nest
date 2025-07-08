@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION["username"] = $username; // Store username in session
     
     // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'userportal');
+    $conn = new mysqli('127.0.0.1', 'root', '', 'userportal');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
