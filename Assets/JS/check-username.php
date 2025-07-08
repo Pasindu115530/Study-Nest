@@ -1,22 +1,35 @@
 <?php
+// No whitespace before this line!
+header('Content-Type: application/json');
 
-    $con = new mysqli('127.0.0.1', 'root', '', 'userportal');
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+$response = [];
 
-    $username = $_GET['username'] ?? '';
-    $username = $conn->real_escape_string($username);
+// Database connection
+$conn = new mysqli('127.0.0.1', 'root', '', 'userportal');
+if ($conn->connect_error) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Connection failed']);
+    exit;
+}
 
-    $sql = "SELECT * FROM users WHERE username = '$username'";
-    $result = $conn->query($sql);
+$username = isset($_GET['username']) ? trim($_GET['username']) : '';
 
-    if ($result->num_rows > 0) {
-        echo "❌ Username already taken";
-    } else {
-        echo "✅ Username available";
-    }
-
+if ($username === '') {
+    http_response_code(400);
+    echo json_encode(['error' => 'No username provided']);
     $conn->close();
+    exit;
+}
 
+$stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$stmt->store_result();
+
+$response = ['available' => $stmt->num_rows === 0];
+
+$stmt->close();
+$conn->close();
+echo json_encode($response);
 ?>
+

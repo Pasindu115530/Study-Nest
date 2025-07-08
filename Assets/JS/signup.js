@@ -13,8 +13,9 @@ async function validateUsername() {
     }
 
     try {
-        const response = await fetch('/check-username.php?username=' + encodeURIComponent(username));
+        const response = await fetch('/StudyNest/Assets/JS/check-username.php?username=' + encodeURIComponent(username));
         const data = await response.json();
+        
 
         if (data.available) {
             feedback.textContent = "Username is available!";
