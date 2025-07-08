@@ -39,7 +39,10 @@ $moduleNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="assets/css/dashboard.css">
+=======
+>>>>>>> Stashed changes
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -126,6 +129,7 @@ $moduleNames = [
     </style>
 </head>
 <body>
+<<<<<<< Updated upstream
     <div class="navigation">
                 <ul>
                     <li>
@@ -222,6 +226,8 @@ $moduleNames = [
                     </div>
                 </div>
 
+=======
+>>>>>>> Stashed changes
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
