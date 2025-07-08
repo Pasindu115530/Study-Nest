@@ -87,25 +87,85 @@ ul li a:hover{
     border-top-left-radius: 5px;
 }
 
-.btn{
-    width: 100px;
-    height: 40px;
-    background: #ff7200;
-    border: 2px solid #ff7200;
-    margin-top: 13px;
-    color: #fff;
-    font-size: 15px;
-    border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: 0.2s ease;
-    cursor: pointer;
-}
-.btn:hover{
-    color: #000;
+.button-creative1 {
+  position: relative;
+  display: inline-block;
+  padding: 1em 2em;
+  margin: 15px;
+  background: #111;
+  color: white;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  z-index: 1;
+  box-shadow: #ff7200 0px 0px 0px 0.5px inset, #ff7200 0px 0px 0px 0.5px;
 }
 
-.btn:focus{
-    outline: none;
+.button-creative1::before {
+  content: '';
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ff7200 10%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease;
+  border-radius: 50%;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.button-creative1:hover::before {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.button-creative1:hover {
+  color: #ff7200;
+}
+
+.button-creative2 {
+  position: relative;
+  display: inline-block;
+  padding: 1em 2em;
+  background: #1111;
+  color: white;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  z-index: 1;
+  box-shadow: #ff7200 0px 0px 0px 0.5px inset, #ff7200 0px 0px 0px 0.5px;
+}
+
+.button-creative2::before {
+  content: '';
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ff7200 10%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease;
+  border-radius: 50%;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.button-creative2:hover::before {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.button-creative2:hover {
+  color: #ff7200;
 }
 
 .srch:focus{
