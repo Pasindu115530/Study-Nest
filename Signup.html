@@ -64,7 +64,7 @@
             left: 1050px;
             top: 430px;
             filter: blur(25px);
-            hdshdksdhis;
+            
         }
         
         .right {
@@ -134,6 +134,84 @@
             color: azure ;
         }
 
+        .middle-circle {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(to right, #ff7200 50%, #f5b641 100%);
+            border-radius: 50%;
+            position: absolute;
+            left: 1050px;
+            top: 430px;
+            filter: blur(25px);
+            hdshdksdhis;
+        }
+        
+        .right {
+            width: 150px;
+            height: 100%;
+            background: #ff7200;
+            position: absolute;
+            right: -50px;
+            filter: blur(75px);
+        }
+        
+        .login-container {
+            width: 45%;
+            height: 90%;
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 20%, rgba(255, 255, 255, 0.15) 30%);
+            position: absolute;
+            border: 1px solid rgb(255 255 255 / 50%);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .login-form {
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-form-items {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 50px;
+            left: 145px;
+            
+        }
+        
+        span.login-label {
+            color: #ff7200;
+            font-weight: 900;
+            font-size: 1.6em;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        
+        .text-input-container {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+        }
+        
+        .form-label {
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+        
+        a.studynest-text{
+            font-size: 1.0em;
+            font-family: 'Azonix';
+            color: azure ;
+        }
 
         input.text-style {
             border-radius: 20px;
@@ -232,6 +310,15 @@
                                     <option value="CS">CS</option>
                                     <option value="SE">SE</option>
                                     <option value="IS">IS</option>
+                                </select>
+                            </div>
+                            <div class="text-input-container">
+                                <label class="form-label">Year</label>
+                                <select name="year" required>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>    
                                 </select>
                             </div>
                             <div class="text-input-container">
