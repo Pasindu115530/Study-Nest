@@ -39,3 +39,4 @@ document.addEventListener('DOMContentLoaded', function() {
         usernameInput.addEventListener('input', validateUsername);
     }
 });
+
