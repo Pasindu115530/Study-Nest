@@ -26,7 +26,7 @@ async function validateUsername() {
             return false;
         }
     } catch (error) {
-        feedback.textContent = "Error checking username.";
+        feedback.textContent = "Error checking username...";
         feedback.style.color = "red";
         return false;
     }
@@ -40,3 +40,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (!form) return;
+    const inputs = form.querySelectorAll('input, select');
+    const signupBtn = form.querySelector('button[type="submit"]');
+
+    function checkFields() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if ((input.type !== "button" && input.type !== "submit") && !input.value) {
+                allFilled = false;
+            }
+        });
+        signupBtn.disabled = !allFilled;
+        signupBtn.style.opacity = allFilled ? "1" : "0.6";
+        signupBtn.style.cursor = allFilled ? "pointer" : "not-allowed";
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', checkFields);
+        input.addEventListener('change', checkFields);
+    });
+
+    checkFields();
+});
