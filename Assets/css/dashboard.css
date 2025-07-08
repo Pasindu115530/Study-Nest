@@ -40,7 +40,7 @@ body.dark {
   align-items: center;
   }
   .left-semicircle {
-    position: absolute;
+    position: fixed;
     width: 600px;
     height: 500px;
     background: linear-gradient(to right, #ff7200 50%, #fd7600 80%, #ff7200 100%);
@@ -61,7 +61,7 @@ body.dark {
     height: 150px;
     background: linear-gradient(to right, #ff7200 50%, #f5b641 100%);
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     left: 1050px;
     top: 130px;
     filter: blur(25px);
@@ -71,7 +71,7 @@ body.dark {
     width: 150px;
     height: 100%;
     background: #ff7200;
-    position: absolute;
+    position: fixed;
     right: -50px;
     filter: blur(75px);
   }
@@ -256,6 +256,10 @@ body.dark {
 .submenu .sublink {
   padding: 15px 15px 15px 52px;
 }
+
+.sidebar .submenu_item_active {
+  color: var(--blue-color);
+}
 .bottom_content {
   position: fixed;
   bottom: 60px;
@@ -313,4 +317,81 @@ body.dark {
   .sidebar.close .bottom_content {
     left: -100%;
   }
+}
+
+
+
+
+
+
+
+/* ======cards on lecture details======== */
+
+
+
+.card-section {
+  display: flex;
+  /* justify-content: center; */
+  gap: 30px;
+  padding: 100px 40px 40px 340px;
+  flex-wrap: wrap;
+  z-index: 5;
+  position: relative;
+}
+
+.card {
+  background: linear-gradient(
+    to top right,
+    rgba(195, 220, 220, 0.3) 20%,
+    rgba(255, 255, 255, 0.15) 30%
+  );
+  border: 1px solid rgb(255 255 255 / 50%);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border-radius: 15px;
+  padding: 30px 20px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(255, 114, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card i {
+  font-size: 30px;
+  color: #ff7200;
+  margin-top: 10px;
+}
+
+.card h3 {
+  font-weight: 600;
+  color: #ff7200;
+  margin-bottom: 10px;
+  font-size: 22px;
+  line-height: 23px;
+}
+
+.card h6 {
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: px;
+}
+
+.card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(255, 114, 0, 0.4);
 }
