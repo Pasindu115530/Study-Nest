@@ -133,10 +133,12 @@ body.dark {
 }
 /* sidebar */
 .sidebar {
-  background-color: black transparent;
+  background-color: rgba(67, 40, 0, 0.2) ;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   box-shadow: #ffffff 0px 0px 12px;
+  background-size: cover;
+  background-position: center;
   width: 300px;
   position: fixed;
   top: 0;
