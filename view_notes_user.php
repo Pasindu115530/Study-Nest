@@ -126,7 +126,9 @@ $moduleNames = [
     </style>
 </head>
 <body>
-    <div class="navigation">
+    div class="container">
+
+            <div class="navigation">
                 <ul>
                     <li>
                         <a href="#">
@@ -138,38 +140,11 @@ $moduleNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="view_notes_user.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
                             <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="adminusercontrolpanel.php">
-                            <span class="icon">
-                                <ion-icon name="people-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Users</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="uploadlecnotes.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Content</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="report.html">
-                            <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
-                            </span>
-                            <span class="title">Reports</span>
                         </a>
                     </li>
 
@@ -249,6 +224,12 @@ $moduleNames = [
             </div>
         <?php endif; ?>
     </div>
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 

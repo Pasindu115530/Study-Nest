@@ -25,10 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password === $db_password) { // For plain text passwords
             // Redirect based on role
             if ($role === 'admin') {
-                header('Location: /Study Nest/dashboardadmin.html');
+                header('Location: /Study Nest/view_notes.php');
             } else {
-                header('Location: /Study Nest/dashboarduser.html');
-            }
+                header('Location: /Study Nest/view_notes_user.php');          }
             exit();
         } else {
             $error = "Invalid username or password.";
