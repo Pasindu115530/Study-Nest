@@ -100,6 +100,11 @@ $moduleNames = [
             color: #666;
             margin-bottom: 15px;
         }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+        }
         .download-btn {
             display: inline-block;
             background: #4CAF50;
@@ -112,6 +117,19 @@ $moduleNames = [
         }
         .download-btn:hover {
             background: #3e8e41;
+        }
+        .delete-btn {
+            display: inline-block;
+            background: #f44336;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .delete-btn:hover {
+            background: #d32f2f;
         }
         .upload-btn {
             display: inline-block;
@@ -178,7 +196,7 @@ $moduleNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="">
                             <span class="icon">
                                 <ion-icon name="chatbubbles-outline"></ion-icon>
                             </span>
@@ -196,7 +214,7 @@ $moduleNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="logout.php" onclick="signOut()">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -249,12 +267,32 @@ $moduleNames = [
                         </span>
                         <h3 class="note-title"><?= htmlspecialchars($note['filename']) ?></h3>
                         <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
-                        <a href="dowload.php?id=<?= $note['id'] ?>" class="download-btn">Download</a>
+                        <div class="action-buttons">
+                            <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn">delete</a>
+                            <a href="dowload.php?id=<?= $note['id'] ?>" class="download-btn">Download</a>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
+    <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>
 </body>
 </html>
 

@@ -167,7 +167,7 @@ $moduleNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="logout.php" onclick="signOut()">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -230,6 +230,23 @@ $moduleNames = [
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>
 </body>
 </html>
 
