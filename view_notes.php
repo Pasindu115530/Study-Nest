@@ -364,6 +364,7 @@ $departmentNames = [
                     </div>
                 </div>
 
+
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
