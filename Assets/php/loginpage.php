@@ -32,20 +32,25 @@ echo "✅ Connected successfully to MySQL database";
 >>>>>>> Stashed changes
 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT password,role FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT password, role, department FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($db_password, $role);
+        $stmt->bind_result($db_password, $role, $department);
         $stmt->fetch();
         if ($password === $db_password) { // For plain text passwords
+            // Store additional user info in session if needed
+            $_SESSION['role'] = $role;
+            $_SESSION['department'] = $department;
+    
             // Redirect based on role
             if ($role === 'admin') {
-                header('Location: /StudyNest/view_notes.php');
+                header("Location: /Study Nest/dashboardcontentadmin.php?department=" . urlencode($department));
             } else {
-                header('Location: /StudyNest/view_notes_user.php');          }
+                header("Location: /Study Nest/dashboardcontentuser.php?department=" . urlencode($department));
+            }
             exit();
         } else {
             $error = "Invalid username or password.";
@@ -57,4 +62,3 @@ echo "✅ Connected successfully to MySQL database";
     $conn->close();
 }
 ?>
-
