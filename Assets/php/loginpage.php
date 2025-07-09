@@ -29,12 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             // Redirect based on role
             if ($role === 'admin') {
-
-                header('Location: /Study Nest/dashboardcontentadmin.php');
+                header("Location: /Study Nest/dashboardcontentadmin.php?department=" . urlencode($department));
             } else {
-                header('Location: /Study Nest/dashboardcontentuser.php');          }
-
-
+                header("Location: /Study Nest/dashboardcontentuser.php?department=" . urlencode($department));
+            }
             exit();
         } else {
             $error = "Invalid username or password.";
