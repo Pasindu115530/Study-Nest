@@ -13,7 +13,7 @@ async function validateUsername() {
     }
 
     try {
-        const response = await fetch('/StudyNest/Assets/JS/check-username.php?username=' + encodeURIComponent(username));
+        const response = await fetch('/StudyNest/Assets/php/check-username.php?username=' + encodeURIComponent(username));
         const data = await response.json();
         if (data.username_available) {
             feedback.textContent = "Username is available!";
@@ -44,7 +44,7 @@ async function validateEmail() {
         return false;
     }
     try {
-        const response = await fetch('/StudyNest/Assets/JS/check-username.php?email=' + encodeURIComponent(email));
+        const response = await fetch('/StudyNest/Assets/php/check-username.php?email=' + encodeURIComponent(email));
         const data = await response.json();
         if (data.email_available) {
             feedback.textContent = "";
@@ -74,7 +74,7 @@ async function validatePhone() {
         return false;
     }
     try {
-        const response = await fetch('/StudyNest/Assets/JS/check-username.php?phone=' + encodeURIComponent(phone));
+        const response = await fetch('/StudyNest/Assets/php/check-username.php?phone=' + encodeURIComponent(phone));
         const data = await response.json();
         if (data.phone_available) {
             feedback.textContent = "";
