@@ -15,9 +15,7 @@ async function validateUsername() {
     try {
         const response = await fetch('/StudyNest/Assets/JS/check-username.php?username=' + encodeURIComponent(username));
         const data = await response.json();
-        
-
-        if (data.available) {
+        if (data.username_available) {
             feedback.textContent = "Username is available!";
             feedback.style.color = "green";
             return true;
@@ -33,11 +31,79 @@ async function validateUsername() {
     }
 }
 
+// Email validation with DB check
+async function validateEmail() {
+    const emailInput = document.getElementById('mailaddress');
+    const feedback = document.getElementById('email-feedback');
+    const email = emailInput.value.trim();
+    // Simple email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        feedback.textContent = "Invalid email format.";
+        feedback.style.color = "red";
+        return false;
+    }
+    try {
+        const response = await fetch('/StudyNest/Assets/JS/check-username.php?email=' + encodeURIComponent(email));
+        const data = await response.json();
+        if (data.email_available) {
+            feedback.textContent = "";
+            return true;
+        } else {
+            feedback.textContent = "Email is already registered.";
+            feedback.style.color = "red";
+            return false;
+        }
+    } catch (error) {
+        feedback.textContent = "Error checking email...";
+        feedback.style.color = "red";
+        return false;
+    }
+}
+
+// Phone number validation with DB check
+async function validatePhone() {
+    const phoneInput = document.getElementById('pnumber');
+    const feedback = document.getElementById('phone-feedback');
+    const phone = phoneInput.value.trim();
+    // Accepts 10 digit numbers only
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+        feedback.textContent = "Phone number must be 10 digits.";
+        feedback.style.color = "red";
+        return false;
+    }
+    try {
+        const response = await fetch('/StudyNest/Assets/JS/check-username.php?phone=' + encodeURIComponent(phone));
+        const data = await response.json();
+        if (data.phone_available) {
+            feedback.textContent = "";
+            return true;
+        } else {
+            feedback.textContent = "Phone number is already registered.";
+            feedback.style.color = "red";
+            return false;
+        }
+    } catch (error) {
+        feedback.textContent = "Error checking phone...";
+        feedback.style.color = "red";
+        return false;
+    }
+}
+
 // Attach event listener to username input
 document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
     if (usernameInput) {
         usernameInput.addEventListener('input', validateUsername);
+    }
+    const emailInput = document.getElementById('mailaddress');
+    if (emailInput) {
+        emailInput.addEventListener('input', validateEmail);
+    }
+    const phoneInput = document.getElementById('pnumber');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', validatePhone);
     }
 });
 
@@ -65,4 +131,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     checkFields();
+});
+
+
+// Prevent form submission if passwords do not match
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        const password = document.getElementById('password').value;
+        const pwconfirm = document.getElementById('pwconfirm').value;
+        if (password !== pwconfirm) {
+            e.preventDefault();
+            let feedback = document.getElementById('pwconfirm-feedback');
+            if (!feedback) {
+                const input = document.getElementById('pwconfirm');
+                feedback = document.createElement('span');
+                feedback.id = 'pwconfirm-feedback';
+                feedback.style.color = 'red';
+                feedback.style.fontSize = '0.9em';
+                feedback.style.marginTop = '2px';
+                input.parentNode.appendChild(feedback);
+            }
+            feedback.textContent = 'Passwords do not match!';
+        } else {
+            const feedback = document.getElementById('pwconfirm-feedback');
+            if (feedback) feedback.textContent = '';
+        }
+    });
 });
