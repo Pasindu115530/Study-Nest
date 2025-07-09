@@ -160,6 +160,7 @@ $departmentNames = [
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+        
         .note-card {
             background: white;
             border-radius: 10px;
@@ -202,6 +203,42 @@ $departmentNames = [
             background: #f0f0f0;
             color: #555;
         }
+          .year-section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .year-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .semester-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .semester-section h3 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .department-section {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.department-title {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
         .note-date {
             font-size: 12px;
             color: #666;
@@ -367,14 +404,7 @@ $departmentNames = [
         <h1>Lecture Notes Repository</h1>
         
         <?php
-         session_start();
-
-        // Check if department is set in session
-        if (!isset($_SESSION['department'])) {
-            die("Department not set. Please login first.");
-        }
-
-        $department = $_SESSION['department'];  
+        
         // Database connection
         $conn = new mysqli("localhost", "root", "", "userportal");
         if ($conn->connect_error) {
@@ -382,17 +412,12 @@ $departmentNames = [
         }
 
         // Get all notes from database
-        $allNotes = [];
       $allNotes = [];
-        $stmt = $conn->prepare("SELECT id, subject_name, year, semester, department, upload_date 
-                            FROM subjects 
-                            WHERE department = ? 
-                            ORDER BY year, semester, upload_date DESC");
-        $stmt->bind_param("s", $department);
-                if ($result) {
-                    $allNotes = $result->fetch_all(MYSQLI_ASSOC);
-                }
-                $conn->close();
+        $result = $conn->query("SELECT id, subject_name, year, semester, department, upload_date FROM subjects ORDER BY year, semester, upload_date DESC");
+        if ($result) {
+            $allNotes = $result->fetch_all(MYSQLI_ASSOC);
+        }
+        $conn->close();
 
         // Organize notes by year and semester
         $organizedNotes = [];
@@ -410,19 +435,39 @@ $departmentNames = [
 
         // Display notes for each year and semester
         for ($year = 1; $year <= 4; $year++): ?>
-            <div class="year-section">
-                <h2>Year <?= $year ?></h2>
+    <div class="year-section">
+        <h2>Year <?= $year ?></h2>
+        
+        <?php for ($semester = 1; $semester <= 2; $semester++): ?>
+            <div class="semester-section">
+                <h3>Semester <?= $semester ?></h3>
                 
-                <?php for ($semester = 1; $semester <= 2; $semester++): ?>
-                    <div class="semester-section">
-                        <h3>Semester <?= $semester ?></h3>
-                        
-                        <?php if (empty($organizedNotes[$year][$semester])): ?>
-                            <div class="no-notes">No notes available for this semester yet.</div>
-                        <?php else: ?>
+                <?php 
+                // Get all departments for this year and semester
+                $departments = [];
+                if (!empty($organizedNotes[$year][$semester])) {
+                    foreach ($organizedNotes[$year][$semester] as $note) {
+                        $dept = $note['department'];
+                        if (!in_array($dept, $departments)) {
+                            $departments[] = $dept;
+                        }
+                    }
+                }
+                
+                if (empty($departments)): ?>
+                    <div class="no-notes">No notes available for this semester yet.</div>
+                <?php else: ?>
+                    <?php foreach ($departments as $dept): ?>
+                        <div class="department-section" data-dept="<?= htmlspecialchars($dept) ?>">
+                            <h4 class="department-title"><?= htmlspecialchars($dept) ?></h4>
                             <div class="notes-grid">
-                                <?php foreach ($organizedNotes[$year][$semester] as $note): ?>
-                                    <div class="note-card" data-dept="<?= htmlspecialchars($note['department']) ?>">
+                                <?php 
+                                $hasNotes = false;
+                                foreach ($organizedNotes[$year][$semester] as $note): 
+                                    if ($note['department'] === $dept): 
+                                        $hasNotes = true;
+                                ?>
+                                    <div class="note-card">
                                         <h3 class="note-title"><?= htmlspecialchars($note['subject_name']) ?></h3>
                                         <div class="note-meta">
                                             <span class="meta-badge">Year: <?= htmlspecialchars($note['year']) ?></span>
@@ -432,13 +477,21 @@ $departmentNames = [
                                             <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
                                         <?php endif; ?>
                                     </div>
-                                <?php endforeach; ?>
+                                <?php 
+                                    endif;
+                                endforeach; 
+                                
+                                if (!$hasNotes): ?>
+                                    <div class="no-notes">No notes available for <?= htmlspecialchars($dept) ?> department.</div>
+                                <?php endif; ?>
                             </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endfor; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         <?php endfor; ?>
+    </div>
+<?php endfor; ?>
     </div>
 
     <script>
