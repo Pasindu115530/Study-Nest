@@ -14,7 +14,7 @@
         echo "<script>alert('Passwords do not match!');</script>";
     } else {
         // Database connection parameters
-        $servername = "localhost";
+        $servername = "127.0.0.2";
         $dbusername = "root";
         $dbpassword = "";
         $dbname = "userportal";

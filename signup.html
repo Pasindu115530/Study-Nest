@@ -7,6 +7,8 @@
     <title>Signup | STUDYNEST </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <script src="Assets/JS/signup.js" defer></script>
+    
     <style>@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
         body {
@@ -33,6 +35,7 @@
             align-items: center;
         }
         
+
         .left-semicircle {
             position: absolute;
             width: 600px; 
@@ -42,18 +45,23 @@
             bottom: 282px;
             left: -70px;
             filter: blur(25px);
+            animation: floatLeft 3s ease-in-out infinite alternate;
         }
-        
+
+        @keyframes floatLeft {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
         .img-signup{
             width: 500px; 
             height: 500px;
             position: absolute;
             top: 50px;
             left: -40px;
-
+            z-index: 1;
         }
-
-
 
         .middle-circle {
             width: 150px;
@@ -64,9 +72,15 @@
             left: 1050px;
             top: 430px;
             filter: blur(25px);
-            hdshdksdhis;
+            animation: floatMiddle 12s ease-in-out infinite alternate;
         }
-        
+
+        @keyframes floatMiddle {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(40px) scale(1.08); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
         .right {
             width: 150px;
             height: 100%;
@@ -74,6 +88,13 @@
             position: absolute;
             right: -50px;
             filter: blur(75px);
+            animation: floatRight 14s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatRight {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-50px) scale(1.04); }
+            100% { transform: translateY(0) scale(1); }
         }
         
         .login-container {
@@ -143,6 +164,30 @@
             padding-left: 10px;
             color: white;
         }
+
+        select {
+            background: none;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 20px;
+            padding-left: 10px;
+            font-size: 1em;
+            height: 25px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        select:focus {
+            outline: none;
+            background: none;
+            color: white;
+        }
+
+        select option {
+            background: #0b0b0b;
+            color: white;
+        }
         
         button.login-btn {
             width: 200px;
@@ -175,6 +220,7 @@
             position: absolute;
             bottom: 50px;
             left: 130px;
+            z-index: 2;
         }
 
         span.footer {
@@ -199,6 +245,7 @@
 
     
 </head>
+
 <body>
     <div class="container">
         <div class="left-semicircle"></div>
@@ -211,48 +258,60 @@
                         <span class="homepage-text">Happy Learning with</span>
                         <a href="HomePage.html" class="studynest-text"><br> STUDY NEST </a> 
                     </div>
-                    <img src="Assets/Signup-page-img.png" class="img-signup" alt="homepage">
+                    <img src="Assets/img/Signup-page-img.png" class="img-signup" alt="homepage">
                     
                 </div>
-                    <form action="signuppage.php" method="POST">
+                    <form action="Assets/php/signuppage.php" method="POST">
                         <div class="login-form-items">
                         
                             <span class="login-label">SIGNUP</span>
                             <div class="text-input-container">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="text-style" id="fname" name="fname" required>
+                                <input type="text" class="text-style" id="fname" name="fname">
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="text-style" id="lname" name="lname" required>
+                                <input type="text" class="text-style" id="lname" name="lname">
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Department</label>
                                 <select name="department" required>
-                                    <option value="CS">CS</option>
-                                    <option value="SE">SE</option>
-                                    <option value="IS">IS</option>
+                                    <option value="CS">Computer Science</option>
+                                    <option value="SE">Software Engeneering</option>
+                                    <option value="IS">Iformation Systems</option>
+                                </select>
+                            </div>
+                            <div class="text-input-container">
+                                <label class="form-label">Year</label>
+                                <select name="year" required>
+                                    <option value="1">1<sup>st</sup> Year</option>
+                                    <option value="2">2<sup>nd</sup> Year</option>
+                                    <option value="3">3<sup>rd</sup> Year</option>
+                                    <option value="4">4<sup>th</sup> Year</option>    
                                 </select>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">User Name</label>
-                                <input type="text" class="text-style" id="uname" name="username" required>
+                                <input type="text" class="text-style" id="username" name="username" >
+                                <span id="username-feedback" style="font-size: 0.9em; margin-top: 2px;"></span>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Mail Address</label>
-                                <input type="email" class="text-style" id="mailaddress" name="mailaddress" required>
+                                <input type="email" class="text-style" id="mailaddress" name="mailaddress" >
+                                <span id="email-feedback" style="font-size: 0.9em; margin-top: 2px;"></span>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Phone Number</label>
-                                <input type="text" class="text-style" id="pnumber" name="pnumber" required>
+                                <input type="text" class="text-style" id="pnumber" name="pnumber" >
+                                <span id="phone-feedback" style="font-size: 0.9em; margin-top: 2px;"></span>
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="text-style" id="password" name="password" required>
+                                <input type="password" class="text-style" id="password" name="password" >
                             </div>
                             <div class="text-input-container">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="text-style" id="pwconfirm" name="pwconfirm" required>
+                                <input type="password" class="text-style" id="pwconfirm" name="pwconfirm" >
                             </div>
                             <button class="login-btn" type="submit">SIGN UP</button>
                                               
