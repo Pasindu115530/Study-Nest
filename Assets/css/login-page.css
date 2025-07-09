@@ -33,6 +33,7 @@
             bottom: -42px;
             left: -70px;
             filter: blur(25px);
+            animation: floatUpDownLeft 3s cubic-bezier(0.7,0.1,0.3,0.9) infinite alternate;
         }
         
         .img-login{
@@ -52,6 +53,7 @@
             left: 1050px;
             top: 130px;
             filter: blur(25px);
+            animation: floatUpDownMiddle 4s cubic-bezier(0.7,0.1,0.3,0.9) infinite alternate;
         }
         
         .right {
@@ -61,6 +63,22 @@
             position: absolute;
             right: -50px;
             filter: blur(75px);
+            animation: floatUpDownRight 3.5s cubic-bezier(0.7,0.1,0.3,0.9) infinite alternate;
+        @keyframes floatUpDownLeft {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-80px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes floatUpDownMiddle {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(150px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes floatUpDownRight {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-60px); }
+            100% { transform: translateY(0); }
+        }
         }
         
         .login-container {
