@@ -8,14 +8,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-        $module = $_POST["module"] ?? '';
+
+    // Validate module
+    $allowedModules = ['ai', 'sda', 'fmsd', 'dcn', 'wt', 'ecl', 'mc', 'gp'];
+    $module = $_POST["module"] ?? '';
+    if (!in_array($module, $allowedModules)) {
+        $uploadSuccess = "❌ Invalid module selected";
+    } else {
         $uploadDate = date("Y-m-d H:i:s");
         $filename = basename($_FILES["file"]["name"]);
 
-        $year = $_POST["year"] ?? '';
-        $semester = $_POST["semester"] ?? '';
-        $department = $_POST["department"] ?? '';
-
+        // Verify PDF using MIME type
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime = finfo_file($finfo, $_FILES["file"]["tmp_name"]);
         finfo_close($finfo);
@@ -26,14 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fileData = file_get_contents($_FILES["file"]["tmp_name"]);
 
             if ($fileData) {
-                $stmt = $conn->prepare("INSERT INTO lecture_notes (filename, module, filedata, upload_date, year, semester, department) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO lecture_notes (filename, module, filedata, upload_date) VALUES (?, ?, ?, ?)");
                 $null = NULL;
-                $stmt->bind_param("ssbsiss", $filename, $module, $null, $uploadDate, $year, $semester, $department);
+                $stmt->bind_param("ssbs", $filename, $module, $null, $uploadDate);
                 $stmt->send_long_data(2, $fileData);
 
                 if ($stmt->execute()) {
                     $_SESSION['uploadSuccess'] = "✅ File uploaded successfully!";
-                    header("Location: dashboardcontent.php");
+                    header("Location: /study nest/view_notes.php");
                     exit();
                 } else {
                     $uploadSuccess = "❌ Upload failed: " . $stmt->error;
@@ -45,9 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     $conn->close();
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
