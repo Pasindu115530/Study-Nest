@@ -12,13 +12,31 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Get and sanitize input
+$module = isset($_GET['subject']) ? urldecode($_GET['subject']) : '';
 
-// Get all notes from database
+// Initialize notes array
 $notes = [];
-$result = $conn->query("SELECT id, filename, module, upload_date, year, semester, department FROM lecture_notes ORDER BY upload_date DESC");
-if ($result) {
-    $notes = $result->fetch_all(MYSQLI_ASSOC);
+
+// Prepare and execute query with parameterized statement
+$stmt = $conn->prepare("SELECT id, filename, module, upload_date, year, semester, department 
+                       FROM lecture_notes 
+                       WHERE module=? 
+                       ORDER BY upload_date DESC");
+if ($stmt) {
+    $stmt->bind_param("s", $module);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result) {
+        $notes = $result->fetch_all(MYSQLI_ASSOC);
+    }
+    $stmt->close();
+} else {
+    // Handle prepare error
+    error_log("Prepare failed: " . $conn->error);
 }
+
 $conn->close();
 
 // Module names for display
