@@ -337,7 +337,7 @@ $departmentNames = [
                     </div>
                 </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
             <a href="main.html" class="upload-btn">Upload New Notes</a>
@@ -405,8 +405,88 @@ $departmentNames = [
                 });
             });
         });
-    </script>
+    </script> -->
+    <div class="container">
+        <h1>Lecture Notes Repository</h1>
         
+        <?php
+        // Database connection
+        $conn = new mysqli("localhost", "root", "", "userportal");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Get all notes from database
+        $allNotes = [];
+        $result = $conn->query("SELECT id, subject_name, year, semester, department, upload_date FROM subjects ORDER BY year, semester, upload_date DESC");
+        if ($result) {
+            $allNotes = $result->fetch_all(MYSQLI_ASSOC);
+        }
+        $conn->close();
+
+        // Organize notes by year and semester
+        $organizedNotes = [];
+        foreach ($allNotes as $note) {
+            $year = $note['year'];
+            $semester = $note['semester'];
+            if (!isset($organizedNotes[$year])) {
+                $organizedNotes[$year] = [];
+            }
+            if (!isset($organizedNotes[$year][$semester])) {
+                $organizedNotes[$year][$semester] = [];
+            }
+            $organizedNotes[$year][$semester][] = $note;
+        }
+
+        // Display notes for each year and semester
+        for ($year = 1; $year <= 4; $year++): ?>
+            <div class="year-section">
+                <h2>Year <?= $year ?></h2>
+                
+                <?php for ($semester = 1; $semester <= 2; $semester++): ?>
+                    <div class="semester-section">
+                        <h3>Semester <?= $semester ?></h3>
+                        
+                        <?php if (empty($organizedNotes[$year][$semester])): ?>
+                            <div class="no-notes">No notes available for this semester yet.</div>
+                        <?php else: ?>
+                            <div class="notes-grid">
+                                <?php foreach ($organizedNotes[$year][$semester] as $note): ?>
+                                    <div class="note-card" data-dept="<?= htmlspecialchars($note['department']) ?>">
+                                        <h3 class="note-title"><?= htmlspecialchars($note['subject_name']) ?></h3>
+                                        <div class="note-meta">
+                                            <span class="meta-badge">Year: <?= htmlspecialchars($note['year']) ?></span>
+                                            <span class="meta-badge">Semester: <?= htmlspecialchars($note['semester']) ?></span>
+                                        </div>
+                                        <?php if (isset($note['upload_date'])): ?>
+                                            <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
+                                        <?php endif; ?>
+                                        <div class="action-buttons">
+                                            <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn" onclick="event.stopPropagation()">Delete</a>
+                                            <a href="download.php?id=<?= $note['id'] ?>" class="download-btn" onclick="event.stopPropagation()">Download</a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endfor; ?>
+            </div>
+        <?php endfor; ?>
+    </div>
+     <script>
+        // This script ensures the entire card is clickable and redirects to view_note.php
+        document.querySelectorAll('.note-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Check if the click was on the card itself, not the buttons
+                if (e.target === this || !e.target.closest('.action-buttons')) {
+                    const noteId = this.querySelector('.action-buttons a').getAttribute('href').split('=')[1];
+                    const subjectName = encodeURIComponent(this.querySelector('.note-title').textContent);
+                    window.location.href = `view_notes.php?subject=${subjectName}`;
+                }
+            });
+        });
+    </script>
         
 </body>
 </html>
