@@ -367,6 +367,14 @@ $departmentNames = [
         <h1>Lecture Notes Repository</h1>
         
         <?php
+         session_start();
+
+        // Check if department is set in session
+        if (!isset($_SESSION['department'])) {
+            die("Department not set. Please login first.");
+        }
+
+        $department = $_SESSION['department'];  
         // Database connection
         $conn = new mysqli("localhost", "root", "", "userportal");
         if ($conn->connect_error) {
@@ -375,11 +383,16 @@ $departmentNames = [
 
         // Get all notes from database
         $allNotes = [];
-        $result = $conn->query("SELECT id, subject_name, year, semester, department, upload_date FROM subjects ORDER BY year, semester, upload_date DESC");
-        if ($result) {
-            $allNotes = $result->fetch_all(MYSQLI_ASSOC);
-        }
-        $conn->close();
+      $allNotes = [];
+        $stmt = $conn->prepare("SELECT id, subject_name, year, semester, department, upload_date 
+                            FROM subjects 
+                            WHERE department = ? 
+                            ORDER BY year, semester, upload_date DESC");
+        $stmt->bind_param("s", $department);
+                if ($result) {
+                    $allNotes = $result->fetch_all(MYSQLI_ASSOC);
+                }
+                $conn->close();
 
         // Organize notes by year and semester
         $organizedNotes = [];
