@@ -196,64 +196,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  }
-  .left-semicircle {
-    position: fixed;
-    width: 600px;
-    height: 500px;
-    background: linear-gradient(to right, #ff7200 50%, #fd7600 80%, #ff7200 100%);
-    border-radius: 50%;
-    bottom: -280px;
-    left: -70px;
-    filter: blur(25px);
-  }
-
-  .img-login {
-    position: absolute;
-    top: -210px;
-    right: -145px;
-  }
-
-  .middle-circle {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(to right, #ff7200 50%, #f5b641 100%);
-    border-radius: 50%;
-    position: fixed;
-    left: 1050px;
-    top: 130px;
-    filter: blur(25px);
-  }
-
-  .right {
-    width: 150px;
-    height: 100%;
-    background: #ff7200;
-    position: fixed;
-    right: -50px;
-    filter: blur(75px);
-  }
-
-
-
-/* navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  left: 0;
-  background-color: #020202;
-  box-shadow: #ff7200 0px 0px 2px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  z-index: 1000;
-=======
   font-size: 2.5rem;
   cursor: pointer;
->>>>>>> c3f07ff6172f747bb0a95720aff8313737aa04be
 }
 
 .search {
@@ -427,38 +371,7 @@ body {
 .details .recentOrders table tr td:nth-child(2) {
   text-align: end;
 }
-<<<<<<< HEAD
-.show_submenu ~ .submenu {
-  display: block;
-}
-.show_submenu .arrow-left {
-  transform: rotate(90deg);
-}
-.submenu .sublink {
-  padding: 15px 15px 15px 52px;
-}
-
-.sidebar .submenu_item_active {
-  color: var(--blue-color);
-}
-.bottom_content {
-  position: fixed;
-  bottom: 60px;
-  left: 0;
-  width: 260px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-.bottom {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  left: 0;
-  justify-content: space-around;
-  padding: 18px 0;
-=======
 .details .recentOrders table tr td:nth-child(3) {
->>>>>>> c3f07ff6172f747bb0a95720aff8313737aa04be
   text-align: center;
 }
 .status.delivered {
@@ -593,90 +506,10 @@ body {
   .toggle {
     z-index: 10001;
   }
-<<<<<<< HEAD
-}
-
-
-
-
-
-
-
-/* ======cards on lecture details======== */
-
-
-
-.card-section {
-  display: flex;
-  /* justify-content: center; */
-  gap: 30px;
-  padding: 100px 40px 40px 340px;
-  flex-wrap: wrap;
-  z-index: 5;
-  position: relative;
-}
-
-.card {
-  background: linear-gradient(
-    to top right,
-    rgba(195, 220, 220, 0.3) 20%,
-    rgba(255, 255, 255, 0.15) 30%
-  );
-  border: 1px solid rgb(255 255 255 / 50%);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border-radius: 15px;
-  padding: 30px 20px;
-  width: 250px;
-  box-shadow: 0 4px 10px rgba(255, 114, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-}
-
-.card i {
-  font-size: 30px;
-  color: #ff7200;
-  margin-top: 10px;
-}
-
-.card h3 {
-  font-weight: 600;
-  color: #ff7200;
-  margin-bottom: 10px;
-  font-size: 22px;
-  line-height: 23px;
-}
-
-.card h6 {
-  font-weight: 500;
-  color: #ffffff;
-  margin-bottom: 10px;
-  font-size: 15px;
-}
-
-.card p {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: px;
-}
-
-.card img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 15px;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(255, 114, 0, 0.4);
-=======
   .main.active .toggle {
     color: #fff;
     position: fixed;
     right: 0;
     left: initial;
   }
->>>>>>> c3f07ff6172f747bb0a95720aff8313737aa04be
 }
