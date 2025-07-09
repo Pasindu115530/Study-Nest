@@ -1,308 +1,84 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard USER</title>
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/dashboard.css">
-    
-</head>
-
-<body>
-    <div class="container"></div>
-        
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-
-            <div class="navigation">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <img src="assets/images/image01.png" alt="Logo">
-                            </span>
-                            <span class="title">Study Nest</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="dashboarduser.html">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="chatbubbles-outline"></ion-icon>
-                            </span>
-                            <span class="title">Lecture Details</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myprofile.php">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">Settings</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Sign Out</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- ========================= Main ==================== -->
-            <div class="main">
-                <div class="left-semicircle"></div>
-                <div class="middle-circle"></div>
-                <div class="right"></div>
-                <div class="topbar">
-                    <div class="toggle">
-                        <ion-icon name="menu-outline"></ion-icon>
-                    </div>
-
-                    <div class="search">
-                        <label>
-                            <input type="text" placeholder="Search Courses">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </div>
-
-                    <div class="user">
-                        <img src="assets/images/image02.jpg" alt="">
-                    </div>
-                </div>
-
-                <!-- ======================= Cards ================== -->
-                <div class="cardBox">
-                    <div class="card">
-                        <div>
-                            <div class="numbers">Operating Systems</div>
-                            <div class="cardName">CSE1572</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">Mathematics for Computing</div>
-                            <div class="cardName">CCS2052 | CSE2052</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">Artificial Intelligence</div>
-                            <div class="cardName">CCS2062 | CSE2062</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">Web Technologies</div>
-                            <div class="cardName">CCS2032 | CSE2032</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ================ Order Details List ================= -->
-                <!-- <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Recent Orders</h2>
-                            <a href="#" class="btn">View All</a>
-                        </div>
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Price</td>
-                                    <td>Payment</td>
-                                    <td>Status</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>$1200</td>
-                                    <td>Paid</td>
-                                    <td><span class="status delivered">Delivered</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Dell Laptop</td>
-                                    <td>$110</td>
-                                    <td>Due</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Apple Watch</td>
-                                    <td>$1200</td>
-                                    <td>Paid</td>
-                                    <td><span class="status return">Return</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Addidas Shoes</td>
-                                    <td>$620</td>
-                                    <td>Due</td>
-                                    <td><span class="status inProgress">In Progress</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>$1200</td>
-                                    <td>Paid</td>
-                                    <td><span class="status delivered">Delivered</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Dell Laptop</td>
-                                    <td>$110</td>
-                                    <td>Due</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Apple Watch</td>
-                                    <td>$1200</td>
-                                    <td>Paid</td>
-                                    <td><span class="status return">Return</span></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Addidas Shoes</td>
-                                    <td>$620</td>
-                                    <td>Due</td>
-                                    <td><span class="status inProgress">In Progress</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> -->
-
-                    <!-- ================= New Customers ================ -->
-                    <!-- <div class="recentCustomers">
-                        <div class="cardHeader">
-                            <h2>Recent Customers</h2>
-                        </div>
-
-                        <table>
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>David <br> <span>Italy</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>Amit <br> <span>India</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>David <br> <span>Italy</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>Amit <br> <span>India</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>David <br> <span>Italy</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>Amit <br> <span>India</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>David <br> <span>Italy</span></h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h4>Amit <br> <span>India</span></h4>
-                                </td>
-                            </tr>
-                        </table>
-                    </div> -->
-                </div>
-            </div>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Dashboard | StudyNest</title>
+    <link rel="stylesheet" href="Assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container" style="background: linear-gradient(135deg, #000000 0%, #000000 100%); min-height: 100vh;">
+      <div class="left-semicircle"></div>
+      <div class="middle-circle"></div>
+      <div class="right"></div>
     </div>
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="Assets/img/website-icon.png" alt=""></i>Study Nest
+      </div>
+      
+      <div class="navbar_content">
+        <img src="Assets/img/neon 5.png" alt="" class="profile" />
+      </div>
+    </nav>
+    <!-- sidebar -->
+    <nav class="sidebar">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+          
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+              <span class="navlink">Dashboard</span>
+            </div>
+            
 
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bxs-graduation'></i>
+              </span>
+              <span class="navlink">Lectures Details</span>  
+            </div>
 
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-cog' ></i>
+              </span>
+              <span class="navlink">Settings</span>  
+            </div>
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-log-out'></i>
+              </span>
+              <span class="navlink">Sign Out</span>  
+            </div>
+            
+          </li>
+          <!-- end -->
+        </ul>
+        
+        </ul>
+       
+        
+        </div>
+      </div>
+    </nav>
+    
+    </div>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
 </html>

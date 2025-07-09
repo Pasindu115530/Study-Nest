@@ -12,31 +12,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get and sanitize input
-$module = isset($_GET['subject']) ? urldecode($_GET['subject']) : '';
 
-// Initialize notes array
+// Get all notes from database
 $notes = [];
-
-// Prepare and execute query with parameterized statement
-$stmt = $conn->prepare("SELECT id, filename, module, upload_date, year, semester, department 
-                       FROM lecture_notes 
-                       WHERE module=? 
-                       ORDER BY upload_date DESC");
-if ($stmt) {
-    $stmt->bind_param("s", $module);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result) {
-        $notes = $result->fetch_all(MYSQLI_ASSOC);
-    }
-    $stmt->close();
-} else {
-    // Handle prepare error
-    error_log("Prepare failed: " . $conn->error);
+$result = $conn->query("SELECT id, filename, module, upload_date, year, semester, department FROM lecture_notes ORDER BY upload_date DESC");
+if ($result) {
+    $notes = $result->fetch_all(MYSQLI_ASSOC);
 }
-
 $conn->close();
 
 // Module names for display
@@ -178,6 +160,7 @@ $departmentNames = [
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+        
         .note-card {
             background: white;
             border-radius: 10px;
@@ -220,6 +203,42 @@ $departmentNames = [
             background: #f0f0f0;
             color: #555;
         }
+          .year-section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .year-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .semester-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .semester-section h3 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .department-section {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.department-title {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
         .note-date {
             font-size: 12px;
             color: #666;
@@ -381,77 +400,120 @@ $departmentNames = [
                         <img src="assets/images/image02.jpg" alt="">
                     </div>
                 </div>
-
-
-    <div class="container">
-        <div class="header">
-            <h1>Lecture Notes</h1>
-            <a href="main.html" class="upload-btn">Upload New Notes</a>
-        </div>
-
-        <?php if (!empty($successMsg)): ?>
-            <div class="success-message"><?= htmlspecialchars($successMsg) ?></div>
-        <?php endif; ?>
+                <div class="container">
+        <h1>Lecture Notes Repository</h1>
         
-        <?php if (!empty($errorMsg)): ?>
-            <div class="error-message"><?= htmlspecialchars($errorMsg) ?></div>
-        <?php endif; ?>
+        <?php
+        
+        // Database connection
+        $conn = new mysqli("localhost", "root", "", "userportal");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-        <div class="department-filter">
-            <button class="filter-btn active" data-dept="all">All Departments</button>
-            <?php foreach ($departmentNames as $deptCode => $deptName): ?>
-                <button class="filter-btn" data-dept="<?= $deptCode ?>"><?= $deptName ?></button>
-            <?php endforeach; ?>
-        </div>
+        // Get all notes from database
+      $allNotes = [];
+        $result = $conn->query("SELECT id, subject_name, year, semester, department, upload_date FROM subjects ORDER BY year, semester, upload_date DESC");
+        if ($result) {
+            $allNotes = $result->fetch_all(MYSQLI_ASSOC);
+        }
+        $conn->close();
 
-        <?php if (empty($notes)): ?>
-            <p>No lecture notes found. Be the first to upload!</p>
-        <?php else: ?>
-            <div class="notes-grid">
-                <?php foreach ($notes as $note): ?>
-                    <div class="note-card" data-dept="<?= $note['department'] ?>">
-                        <span class="module-badge" style="background: <?= getModuleColor($note['module']) ?>">
-                            <?= htmlspecialchars($note['module']) ?>
-                        </span>
-                        <h3 class="note-title"><?= htmlspecialchars($note['filename']) ?></h3>
-                        
-                        <div class="note-meta">
-                            <span class="meta-badge">Year: <?= htmlspecialchars($note['year']) ?></span>
-                            <span class="meta-badge">Semester: <?= htmlspecialchars($note['semester']) ?></span>
-                            <span class="meta-badge"><?= htmlspecialchars($departmentNames[$note['department']] ?? $note['department']) ?></span>
-                        </div>
-                        
-                        <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
-                        <div class="action-buttons">
-                            <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn">Delete</a>
-                            <a href="dowload.php?id=<?= $note['id'] ?>" class="download-btn">Download</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-    </div>
-    <script>
-        // Department filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+        // Organize notes by year and semester
+        $organizedNotes = [];
+        foreach ($allNotes as $note) {
+            $year = $note['year'];
+            $semester = $note['semester'];
+            if (!isset($organizedNotes[$year])) {
+                $organizedNotes[$year] = [];
+            }
+            if (!isset($organizedNotes[$year][$semester])) {
+                $organizedNotes[$year][$semester] = [];
+            }
+            $organizedNotes[$year][$semester][] = $note;
+        }
+
+        // Display notes for each year and semester
+        for ($year = 1; $year <= 4; $year++): ?>
+    <div class="year-section">
+        <h2>Year <?= $year ?></h2>
+        
+        <?php for ($semester = 1; $semester <= 2; $semester++): ?>
+            <div class="semester-section">
+                <h3>Semester <?= $semester ?></h3>
                 
-                const dept = this.dataset.dept;
-                const cards = document.querySelectorAll('.note-card');
-                
-                cards.forEach(card => {
-                    if (dept === 'all' || card.dataset.dept === dept) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
+                <?php 
+                // Get all departments for this year and semester
+                $departments = [];
+                if (!empty($organizedNotes[$year][$semester])) {
+                    foreach ($organizedNotes[$year][$semester] as $note) {
+                        $dept = $note['department'];
+                        if (!in_array($dept, $departments)) {
+                            $departments[] = $dept;
+                        }
                     }
-                });
+                }
+                
+                if (empty($departments)): ?>
+                    <div class="no-notes">No notes available for this semester yet.</div>
+                <?php else: ?>
+                    <?php foreach ($departments as $dept): ?>
+                        <div class="department-section" data-dept="<?= htmlspecialchars($dept) ?>">
+                            <h4 class="department-title"><?= htmlspecialchars($dept) ?></h4>
+                            <div class="notes-grid">
+                                <?php 
+                                $hasNotes = false;
+                                foreach ($organizedNotes[$year][$semester] as $note): 
+                                    if ($note['department'] === $dept): 
+                                        $hasNotes = true;
+                                ?>
+                                    <div class="note-card">
+                                        <h3 class="note-title"><?= htmlspecialchars($note['subject_name']) ?></h3>
+                                        <div class="note-meta">
+                                            <span class="meta-badge">Year: <?= htmlspecialchars($note['year']) ?></span>
+                                            <span class="meta-badge">Semester: <?= htmlspecialchars($note['semester']) ?></span>
+                                        </div>
+                                        <?php if (isset($note['upload_date'])): ?>
+                                            <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php 
+                                    endif;
+                                endforeach; 
+                                
+                                if (!$hasNotes): ?>
+                                    <div class="no-notes">No notes available for <?= htmlspecialchars($dept) ?> department.</div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        <?php endfor; ?>
+    </div>
+<?php endfor; ?>
+    </div>
+
+    <script>
+    document.querySelectorAll('.note-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Check if the clicked element is NOT a button, link, or interactive element
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('button, a')) {
+                const subjectName = encodeURIComponent(this.querySelector('.note-title').textContent);
+                window.location.href = `view_notes.php?subject=${subjectName}`;
+            }
+        });
+
+        // Prevent card click when clicking on interactive elements
+        const interactiveElements = card.querySelectorAll('button, a, [onclick], [href]');
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         });
-    </script>
+    });
+</script>
+
     <script>
 function signOut() {
     // Clear session data
