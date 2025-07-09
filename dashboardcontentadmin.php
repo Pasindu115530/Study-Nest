@@ -418,10 +418,6 @@ $departmentNames = [
                                         <?php if (isset($note['upload_date'])): ?>
                                             <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
                                         <?php endif; ?>
-                                        <div class="action-buttons">
-                                            <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn" onclick="event.stopPropagation()">Delete</a>
-                                            <a href="download.php?id=<?= $note['id'] ?>" class="download-btn" onclick="event.stopPropagation()">Download</a>
-                                        </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -433,18 +429,24 @@ $departmentNames = [
     </div>
 
     <script>
-        // This script ensures the entire card is clickable and redirects to view_note.php
-        document.querySelectorAll('.note-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Check if the click was on the card itself, not the buttons
-                if (e.target === this || !e.target.closest('.action-buttons')) {
-                    const noteId = this.querySelector('.action-buttons a').getAttribute('href').split('=')[1];
-                    const subjectName = encodeURIComponent(this.querySelector('.note-title').textContent);
-                    window.location.href = `view_notes.php?subject=${subjectName}`;
-                }
+    document.querySelectorAll('.note-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Check if the clicked element is NOT a button, link, or interactive element
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('button, a')) {
+                const subjectName = encodeURIComponent(this.querySelector('.note-title').textContent);
+                window.location.href = `view_notes.php?subject=${subjectName}`;
+            }
+        });
+
+        // Prevent card click when clicking on interactive elements
+        const interactiveElements = card.querySelectorAll('button, a, [onclick], [href]');
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         });
-    </script>
+    });
+</script>
 
     <script>
 function signOut() {
