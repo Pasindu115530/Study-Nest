@@ -8,28 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION["username"] = $username; // Store username in session
     
     // Database connection
-<<<<<<< Updated upstream
     $conn = new mysqli('127.0.0.1', 'root', '', 'userportal');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-=======
-
-$servername = "10.33.79.157";  // MySQL Server IP (your machine running MySQL)
-$username = "deshan";          // MySQL username
-$password = "#12#Deshan";      // MySQL password
-$dbname = "userportal";        // Database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "✅ Connected successfully to MySQL database";
-
->>>>>>> Stashed changes
 
     // Use prepared statements to prevent SQL injection
     $stmt = $conn->prepare("SELECT password,role FROM users WHERE username = ?");
