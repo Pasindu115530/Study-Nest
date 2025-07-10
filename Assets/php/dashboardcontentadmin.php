@@ -162,7 +162,7 @@ $departmentNames = [
         }
         
         .note-card {
-            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 20%, rgba(255, 255, 255, 0.15) 30%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.1) 20%, rgba(255, 255, 255, 0.15) 30%);
             backdrop-filter: blur(10px);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -174,6 +174,7 @@ $departmentNames = [
         }
         .note-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 2px 5px #ff7200;
         }
         .module-badge {
             display: inline-block;
@@ -214,9 +215,10 @@ $departmentNames = [
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .year-section h2 {
+        .year-section h1 {
             color: #ff7200;
-            margin-bottom: 20px;
+            font-weight: 900;
+            margin-bottom: 30px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
@@ -451,8 +453,8 @@ $departmentNames = [
         // Display notes for each year and semester
         for ($year = 1; $year <= 4; $year++): ?>
     <div class="year-section">
-        <h2>Year <?= $year ?></h2>
-        
+        <h1>Year <?= $year ?></h1>
+
         <?php for ($semester = 1; $semester <= 2; $semester++): ?>
             <div class="semester-section">
                 <h3>Semester <?= $semester ?></h3>
@@ -474,7 +476,7 @@ $departmentNames = [
                 <?php else: ?>
                     <?php foreach ($departments as $dept): ?>
                         <div class="department-section" data-dept="<?= htmlspecialchars($dept) ?>">
-                            <h4 class="department-title"><?= htmlspecialchars($dept) ?></h4>
+                            <h2 class="department-title"><?= htmlspecialchars($dept) ?></h2>
                             <div class="notes-grid">
                                 <?php 
                                 $hasNotes = false;
