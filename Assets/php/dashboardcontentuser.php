@@ -63,7 +63,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Study Nest/Assets/css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -71,7 +71,7 @@ $departmentNames = [
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
+            background-color:rgb(0, 0, 0);
             margin: 0;
             padding: 20px;
         }
@@ -106,29 +106,37 @@ $departmentNames = [
         }
         .year-section {
             margin-bottom: 40px;
-            background: white;
+            /* border: 1px solid rgb(255 255 255 / 50%);
+            background:transparent; */
+            /* background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%); */
+            /* backdrop-filter: blur(30px); */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .year-section h2 {
-            color: #333;
-            margin-bottom: 20px;
+            color: #ff7200;
+            font-weight: 900;
+            margin-bottom: 30px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
         .semester-section {
             margin-bottom: 30px;
             padding: 15px;
-            background: #f9f9f9;
+            border: 1px solid rgb(255 255 255 / 50%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(30px);
             border-radius: 8px;
         }
         .semester-section h3 {
-            color: #444;
+            color: #fff;
             margin-bottom: 15px;
         }
         .note-card {
-            background: white;
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.1) 20%, rgba(255, 255, 255, 0.15) 30%);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -139,6 +147,7 @@ $departmentNames = [
         }
         .note-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 2px 5px #ff7200;
         }
         .module-badge {
             display: inline-block;
@@ -147,7 +156,7 @@ $departmentNames = [
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: white;
+            color: black;
         }
         .note-title {
             font-size: 18px;
@@ -166,8 +175,8 @@ $departmentNames = [
             padding: 3px 8px;
             border-radius: 4px;
             font-size: 12px;
-            background: #f0f0f0;
-            color: #555;
+            background:rgb(255, 213, 179);
+            color: #000;
         }
         .note-date {
             font-size: 12px;
@@ -236,49 +245,67 @@ $departmentNames = [
 </head>
 <body>
     <div class="navigation">
-        <ul>
-            <li>
-                <a href="/study nest/Homepage.html">
-                    <span class="icon">
-                        <img src="assets/images/image01.png" alt="Logo">
-                    </span>
-                    <span class="title">Study Nest</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="title">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/study nest/lecturedetails.html">
-                    <span class="icon">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </span>
-                    <span class="title">Lecture Details</span>
-                </a>
-            </li>
-            <li>
-                <a href="myprofile.php">
-                    <span class="icon">
-                        <ion-icon name="settings-outline"></ion-icon>
-                    </span>
-                    <span class="title">My profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="logout.php" onclick="signOut()">
-                    <span class="icon">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </span>
-                    <span class="title">Sign Out</span>
-                </a>
-            </li>
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="../img/website-icon.png" alt="">Study Nest
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
+    </nav>
+                <nav class="sidebar">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+          <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+              <span class="navlink">Dashboard</span>
+            </div>
+            
+          </li>
+          <!-- end -->
+          <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+          <!-- start -->
+          <li class="item">
+
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bxs-graduation'></i>
+              </span>
+              <span class="navlink">Lectures Details</span>  
+            </div>
+
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-cog' ></i>
+              </span>
+              <span class="navlink">Settings</span>  
+            </div>
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-log-out'></i>
+              </span>
+              <span class="navlink">Sign Out</span>  
+            </div>
+            
+          </li>
+          <!-- end -->
         </ul>
-    </div>
+        
+        </ul>
+       
+        
+        </div>
     
     <div class="main">
         <div class="topbar">

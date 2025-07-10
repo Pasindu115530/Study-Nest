@@ -366,7 +366,7 @@ $departmentNames = [
             </div>
 
 
-            <div href="#" class="nav_link submenu_item">
+            <div href="../../lecturedetails.html" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class='bx bxs-graduation'></i>
               </span>
