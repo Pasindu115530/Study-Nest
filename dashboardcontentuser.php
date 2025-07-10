@@ -306,6 +306,13 @@ $departmentNames = [
             <?php if (empty($notes)): ?>
                 <p>No lecture notes found for this department. Be the first to upload!</p>
             <?php else: ?>
+            <div class="year-filter">
+                    <button class="filter-btn active" data-year="all">All Years</button>
+                    <button class="filter-btn" data-year="1">First Year</button>
+                    <button class="filter-btn" data-year="2">Second Year</button>
+                    <button class="filter-btn" data-year="3">Third Year</button>
+                    <button class="filter-btn" data-year="4">Fourth Year</button>
+            </div>
                 <?php for ($year = 1; $year <= 4; $year++): ?>
                     <div class="year-section">
                         <h2>Year <?= $year ?></h2>
@@ -338,13 +345,51 @@ $departmentNames = [
             <?php endif; ?>
         </div>
     </div>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.year-filter .filter-btn');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const selectedYear = this.dataset.year;
+            const allCards = document.querySelectorAll('.note-card');
+            
+            allCards.forEach(card => {
+                // Extract year from card (assuming format "Year: X" in meta-badge)
+                const yearBadge = card.querySelector('.meta-badge');
+                let cardYear = '';
+                
+                if (yearBadge && yearBadge.textContent.includes('Year:')) {
+                    cardYear = yearBadge.textContent.split('Year: ')[1].trim();
+                }
+                
+                // Show/hide logic
+                if (selectedYear === 'all' || cardYear === selectedYear) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Optional: Trigger click on "All Years" by default
+    document.querySelector('.year-filter .filter-btn[data-year="all"]').click();
+});
+</script>
 
     <script>
     
     document.querySelectorAll('.note-card').forEach(card => {
         card.addEventListener('click', function() {
             const subjectName = encodeURIComponent(this.querySelector('.note-title').textContent);
-            window.location.href = `view_notes.php?subject=${subjectName}`;
+            window.location.href = `view_notes_user.php?subject=${subjectName}`;
         });
     });
 

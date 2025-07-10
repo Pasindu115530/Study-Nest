@@ -369,12 +369,7 @@ $departmentNames = [
             <div class="error-message"><?= htmlspecialchars($errorMsg) ?></div>
         <?php endif; ?>
 
-        <div class="department-filter">
-            <button class="filter-btn active" data-dept="all">All Departments</button>
-            <?php foreach ($departmentNames as $deptCode => $deptName): ?>
-                <button class="filter-btn" data-dept="<?= $deptCode ?>"><?= $deptName ?></button>
-            <?php endforeach; ?>
-        </div>
+
 
         <?php if (empty($notes)): ?>
             <p>No lecture notes found. Be the first to upload!</p>
@@ -403,28 +398,8 @@ $departmentNames = [
             </div>
         <?php endif; ?>
     </div>
-    <script>
-        // Department filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const dept = this.dataset.dept;
-                const cards = document.querySelectorAll('.note-card');
-                
-                cards.forEach(card => {
-                    if (dept === 'all' || card.dataset.dept === dept) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
-        
+ 
+    
         
 </body>
 </html>
