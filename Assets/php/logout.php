@@ -10,6 +10,6 @@ header("Pragma: no-cache");
 header("Expires: 0");
 
 // Redirect to homepage
-header("Location: HomePage.html");
+header("Location: study nest/HomePage.html");
 exit();
 ?>

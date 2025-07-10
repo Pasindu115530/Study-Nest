@@ -477,7 +477,7 @@
             </li>
 
             <li>
-                <a href="dashboard.html">
+                <a href="dashboardcontentadmin.php">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -486,7 +486,7 @@
             </li>
 
             <li>
-                <a href="adminusercontrolpanel.html" class="hovered">
+                <a href="adminusercontrolpanel.php" class="hovered">
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
@@ -495,7 +495,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="/study nest/uploadlecnotes.html">
                     <span class="icon">
                         <ion-icon name="chatbubble-outline"></ion-icon>
                     </span>
@@ -513,7 +513,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="/study nest/lecturedetails.html">
                     <span class="icon">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </span>
@@ -522,22 +522,22 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="myprofile.php">
                     <span class="icon">
                         <ion-icon name="settings-outline"></ion-icon>
                     </span>
-                    <span class="title">Settings</span>
+                    <span class="title">My Profile</span>
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </span>
-                    <span class="title">Sign Out</span>
-                </a>
-            </li>
+             <li>
+                        <a href="logout.php" onclick="signOut()">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </li>
         </ul>
     </div>
 
@@ -681,7 +681,23 @@
             </form>
         </div>
     </div>
-
+     <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("/study nest/HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>                
     <script>
         // Edit button functionality
         document.addEventListener('DOMContentLoaded', function() {

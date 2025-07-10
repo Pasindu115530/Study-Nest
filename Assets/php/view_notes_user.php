@@ -135,7 +135,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -298,7 +298,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="view_notes_user.php">
+                        <a href="dashboardcontentuser.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -307,7 +307,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/study nest/lecturedetails.html">
                             <span class="icon">
                                 <ion-icon name="chatbubbles-outline"></ion-icon>
                             </span>
@@ -419,7 +419,7 @@ function signOut() {
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("HomePage.html");
+            window.location.replace("/study nest/HomePage.html");
         });
     
     // Prevent default link behavior

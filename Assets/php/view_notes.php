@@ -136,7 +136,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="/Study Nest/Assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -298,7 +298,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="dashboardcontentadmin.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -316,7 +316,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="uploadlecnotes.html">
+                        <a href="/study nest/uploadlecnotes.html">
                             <span class="icon">
                                 <ion-icon name="chatbubble-outline"></ion-icon>
                             </span>
@@ -334,7 +334,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/study nest/lecturedetails.html">
                             <span class="icon">
                                 <ion-icon name="chatbubbles-outline"></ion-icon>
                             </span>
@@ -347,7 +347,7 @@ $departmentNames = [
                             <span class="icon">
                                 <ion-icon name="settings-outline"></ion-icon>
                             </span>
-                            <span class="title">Settings</span>
+                            <span class="title">My profile</span>
                         </a>
                     </li>
 
@@ -397,13 +397,7 @@ $departmentNames = [
             <div class="error-message"><?= htmlspecialchars($errorMsg) ?></div>
         <?php endif; ?>
 
-        <div class="department-filter">
-            <button class="filter-btn active" data-dept="all">All Departments</button>
-            <?php foreach ($departmentNames as $deptCode => $deptName): ?>
-                <button class="filter-btn" data-dept="<?= $deptCode ?>"><?= $deptName ?></button>
-            <?php endforeach; ?>
-        </div>
-
+ 
         <?php if (empty($notes)): ?>
             <p>No lecture notes found. Be the first to upload!</p>
         <?php else: ?>
@@ -431,27 +425,7 @@ $departmentNames = [
             </div>
         <?php endif; ?>
     </div>
-    <script>
-        // Department filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const dept = this.dataset.dept;
-                const cards = document.querySelectorAll('.note-card');
-                
-                cards.forEach(card => {
-                    if (dept === 'all' || card.dataset.dept === dept) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+    
     <script>
 function signOut() {
     // Clear session data
@@ -462,7 +436,7 @@ function signOut() {
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("HomePage.html");
+            window.location.replace("/study nest/HomePage.html");
         });
     
     // Prevent default link behavior

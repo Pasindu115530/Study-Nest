@@ -118,7 +118,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="/Study Nest/Assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -308,7 +308,7 @@ $departmentNames = [
     <div class="navigation">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="/study nest/Homepage.html">
                             <span class="icon">
                                 <img src="assets/images/image01.png" alt="Logo">
                             </span>
@@ -317,7 +317,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="dashboardcontentadmin.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -335,7 +335,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="uploadlecnotes.html">
+                        <a href="/Study Nest/uploadlecnotes.html">
                             <span class="icon">
                                 <ion-icon name="chatbubble-outline"></ion-icon>
                             </span>
@@ -353,7 +353,7 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/study nest/lecturedetails.html">
                             <span class="icon">
                                 <ion-icon name="chatbubbles-outline"></ion-icon>
                             </span>
@@ -366,7 +366,7 @@ $departmentNames = [
                             <span class="icon">
                                 <ion-icon name="settings-outline"></ion-icon>
                             </span>
-                            <span class="title">Settings</span>
+                            <span class="title">My profile</span>
                         </a>
                     </li>
 
@@ -524,7 +524,7 @@ function signOut() {
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("HomePage.html");
+            window.location.replace("/study nest/HomePage.html");
         });
     
     // Prevent default link behavior
