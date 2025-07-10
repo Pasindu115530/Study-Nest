@@ -127,7 +127,7 @@ $departmentNames = [
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
+            background-color:rgb(0, 0, 0);
             margin: 0;
             padding: 20px;
         }
@@ -162,7 +162,8 @@ $departmentNames = [
         }
         
         .note-card {
-            background: white;
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 20%, rgba(255, 255, 255, 0.15) 30%);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -181,7 +182,7 @@ $departmentNames = [
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: white;
+            color: black;
         }
         .note-title {
             font-size: 18px;
@@ -200,18 +201,21 @@ $departmentNames = [
             padding: 3px 8px;
             border-radius: 4px;
             font-size: 12px;
-            background: #f0f0f0;
-            color: #555;
+            background:rgb(255, 213, 179);
+            color: #000;
         }
           .year-section {
             margin-bottom: 40px;
-            background: white;
+            /* border: 1px solid rgb(255 255 255 / 50%);
+            background:transparent; */
+            /* background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%); */
+            /* backdrop-filter: blur(30px); */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .year-section h2 {
-            color: #333;
+            color: #ff7200;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
@@ -219,11 +223,14 @@ $departmentNames = [
         .semester-section {
             margin-bottom: 30px;
             padding: 15px;
-            background: #f9f9f9;
+            border: 1px solid rgb(255 255 255 / 50%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%);
+            background: white(0.9);
+            backdrop-filter: blur(30px);
             border-radius: 8px;
         }
         .semester-section h3 {
-            color: #444;
+            color: #fff;
             margin-bottom: 15px;
         }
         .department-section {
@@ -234,14 +241,14 @@ $departmentNames = [
 }
 
 .department-title {
-    color: #333;
+    color: #ff7200;
     margin-bottom: 15px;
     padding-bottom: 5px;
     border-bottom: 1px solid #ddd;
 }
         .note-date {
             font-size: 12px;
-            color: #666;
+            color:rgb(0, 0, 0);
             margin-bottom: 15px;
         }
         .action-buttons {
@@ -306,84 +313,92 @@ $departmentNames = [
 </head>
 <body>
     <div class="navigation">
-                <ul>
-                    <li>
-                        <a href="/study nest/Homepage.html">
-                            <span class="icon">
-                                <img src="assets/images/image01.png" alt="Logo">
-                            </span>
-                            <span class="title">Study Nest</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="dashboardcontentadmin.php">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="adminusercontrolpanel.php">
-                            <span class="icon">
-                                <ion-icon name="people-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Users</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/Study Nest/uploadlecnotes.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Content</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="report.html">
-                            <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
-                            </span>
-                            <span class="title">Reports</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/study nest/lecturedetails.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubbles-outline"></ion-icon>
-                            </span>
-                            <span class="title">Lecture Details</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myprofile.php">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">My profile</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="logout.php" onclick="signOut()">
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Sign Out</span>
-                        </a>
-                    </li>
-                </ul>
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="../img/website-icon.png" alt="">Study Nest
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
+    </nav>
+                <nav class="sidebar">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+          <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+              <span class="navlink">Dashboard</span>
             </div>
+            
+          </li>
+          <!-- end -->
+          <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+          <!-- start -->
+          <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bxs-user-account'></i>
+              </span>
+              <span class="navlink">Manage Users</span>
+            </div>
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-book-content' ></i>
+              </span>
+              <span class="navlink">Manage Content</span>  
+            </div>
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bxs-report' ></i>
+              </span>
+              <span class="navlink">Reports</span>  
+            </div>
+
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bxs-graduation'></i>
+              </span>
+              <span class="navlink">Lectures Details</span>  
+            </div>
+
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-cog' ></i>
+              </span>
+              <span class="navlink">Settings</span>  
+            </div>
+
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class='bx bx-log-out'></i>
+              </span>
+              <span class="navlink">Sign Out</span>  
+            </div>
+            
+          </li>
+          <!-- end -->
+        </ul>
+        
+        </ul>
+       
+        
+        </div>
+      </div>
             <div class="main">
-                <!-- <div class="left-semicircle"></div>
+                <div class="left-semicircle"></div>
                 <div class="middle-circle"></div>
-                <div class="right"></div> -->
+                <div class="right"></div>
                 <div class="topbar">
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
@@ -400,8 +415,8 @@ $departmentNames = [
                         <img src="assets/images/image02.jpg" alt="">
                     </div>
                 </div>
-                <div class="container">
-        <h1>Lecture Notes Repository</h1>
+    <div class="container">
+        <!-- <h1>Lecture Notes Repository</h1> -->
         
         <?php
         

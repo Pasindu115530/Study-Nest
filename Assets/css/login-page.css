@@ -66,9 +66,10 @@
         .login-container {
             width: 45%;
             height: 70%;
-            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 20%, rgba(255, 255, 255, 0.15) 30%);
+            
             position: absolute;
             border: 1px solid rgb(255 255 255 / 50%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 20%, rgba(255, 255, 255, 0.15) 30%);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             display: flex;
