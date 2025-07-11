@@ -266,55 +266,60 @@ $conn->close();
           <br><br>
           <!-- <div class="menu_title menu_dahsboard"></div> -->
           
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <span class="navlink">Dashboard</span>
-            </div>
+         <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
             
-          </li>
-          <!-- end -->
-          <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
-          <!-- start -->
+          
+        
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
+
+            <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-report' ></i>
+                        </span>
+                        <span class="navlink">Reports</span>  
+                    </a>
+                </li>
+
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
+
           <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bxs-user-account'></i>
-              </span>
-              <span class="navlink">Manage Users</span>
-            </div>
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bx-book-content' ></i>
-              </span>
-              <span class="navlink">Manage Content</span>  
-            </div>
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bxs-report' ></i>
-              </span>
-              <span class="navlink">Reports</span>  
-            </div>
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bx-user'></i>
-              </span>
-              <span class="navlink">My Profile</span>  
-            </div>
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bx-log-out'></i>
-              </span>
-              <span class="navlink">Sign Out</span>  
-            </div>
-            
-          </li>
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
           <!-- end -->
         </ul>
     </div>

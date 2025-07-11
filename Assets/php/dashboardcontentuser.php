@@ -289,7 +289,7 @@ foreach ($notes as $note) {
                         <span class="navlink_icon">
                             <i class='bx bxs-graduation'></i>
                         </span>
-                        <span class="navlink">Lectures Details</span>  
+                        <span class="navlink">Lectures Details</span>
                     </a>
                 </li>
 
