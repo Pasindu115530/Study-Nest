@@ -315,6 +315,19 @@ foreach ($notes as $note) {
     </nav>
     
     <div class="main">
+         <div class="left-semicircle"></div>
+                <div class="middle-circle"></div>
+                <div class="right"></div>
+                <div class="topbar">
+                    <div class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    
+                    <div class="user">
+                        <img src="assets/images/image02.jpg" alt="">
+                    </div>
+                </div>
+
         
 
         <div class="container">
