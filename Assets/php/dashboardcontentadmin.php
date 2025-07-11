@@ -366,15 +366,6 @@ $departmentNames = [
               <span class="navlink">Reports</span>  
             </div>
 
-
-            <a href="/study nest/lecturedetails.html" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bxs-graduation'></i>
-              </span>
-              <span class="navlink">Lectures Details</span>  
-            </a>
-
-
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class='bx bx-user'></i>

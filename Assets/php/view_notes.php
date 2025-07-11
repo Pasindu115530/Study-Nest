@@ -334,15 +334,6 @@ $departmentNames = [
                     </li>
 
                     <li>
-                        <a href="/study nest/lecturedetails.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubbles-outline"></ion-icon>
-                            </span>
-                            <span class="title">Lecture Details</span>
-                        </a>
-                    </li>
-
-                    <li>
                         <a href="myprofile.php">
                             <span class="icon">
                                 <ion-icon name="settings-outline"></ion-icon>

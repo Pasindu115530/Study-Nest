@@ -1,3 +1,7 @@
+<?php
+session_start(); // Start the session
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +12,8 @@
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Dashboard | StudyNest</title>
-    <link rel="stylesheet" href="Assets/css/dashboard.css" />
-    <link rel="stylesheet" href="Assets/css/lecturedetails.css" />
+    <link rel="stylesheet" href="/study nest/Assets/css/dashboard.css"/>
+    <link rel="stylesheet" href="/study nest/Assets/css/lecturedetails.css" />
     <style>
         .container {
             background: black;
@@ -40,7 +44,17 @@
                 <br><br>
                 
                 <li class="nav_item">
-                    <a href="Assets/php/dashboardcontentuser.php" class="nav_link submenu_item">
+                    <?php
+                    // Default dashboard link (admin goes here)
+                    $dashboardLink = 'dashboardcontentadmin.php';
+
+                    // If user, change link and add department
+                    if ($_SESSION['role'] === 'user') {
+                        $dashboardLink = 'dashboardcontentuser.php?department=' . urlencode($_SESSION['department']);
+                    }
+                    ?>
+                    
+                    <a href="<?php echo $dashboardLink; ?>" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class="bx bx-home-alt"></i>
                         </span>

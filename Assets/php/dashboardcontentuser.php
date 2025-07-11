@@ -276,7 +276,7 @@ $departmentNames = [
                 </li>
 
                 <li class="nav_item">
-                    <a href="/study nest/lecturedetails.html" class="nav_link submenu_item">
+                    <a href="lecturedetails.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bxs-graduation'></i>
                         </span>
