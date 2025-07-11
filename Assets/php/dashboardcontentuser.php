@@ -294,7 +294,7 @@ foreach ($notes as $note) {
                 </li>
 
                 <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="myprofile_user.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
                         </span>
@@ -349,7 +349,7 @@ foreach ($notes as $note) {
             </div>
                 <?php for ($year = 1; $year <= 4; $year++): ?>
                     <div class="year-section">
-                        <h2>Year <?= $year ?></h2>
+                        <h1>Year <?= $year ?></h1>
                         
                         <?php for ($semester = 1; $semester <= 2; $semester++): ?>
                             <div class="semester-section">

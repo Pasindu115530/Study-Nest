@@ -284,7 +284,7 @@ $conn->close();
                 </li>
 
                 <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="myprofile_user.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
                         </span>

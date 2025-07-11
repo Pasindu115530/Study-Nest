@@ -131,42 +131,37 @@ session_start(); // Start the session
           <br><br>
           <!-- <div class="menu_title menu_dahsboard"></div> -->
           
-         <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+         <li class="nav_item">
+                    <?php
+                    // Default dashboard link (admin goes here)
+                    $dashboardLink = 'dashboardcontentadmin.php';
+
+                    // If user, change link and add department
+                    if ($_SESSION['role'] === 'user') {
+                        $dashboardLink = 'dashboardcontentuser.php?department=' . urlencode($_SESSION['department']);
+                    }
+                    ?>
+                    
+                    <a href="<?php echo $dashboardLink; ?>" class="nav_link submenu_item">
                         <span class="navlink_icon">
-                           <i class="bx bx-home-alt"></i>
+                            <i class="bx bx-home-alt"></i>
                         </span>
-                        <span class="navlink"> Dashboard</span>  
+                        <span class="navlink">Dashboard</span>
+                    </a>
+                 <li class="item">
+                    <a href="lecturedetails.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bxs-graduation'></i>
+                        </span>
+                        <span class="navlink">Lectures Details</span>
                     </a>
                 </li>
             
           
         
-           <li class="item">
-                    <a href="adminusercontrolpanel.php" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                           <i class='bx bxs-user-account'></i>
-                        </span>
-                        <span class="navlink">Manage Users</span>  
-                    </a>
-                </li>
-           <li class="item">
-                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                           <i class='bx bx-book-content' ></i>
-                        </span>
-                        <span class="navlink">Manage Content</span>  
-                    </a>
-                </li>
 
-            <li class="item">
-                    <a href="#" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                           <i class='bx bxs-report' ></i>
-                        </span>
-                        <span class="navlink">Reports</span>  
-                    </a>
-                </li>
+           
+
 
            <li class="item">
                     <a href="#" class="nav_link submenu_item_active">

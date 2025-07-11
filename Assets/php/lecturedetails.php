@@ -72,14 +72,25 @@ session_start(); // Start the session
                 </li>
 
                 <li class="nav_item">
-                    <a href="myprofile.php" class="nav_link submenu_item">
+                    <?php
+                    // Default dashboard link (admin goes here)
+                    $dashboardLink = 'myprofile.php';
+
+                    // If user, change link and add department
+                    if ($_SESSION['role'] === 'user') {
+                        $dashboardLink = 'myprofile_user.php';
+                    }
+                    ?>
+                    
+                    <a href="<?php echo $dashboardLink; ?>" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
                         </span>
-                        <span class="navlink">My Profile</span>  
+                         <span class="navlink">My Profile</span> 
                     </a>
                 </li>
 
+                
                 <li class="nav_item">
                     <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
                         <span class="navlink_icon">
