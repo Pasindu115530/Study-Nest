@@ -316,12 +316,7 @@ $conn->close();
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
 
-                    <div class="search">
-                        <label>
-                            <input type="text" placeholder="Search Courses">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </div>
+               
 
                     <div class="user">
                         <img src="assets/images/image02.jpg" alt="">

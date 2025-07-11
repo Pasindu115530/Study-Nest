@@ -267,7 +267,7 @@ $conn->close();
           <!-- <div class="menu_title menu_dahsboard"></div> -->
           
          <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="dashboardcontentadmin.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class="bx bx-home-alt"></i>
                         </span>
@@ -278,7 +278,7 @@ $conn->close();
           
         
            <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="adminusercontrolpanel.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-user-account'></i>
                         </span>
@@ -286,7 +286,7 @@ $conn->close();
                     </a>
                 </li>
            <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bx-book-content' ></i>
                         </span>
@@ -304,7 +304,7 @@ $conn->close();
                 </li>
 
            <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
                         </span>

@@ -7,6 +7,8 @@ session_start(); // Start the session
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile | STUDYNEST</title>
+     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     
     <style>
               
@@ -18,7 +20,7 @@ session_start(); // Start the session
       }
 
       body {
-        background: radial-gradient(circle at bottom left, #ff6a00, #000000);
+        background: radial-gradient(circle at bottom left,  #000000);
         color: #fff;
         min-height: 100vh;
         display: flex;
@@ -27,10 +29,12 @@ session_start(); // Start the session
       }
 
       .container {
-        background: rgba(20, 20, 20, 0.9);
+        /* background: rgba(20, 20, 20, 0.9); */
         width: 80%;
         max-width: 900px;
         border-radius: 20px;
+        margin-left: 250px;
+       
         padding: 40px;
         box-shadow: 0 0 50px rgba(255, 102, 0, 0.3);
       }
@@ -39,7 +43,7 @@ session_start(); // Start the session
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 100px;
       }
 
       header h1 {
@@ -107,6 +111,85 @@ session_start(); // Start the session
     </style>
 </head>
 <body>
+  <header class="navbar">
+      <div class="logo_item">
+        <button id="sidebarOpen" aria-label="Toggle sidebar">
+                <i class="bx bx-menu"></i>
+            </button>
+        <img src="../img/website-icon.png" alt="">
+        <span>Study Nest</span>
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
+    </header>
+    
+    <nav class="sidebar"  aria-label="Main navigation">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+         <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
+            
+          
+        
+           <li class="item">
+                    <a href="adminusercontrolpanel.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
+
+            <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-report' ></i>
+                        </span>
+                        <span class="navlink">Reports</span>  
+                    </a>
+                </li>
+
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item_active">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
+
+          <li class="item">
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
+          <!-- end -->
+        </ul>
+    </div>
+    </nav>
+
     
   <div class="container">
 
@@ -121,7 +204,7 @@ session_start(); // Start the session
 
     <div class="middle-section">
       <div class="profile">
-        <img src="Assets\img\METAGRAPHY (13).png" alt="my photo">
+        <img src="../img/neon 5.png" alt="my photo">
       </div>  
 
       <div class="name-section">
@@ -151,7 +234,7 @@ session_start(); // Start the session
 }
 
   ?>
-      <h3>Registration Number:FCxxxxx</h3>
+     
       </div>
 
     </div>  
