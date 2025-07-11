@@ -28,11 +28,11 @@ session_start(); // Start the session
             <button id="sidebarOpen" aria-label="Toggle sidebar">
                 <i class="bx bx-menu"></i>
             </button>
-            <img src="Assets/img/website-icon.png" alt="StudyNest Logo">
+            <img src="/study nest/Assets/img/website-icon.png" alt="StudyNest Logo">
             <span>Study Nest</span>
         </div>
         <div class="navbar_content">
-            <img src="Assets/img/neon 5.png" alt="User profile" class="profile" />
+            <img src="/study nest/Assets/img/neon 5.png" alt="User profile" class="profile" />
         </div>
     </header>
 
@@ -72,7 +72,7 @@ session_start(); // Start the session
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-cog'></i>
                         </span>
@@ -103,7 +103,7 @@ session_start(); // Start the session
             <section class="card-section" aria-label="Lecturer profiles">
                 <!-- Card 1 -->
                 <div class="card">
-                    <img src="Assets/img/DSC_2539_v03 (1).png" loading="lazy" alt="Prof. Prasad M. Jayaweera">
+                    <img src="/study nest/Assets/img/DSC_2539_v03 (1).png" loading="lazy" alt="Prof. Prasad M. Jayaweera">
                     <h3>Prof. Prasad M. Jayaweera</h3>
                     <h6>Dean / Professor of Information Systems Engineering and Informatics</h6>
                     <p>Email: pja@sjp.ac.lk</p>
@@ -116,7 +116,7 @@ session_start(); // Start the session
                 
                 <!-- Card 2 -->
                 <div class="card">
-                    <img src="Assets/img/image-7.png" loading="lazy" alt="Dr. Dhammika Pieris">
+                    <img src="/study nest/Assets/img/image-7.png" loading="lazy" alt="Dr. Dhammika Pieris">
                     <h3>Dr. Dhammika Pieris</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: dhammikapieris@sjp.ac.lk</p>
@@ -129,7 +129,7 @@ session_start(); // Start the session
                 
                 <!-- Card 3 -->
                 <div class="card">
-                    <img src="Assets/img/790.jpg" loading="lazy" alt="Ms T.D.G. Geethika">
+                    <img src="/study nest/Assets/img/790.jpg" loading="lazy" alt="Ms T.D.G. Geethika">
                     <h3>Ms T.D.G. Geethika</h3>
                     <h6>Head – Department of Information Systems Engineering and Informatics / Senior Lecturer</h6>
                     <p>Email: gilmini@sjp.ac.lk</p>
@@ -142,7 +142,7 @@ session_start(); // Start the session
                 
                 <!-- Card 4 -->
                 <div class="card">
-                    <img src="Assets/img/budditha-HB.jpg" loading="lazy" alt="Dr. Budditha Hettige">
+                    <img src="/study nest/Assets/img/budditha-HB.jpg" loading="lazy" alt="Dr. Budditha Hettige">
                     <h3>Dr. Budditha Hettige</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: budditha@sjp.ac.lk</p>
@@ -155,7 +155,7 @@ session_start(); // Start the session
                 
                 <!-- Card 5 -->
                 <div class="card">
-                    <img src="Assets/img/Dr.-Nuwan-291x300.jpg" loading="lazy" alt="Dr. D.G.N.D. Jayarathna">
+                    <img src="/study nest/Assets/img/Dr.-Nuwan-291x300.jpg" loading="lazy" alt="Dr. D.G.N.D. Jayarathna">
                     <h3>Dr. D.G.N.D. Jayarathna</h3>
                     <h6>Head – Department of Scientific Computing / Senior Lecturer</h6>
                     <p>Email: nuwan@sjp.ac.lk</p>
@@ -168,7 +168,7 @@ session_start(); // Start the session
                 
                 <!-- Card 6 -->
                 <div class="card">
-                    <img src="Assets/img/Deepika2_edited.jpg" loading="lazy" alt="Dr. M.D.S. Seneviratne">
+                    <img src="/study nest/Assets/img/Deepika2_edited.jpg" loading="lazy" alt="Dr. M.D.S. Seneviratne">
                     <h3>Dr. M.D.S. Seneviratne</h3>
                     <h6>Head – Knowledge Engineering and Communication / Senior Lecturer</h6>
                     <p>Email: deepikas@sjp.ac.lk</p>
@@ -181,7 +181,7 @@ session_start(); // Start the session
                 
                 <!-- Card 7 -->
                 <div class="card">
-                    <img src="Assets/img/20230721_002637_edited-271x300.jpg" loading="lazy" alt="Dr. S. Majuran">
+                    <img src="/study nest/Assets/img/20230721_002637_edited-271x300.jpg" loading="lazy" alt="Dr. S. Majuran">
                     <h3>Dr. S. Majuran</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: shajini@sjp.ac.lk</p>
@@ -206,7 +206,7 @@ session_start(); // Start the session
                 
                 <!-- Card 9 -->
                 <div class="card">
-                    <img src="Assets/img/M-M-V-Senanayake-233x300.jpg" loading="lazy" alt="Ms. M. M. V. Senanayake">
+                    <img src="/study nest/Assets/img/M-M-V-Senanayake-233x300.jpg" loading="lazy" alt="Ms. M. M. V. Senanayake">
                     <h3>Ms. M. M. V. Senanayake</h3>
                     <h6>Lecturer</h6>
                     <p>Email: vindya@sjp.ac.lk</p>
@@ -218,7 +218,7 @@ session_start(); // Start the session
                 
                 <!-- Card 10 -->
                 <div class="card">
-                    <img src="Assets/img/Jayani-Rajakaruna_edited-276x300.jpg" loading="lazy" alt="Ms. R.J.P.K. Rajakaruna">
+                    <img src="/study nest/Assets/img/Jayani-Rajakaruna_edited-276x300.jpg" loading="lazy" alt="Ms. R.J.P.K. Rajakaruna">
                     <h3>Ms. R.J.P.K. Rajakaruna</h3>
                     <h6>Lecturer(Probationary)</h6>
                     <p>Email: jayaniprabhashini@sjp.ac.lk</p>
@@ -230,7 +230,7 @@ session_start(); // Start the session
                 
                 <!-- Card 11 -->
                 <div class="card">
-                    <img src="Assets/img/me-squared-300x300.jpg" loading="lazy" alt="Mr. K. A. T. S. Jayathilaka">
+                    <img src="/study nest/Assets/img/me-squared-300x300.jpg" loading="lazy" alt="Mr. K. A. T. S. Jayathilaka">
                     <h3>Mr. K. A. T. S. Jayathilaka</h3>
                     <h6>Lecturer</h6>
                     <p>Email: thilinasj@sjp.ac.lk</p>
@@ -242,7 +242,7 @@ session_start(); // Start the session
                 
                 <!-- Card 12 -->
                 <div class="card">
-                    <img src="Assets/img/KDTRangana-PP-v02.png" loading="lazy" alt="Mr. K. D. T. Rangana">
+                    <img src="/study nest/Assets/img/KDTRangana-PP-v02.png" loading="lazy" alt="Mr. K. D. T. Rangana">
                     <h3>Mr. K. D. T. Rangana</h3>
                     <h6>Instructor – Computer Technology</h6>
                     <p>Email: kdtrangana@sjp.ac.lk</p>
