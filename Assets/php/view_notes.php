@@ -39,94 +39,7 @@ if ($stmt) {
 
 $conn->close();
 
-// Module names for display
-$departmentCourses = [
-    'cs' => [
-        '1-1' => ["Professional English", "Principles of Management", "Introductory Statistics", "Discrete Mathematics", 
-                  "Computer System Organization", "Fundamentals of Programming", "Introduction to Software Engineering", 
-                  "Leadership & Human Skills Development"],
-        '1-2' => ["Web Development", "Mathematics II", "Object Oriented Programming", "Database Management Systems", 
-                  "Data Structures and Algorithms", "Object Oriented Analysis and Design", "Computer System Architecture", 
-                  "Rapid Application Development", "Algebra for Computing"],
-        '2-1' => ["Group Project Part 1", "Data Communication and Networks", "Operating Systems", "Web Technologies", 
-                  "Statistical Distribution and Inferences", "Mathematics for Computer Science", "Artificial Intelligence"],
-        '2-2' => ["Group Project Part 2", "Computer Graphics", "High Performance Computing", "Human Computer Interactions", 
-                  "Differential Equations", "Service Oriented Web Applications", "Industrial Internship", 
-                  "Software Architecture and Design Patterns 1", "Software Architecture and Design Patterns 2", 
-                  "Software Architecture and Design Patterns 3", "Software Architecture and Design Patterns 4"],
-        '3-1' => ["Data Analytics", "Social and Professional Issues in Information Technology", "Knowledge Representation", 
-                  "Theory of Computation", "Advanced Data Structures and Algorithms", "Computer Security", 
-                  "Introduction to Machine Learning", "Emerging Trends in Computing", "Visual Computing", "IT Project Management"],
-        '3-2' => ["Digital Image Processing", "Software Quality Assurance", "Advanced Machine Learning", 
-                  "Theory of Programming Languages", "Multimedia Systems", "Nature Inspired Algorithms", 
-                  "Embedded Systems and Internet of Things", "Game Development", "Middleware Architecture", "Mathematical Optimization"],
-        '4-1' => ["Research Project Part I", "Computational Biology", "Independent Literature Review", "Computer Vision", 
-                  "Cloud Computing", "Big Data Technologies", "Robotics", "Natural Language Processing", 
-                  "Advanced Database Systems", "Mobile Computing"],
-        '4-2' => ["Industrial Training", "Research Project Part II"]
-    ],
-    'se' => [
-        '1-1' => ["Professional English", "Principles of Management", "Introductory Statistics", "Discrete Mathematics", 
-                  "Computer System Organization", "Fundamentals of Programming", "Introduction to Software Engineering", 
-                  "Leadership & Human Skills Development"],
-        '1-2' => ["Object Oriented Programming", "Database Management Systems", "Data Structures and Algorithms", 
-                  "Object Oriented Analysis and Design", "Operating Systems", "Rapid Application Development", "Advanced Mathematics"],
-        '2-1' => ["Group Project Part 1", "Essentials in Computer Networking", "Formal Methods in Software Development", 
-                  "Web Technologies", "Software Design and Architecture", "Mathematics for Computing", 
-                  "Artificial Intelligence", "Essentials of Computer Law"],
-        '2-2' => ["Group Project Part 2", "Fundamentals of Software Security", "Software Testing and Validation", 
-                  "Human Computer Interaction", "Software Project Management", "Software Configuration Management", 
-                  "Industrial Inspection", "Management Information Systems"],
-        '3-1' => ["Software Safety and Reliability", "Social and Professional Issues in Information Technology", 
-                  "Software Process Management", "Group Project in Hardware", "Software Evolution", 
-                  "Enterprise Information Systems", "Human Resource Management", "Visual Computing", 
-                  "Introduction to Business Intelligence", "High Performance Computing"],
-        '3-2' => ["System Development Project", "Introduction to Distributed Computing", "Software Quality Assurance", 
-                  "Advanced Database Management Systems", "Software Design Patterns", "Mobile Computing", 
-                  "Machine Learning", "Game Designing and Development", "Middleware Architecture", 
-                  "Social Computing", "Semantic Web"],
-        '4-1' => ["Research Project Part I", "Research Methodologies and Scientific Communication", 
-                  "Service Oriented Architecture", "Software Engineering Economics", "Cloud Computing", 
-                  "Big Data Technologies", "Robotics", "Selected Topics in Software Engineering", 
-                  "Natural Language Processing", "Refactoring and Design", "Emerging Trends in Computing"],
-        '4-2' => ["Industrial Training", "Research Project Part II"]
-    ],
-    'is' => [
-        '1-1' => ["Introductory Mathematics", "Fundamentals of Programming", "Principles of Management", 
-                  "Introductory Statistics", "Fundamentals of Information Systems", "Introduction to Software Engineering", 
-                  "Leadership & Human Skills Development", "Professional English"],
-        '1-2' => ["Object Oriented Programming", "Database Management System", "Data Structures and Algorithms", 
-                  "Advanced Software Engineering", "Economics & Accounting", "Rapid Application Development", 
-                  "Business Communication"],
-        '2-1' => ["Business Process Management", "Operations Management", "Marketing Management", 
-                  "Information Systems Security", "Organizational Behaviour and Society", 
-                  "System Administration and Maintenance", "Statistical Distribution and Inferences"],
-        '2-2' => ["Enterprise Applications", "Information System Risk Management", 
-                  "Introduction to Entrepreneurship and SMEs", "Business Intelligence", 
-                  "Operating System Concepts", "Advanced Database Systems", "Industrial Inspection", 
-                  "Personal Productivity with IS Technology"],
-        '3-1' => ["Group Project Part 1", "Social and Professional Issues in Information Technology", 
-                  "Agile Software Development", "Software Quality Assurance", "Design Patterns and Applications", 
-                  "Research Methodologies", "Data Communication and Networks", "Software Engineering Economics", 
-                  "Game Designing and Development", "Artificial Intelligence"],
-        '3-2' => ["IT Procurement Management", "Group Project Part 2", "Digital Business", 
-                  "Web-based Application Development", "E-Learning and Instructional Design", 
-                  "Mobile Computing", "Machine Learning and Neural Computing", "Blockchain and Technologies", 
-                  "Human Computer Interactions", "Middleware Architecture"],
-        '4-1' => ["Research Project Part I", "Introduction to Distributed Systems", 
-                  "Ethical Issues and Legal Aspects of Information Technology", "Human Resource Management", 
-                  "Cloud Computing", "Data Mining and Applications", "Data Analytics", "Natural Language Processing", 
-                  "Refactoring and Design", "High Performance Computing"],
-        '4-2' => ["Industrial Training", "Research Project Part II"]
-    ]
-];
 
-// Department names
-$departmentNames = [
-    'cs' => 'Computer Science',
-    'se' => 'Software Engineering',
-    'is' => 'Information Systems'
-];
 ?>
 
 
@@ -136,16 +49,17 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Study Nest/Assets/css/dashboard.css">
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
-        *{
+          *{
             margin: 0;
             padding: 0;
 
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
+            background-color:rgb(0, 0, 0);
             margin: 0;
             padding: 20px;
         }
@@ -178,8 +92,10 @@ $departmentNames = [
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+        
         .note-card {
-            background: white;
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.1) 20%, rgba(255, 255, 255, 0.15) 30%);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -190,6 +106,7 @@ $departmentNames = [
         }
         .note-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 2px 5px #ff7200;
         }
         .module-badge {
             display: inline-block;
@@ -198,7 +115,7 @@ $departmentNames = [
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: white;
+            color: black;
         }
         .note-title {
             font-size: 18px;
@@ -217,12 +134,55 @@ $departmentNames = [
             padding: 3px 8px;
             border-radius: 4px;
             font-size: 12px;
-            background: #f0f0f0;
-            color: #555;
+            background:rgb(255, 213, 179);
+            color: #000;
         }
+          .year-section {
+            margin-bottom: 40px;
+            /* border: 1px solid rgb(255 255 255 / 50%);
+            background:transparent; */
+            /* background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%); */
+            /* backdrop-filter: blur(30px); */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .year-section h1 {
+            color: #ff7200;
+            font-weight: 900;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .semester-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid rgb(255 255 255 / 50%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%);
+            background: white(0.9);
+            backdrop-filter: blur(30px);
+            border-radius: 8px;
+        }
+        .semester-section h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .department-section {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.department-title {
+    color: #ff7200;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
         .note-date {
             font-size: 12px;
-            color: #666;
+            color:rgb(0, 0, 0);
             margin-bottom: 15px;
         }
         .action-buttons {
@@ -286,103 +246,98 @@ $departmentNames = [
     </style>
 </head>
 <body>
-    <div class="navigation">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <img src="assets/images/image01.png" alt="Logo">
-                            </span>
-                            <span class="title">Study Nest</span>
-                        </a>
-                    </li>
+     <header class="navbar">
+      <div class="logo_item">
+        <button id="sidebarOpen" aria-label="Toggle sidebar">
+                <i class="bx bx-menu"></i>
+            </button>
+        <img src="../img/website-icon.png" alt="">
+        <span>Study Nest</span>
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
+    </header>
+    
+    <nav class="sidebar"  aria-label="Main navigation">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+         <li class="item">
+                    <a href="dashboardcontentadmin.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
+            
+          
+        
+           <li class="item">
+                    <a href="adminusercontrolpanel.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="dashboardcontentadmin.php">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
+            <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-report' ></i>
+                        </span>
+                        <span class="navlink">Reports</span>  
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="adminusercontrolpanel.php">
-                            <span class="icon">
-                                <ion-icon name="people-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Users</span>
-                        </a>
-                    </li>
+           <li class="item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="/study nest/uploadlecnotes.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Content</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="report.html">
-                            <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
-                            </span>
-                            <span class="title">Reports</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/study nest/lecturedetails.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubbles-outline"></ion-icon>
-                            </span>
-                            <span class="title">Lecture Details</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myprofile.php">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">My profile</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="logout.php" onclick="signOut()">
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Sign Out</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+          <li class="item">
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
+          <!-- end -->
+        </ul>
+    </div>
+    </nav>
+       
+   
             <div class="main">
-                <!-- <div class="left-semicircle"></div>
+                <div class="left-semicircle"></div>
                 <div class="middle-circle"></div>
-                <div class="right"></div> -->
+                <div class="right"></div>
                 <div class="topbar">
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-
-                    <div class="search">
-                        <label>
-                            <input type="text" placeholder="Search Courses">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </div>
-
                     <div class="user">
                         <img src="assets/images/image02.jpg" alt="">
                     </div>
                 </div>
-
-
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin & User Control Panel</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <!-- ======= Styles ====== -->
     <style>
         /* Dashboard Theme Styles */
@@ -27,7 +29,7 @@
         }
 
         * {
-            font-family: "Ubuntu", sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -465,94 +467,92 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="navigation">
-        <ul>
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <img src="assets/images/image01.png" alt="Logo">
-                    </span>
-                    <span class="title">Study Nest</span>
-                </a>
-            </li>
+   <header class="navbar">
+      <div class="logo_item">
+        <button id="sidebarOpen" aria-label="Toggle sidebar">
+                <i class="bx bx-menu"></i>
+            </button>
+        <img src="../img/website-icon.png" alt="">
+        <span>Study Nest</span>
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
+    </header>
+    
+    <nav class="sidebar"  aria-label="Main navigation">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+         <li class="item">
+                    <a href="dashboardcontentadmin.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
+            
+          
+        
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item_active">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
 
-            <li>
-                <a href="dashboardcontentadmin.php">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="title">Dashboard</span>
-                </a>
-            </li>
+            <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-report' ></i>
+                        </span>
+                        <span class="navlink">Reports</span>  
+                    </a>
+                </li>
 
-            <li>
-                <a href="adminusercontrolpanel.php" class="hovered">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="title">Manage Users</span>
-                </a>
-            </li>
+           <li class="item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
 
-            <li>
-                <a href="/study nest/uploadlecnotes.html">
-                    <span class="icon">
-                        <ion-icon name="chatbubble-outline"></ion-icon>
-                    </span>
-                    <span class="title">Manage Content</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="help-outline"></ion-icon>
-                    </span>
-                    <span class="title">Reports</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="/study nest/lecturedetails.html">
-                    <span class="icon">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </span>
-                    <span class="title">Lecture Details</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="myprofile.php">
-                    <span class="icon">
-                        <ion-icon name="settings-outline"></ion-icon>
-                    </span>
-                    <span class="title">My Profile</span>
-                </a>
-            </li>
-
-             <li>
-                        <a href="logout.php" onclick="signOut()">
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Sign Out</span>
-                        </a>
-                    </li>
-        </ul>
-    </div>
-
+          <li class="item">
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
+    </ul>
+            </div>
+    </nav>
     <!-- ========================= Main ==================== -->
     <div class="main">
+         <div class="left-semicircle"></div>
+                <div class="middle-circle"></div>
+                <div class="right"></div>
         <div class="topbar">
+       
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
-            </div>
-
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search...">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
             </div>
 
             <div class="user">
@@ -561,7 +561,7 @@
         </div>
 
         <!-- ================= Main Content =================== -->
-        <div class="container" style="padding: 20px;">
+        <div class="container" style="padding: 1px;">
             <h1>Admin & User Control Panel</h1>
             
             <div class="card">

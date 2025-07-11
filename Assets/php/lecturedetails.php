@@ -1,3 +1,7 @@
+<?php
+session_start(); // Start the session
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +12,8 @@
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Dashboard | StudyNest</title>
-    <link rel="stylesheet" href="Assets/css/dashboard.css" />
-    <link rel="stylesheet" href="Assets/css/lecturedetails.css" />
+    <link rel="stylesheet" href="/study nest/Assets/css/dashboard.css"/>
+    <link rel="stylesheet" href="/study nest/Assets/css/lecturedetails.css" />
     <style>
         .container {
             background: black;
@@ -24,11 +28,11 @@
             <button id="sidebarOpen" aria-label="Toggle sidebar">
                 <i class="bx bx-menu"></i>
             </button>
-            <img src="Assets/img/website-icon.png" alt="StudyNest Logo">
+            <img src="/study nest/Assets/img/website-icon.png" alt="StudyNest Logo">
             <span>Study Nest</span>
         </div>
         <div class="navbar_content">
-            <img src="Assets/img/neon 5.png" alt="User profile" class="profile" />
+            <img src="/study nest/Assets/img/neon 5.png" alt="User profile" class="profile" />
         </div>
     </header>
 
@@ -40,7 +44,17 @@
                 <br><br>
                 
                 <li class="nav_item">
-                    <a href="#" class="nav_link submenu_item">
+                    <?php
+                    // Default dashboard link (admin goes here)
+                    $dashboardLink = 'dashboardcontentadmin.php';
+
+                    // If user, change link and add department
+                    if ($_SESSION['role'] === 'user') {
+                        $dashboardLink = 'dashboardcontentuser.php?department=' . urlencode($_SESSION['department']);
+                    }
+                    ?>
+                    
+                    <a href="<?php echo $dashboardLink; ?>" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class="bx bx-home-alt"></i>
                         </span>
@@ -58,16 +72,16 @@
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
-                            <i class='bx bx-cog'></i>
+                            <i class='bx bx-user'></i>
                         </span>
-                        <span class="navlink">Settings</span>  
+                        <span class="navlink">My Profile</span>  
                     </a>
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
                         <span class="navlink_icon">
                             <i class='bx bx-log-out'></i>
                         </span>
@@ -89,7 +103,7 @@
             <section class="card-section" aria-label="Lecturer profiles">
                 <!-- Card 1 -->
                 <div class="card">
-                    <img src="Assets/img/DSC_2539_v03 (1).png" loading="lazy" alt="Prof. Prasad M. Jayaweera">
+                    <img src="/study nest/Assets/img/DSC_2539_v03 (1).png" loading="lazy" alt="Prof. Prasad M. Jayaweera">
                     <h3>Prof. Prasad M. Jayaweera</h3>
                     <h6>Dean / Professor of Information Systems Engineering and Informatics</h6>
                     <p>Email: pja@sjp.ac.lk</p>
@@ -102,7 +116,7 @@
                 
                 <!-- Card 2 -->
                 <div class="card">
-                    <img src="Assets/img/image-7.png" loading="lazy" alt="Dr. Dhammika Pieris">
+                    <img src="/study nest/Assets/img/image-7.png" loading="lazy" alt="Dr. Dhammika Pieris">
                     <h3>Dr. Dhammika Pieris</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: dhammikapieris@sjp.ac.lk</p>
@@ -115,7 +129,7 @@
                 
                 <!-- Card 3 -->
                 <div class="card">
-                    <img src="Assets/img/790.jpg" loading="lazy" alt="Ms T.D.G. Geethika">
+                    <img src="/study nest/Assets/img/790.jpg" loading="lazy" alt="Ms T.D.G. Geethika">
                     <h3>Ms T.D.G. Geethika</h3>
                     <h6>Head – Department of Information Systems Engineering and Informatics / Senior Lecturer</h6>
                     <p>Email: gilmini@sjp.ac.lk</p>
@@ -128,7 +142,7 @@
                 
                 <!-- Card 4 -->
                 <div class="card">
-                    <img src="Assets/img/budditha-HB.jpg" loading="lazy" alt="Dr. Budditha Hettige">
+                    <img src="/study nest/Assets/img/budditha-HB.jpg" loading="lazy" alt="Dr. Budditha Hettige">
                     <h3>Dr. Budditha Hettige</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: budditha@sjp.ac.lk</p>
@@ -141,7 +155,7 @@
                 
                 <!-- Card 5 -->
                 <div class="card">
-                    <img src="Assets/img/Dr.-Nuwan-291x300.jpg" loading="lazy" alt="Dr. D.G.N.D. Jayarathna">
+                    <img src="/study nest/Assets/img/Dr.-Nuwan-291x300.jpg" loading="lazy" alt="Dr. D.G.N.D. Jayarathna">
                     <h3>Dr. D.G.N.D. Jayarathna</h3>
                     <h6>Head – Department of Scientific Computing / Senior Lecturer</h6>
                     <p>Email: nuwan@sjp.ac.lk</p>
@@ -154,7 +168,7 @@
                 
                 <!-- Card 6 -->
                 <div class="card">
-                    <img src="Assets/img/Deepika2_edited.jpg" loading="lazy" alt="Dr. M.D.S. Seneviratne">
+                    <img src="/study nest/Assets/img/Deepika2_edited.jpg" loading="lazy" alt="Dr. M.D.S. Seneviratne">
                     <h3>Dr. M.D.S. Seneviratne</h3>
                     <h6>Head – Knowledge Engineering and Communication / Senior Lecturer</h6>
                     <p>Email: deepikas@sjp.ac.lk</p>
@@ -167,7 +181,7 @@
                 
                 <!-- Card 7 -->
                 <div class="card">
-                    <img src="Assets/img/20230721_002637_edited-271x300.jpg" loading="lazy" alt="Dr. S. Majuran">
+                    <img src="/study nest/Assets/img/20230721_002637_edited-271x300.jpg" loading="lazy" alt="Dr. S. Majuran">
                     <h3>Dr. S. Majuran</h3>
                     <h6>Senior Lecturer</h6>
                     <p>Email: shajini@sjp.ac.lk</p>
@@ -192,7 +206,7 @@
                 
                 <!-- Card 9 -->
                 <div class="card">
-                    <img src="Assets/img/M-M-V-Senanayake-233x300.jpg" loading="lazy" alt="Ms. M. M. V. Senanayake">
+                    <img src="/study nest/Assets/img/M-M-V-Senanayake-233x300.jpg" loading="lazy" alt="Ms. M. M. V. Senanayake">
                     <h3>Ms. M. M. V. Senanayake</h3>
                     <h6>Lecturer</h6>
                     <p>Email: vindya@sjp.ac.lk</p>
@@ -204,7 +218,7 @@
                 
                 <!-- Card 10 -->
                 <div class="card">
-                    <img src="Assets/img/Jayani-Rajakaruna_edited-276x300.jpg" loading="lazy" alt="Ms. R.J.P.K. Rajakaruna">
+                    <img src="/study nest/Assets/img/Jayani-Rajakaruna_edited-276x300.jpg" loading="lazy" alt="Ms. R.J.P.K. Rajakaruna">
                     <h3>Ms. R.J.P.K. Rajakaruna</h3>
                     <h6>Lecturer(Probationary)</h6>
                     <p>Email: jayaniprabhashini@sjp.ac.lk</p>
@@ -216,7 +230,7 @@
                 
                 <!-- Card 11 -->
                 <div class="card">
-                    <img src="Assets/img/me-squared-300x300.jpg" loading="lazy" alt="Mr. K. A. T. S. Jayathilaka">
+                    <img src="/study nest/Assets/img/me-squared-300x300.jpg" loading="lazy" alt="Mr. K. A. T. S. Jayathilaka">
                     <h3>Mr. K. A. T. S. Jayathilaka</h3>
                     <h6>Lecturer</h6>
                     <p>Email: thilinasj@sjp.ac.lk</p>
@@ -228,7 +242,7 @@
                 
                 <!-- Card 12 -->
                 <div class="card">
-                    <img src="Assets/img/KDTRangana-PP-v02.png" loading="lazy" alt="Mr. K. D. T. Rangana">
+                    <img src="/study nest/Assets/img/KDTRangana-PP-v02.png" loading="lazy" alt="Mr. K. D. T. Rangana">
                     <h3>Mr. K. D. T. Rangana</h3>
                     <h6>Instructor – Computer Technology</h6>
                     <p>Email: kdtrangana@sjp.ac.lk</p>
@@ -242,5 +256,23 @@
     </main>
 
     <script src="script.js"></script>
+     <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("/study nest/HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>
+
 </body>
 </html>

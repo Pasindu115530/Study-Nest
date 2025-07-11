@@ -5,9 +5,89 @@
     <title>Upload Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/uploadlecnotes.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     
 </head>
 <body>
+   <header class="navbar">
+      <div class="logo_item">
+        <button id="sidebarOpen" aria-label="Toggle sidebar">
+                <i class="bx bx-menu"></i>
+            </button>
+        <img src="Assets/img/website-icon.png" alt="">
+        <span>Study Nest</span>
+      </div>
+      <div class="navbar_content">
+        <img src="Assets/img/neon 5.png" alt="" class="profile" />
+      </div>
+    </header>
+    
+    <nav class="sidebar"  aria-label="Main navigation">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+         <li class="item">
+                    <a href="Assets/php/dashboardcontentadmin.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
+            
+          
+        
+           <li class="item">
+                    <a href="Assets/php/adminusercontrolpanel.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="#" class="nav_link submenu_item_active">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
+
+            <li class="item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-report' ></i>
+                        </span>
+                        <span class="navlink">Reports</span>  
+                    </a>
+                </li>
+
+           <li class="item">
+                    <a href="Assets/php/myprofile.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
+
+          <li class="item">
+                    <a href="Assets/php/logout.php" class="nav_link submenu_item" onclick="signOut()">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
+          <!-- end -->
+        </ul>
+    </div>
+    </nav>
 
 
 
