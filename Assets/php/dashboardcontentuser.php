@@ -62,6 +62,7 @@ $departmentNames = [
 <head>
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
@@ -244,84 +245,68 @@ $departmentNames = [
     </style>
 </head>
 <body>
-    <div class="navigation">
-    <nav class="navbar">
-      <div class="logo_item">
-        <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="../img/website-icon.png" alt="">Study Nest
-      </div>
-      <div class="navbar_content">
-        <img src="../img/neon 5.png" alt="" class="profile" />
-      </div>
-    </nav>
-                <nav class="sidebar">
-      <div class="menu_content">
-        <ul class="menu_items">
-          <div class="breaker"></div>
-          <br><br>
-          <!-- <div class="menu_title menu_dahsboard"></div> -->
-          
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <span class="navlink">Dashboard</span>
-            </div>
-            
-          </li>
-          <!-- end -->
-          <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
-          <!-- start -->
-          <li class="item">
-
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bxs-graduation'></i>
-              </span>
-              <span class="navlink">Lectures Details</span>  
-            </div>
-
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bx-cog' ></i>
-              </span>
-              <span class="navlink">Settings</span>  
-            </div>
-
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class='bx bx-log-out'></i>
-              </span>
-              <span class="navlink">Sign Out</span>  
-            </div>
-            
-          </li>
-          <!-- end -->
-        </ul>
-        
-        </ul>
-       
-        
+   
+    <header class="navbar">
+        <div class="logo_item">
+            <button id="sidebarOpen" aria-label="Toggle sidebar">
+                <i class="bx bx-menu"></i>
+            </button>
+            <img src="../img/website-icon.png" alt="StudyNest Logo">
+            <span>Study Nest</span>
         </div>
+        <div class="navbar_content">
+            <img src="../img/neon 5.png" alt="User profile" class="profile" />
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" aria-label="Main navigation">
+        <div class="menu_content">
+            <ul class="menu_items">
+                <div class="breaker"></div>
+                <br><br>
+                
+                <li class="nav_item">
+                    <a href="#" class="nav_link submenu_item_active">
+                        <span class="navlink_icon">
+                            <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="/study nest/lecturedetails.html" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bxs-graduation'></i>
+                        </span>
+                        <span class="navlink">Lectures Details</span>  
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-user'></i>
+                        </span>
+                        <span class="navlink">My Profile</span>  
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class='bx bx-log-out'></i>
+                        </span>
+                        <span class="navlink">Sign Out</span>  
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     
     <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search Courses">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
-            <div class="user">
-                <img src="assets/images/image02.jpg" alt="">
-            </div>
-        </div>
+        
 
         <div class="container">
             <h1><?= htmlspecialchars($departmentNames[$department] ?? $department) ?> Lecture Notes</h1>
@@ -371,7 +356,7 @@ $departmentNames = [
                 <?php endfor; ?>
             <?php endif; ?>
         </div>
-    </div>
+                                        </div>
    <script>
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.year-filter .filter-btn');

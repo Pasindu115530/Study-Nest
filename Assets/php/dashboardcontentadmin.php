@@ -118,6 +118,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
         *{
@@ -376,9 +377,9 @@ $departmentNames = [
 
             <div href="#" class="nav_link submenu_item">
               <span class="navlink_icon">
-                <i class='bx bx-cog' ></i>
+                <i class='bx bx-user'></i>
               </span>
-              <span class="navlink">Settings</span>  
+              <span class="navlink">My Profile</span>  
             </div>
 
             <div href="#" class="nav_link submenu_item">
