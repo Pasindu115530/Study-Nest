@@ -118,7 +118,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Study Nest/Assets/css/dashboard.css">
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -366,12 +366,12 @@ $departmentNames = [
             </div>
 
 
-            <div href="../../lecturedetails.html" class="nav_link submenu_item">
+            <a href="/study nest/lecturedetails.html" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class='bx bxs-graduation'></i>
               </span>
               <span class="navlink">Lectures Details</span>  
-            </div>
+            </a>
 
 
             <div href="#" class="nav_link submenu_item">

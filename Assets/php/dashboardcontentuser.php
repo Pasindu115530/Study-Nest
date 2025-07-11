@@ -63,7 +63,7 @@ $departmentNames = [
     <meta charset="UTF-8">
     <title>View Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
