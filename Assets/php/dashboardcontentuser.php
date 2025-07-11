@@ -63,6 +63,7 @@ foreach ($notes as $note) {
         *{
             margin: 0;
             padding: 0;
+
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -99,36 +100,7 @@ foreach ($notes as $note) {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        .year-section {
-            margin-bottom: 40px;
-            /* border: 1px solid rgb(255 255 255 / 50%);
-            background:transparent; */
-            /* background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%); */
-            /* backdrop-filter: blur(30px); */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .year-section h2 {
-            color: #ff7200;
-            font-weight: 900;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        .semester-section {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid rgb(255 255 255 / 50%);
-            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(30px);
-            border-radius: 8px;
-        }
-        .semester-section h3 {
-            color: #fff;
-            margin-bottom: 15px;
-        }
+        
         .note-card {
             background: linear-gradient(to top right, rgba(195, 220, 220, 0.1) 20%, rgba(255, 255, 255, 0.15) 30%);
             backdrop-filter: blur(10px);
@@ -173,9 +145,52 @@ foreach ($notes as $note) {
             background:rgb(255, 213, 179);
             color: #000;
         }
+          .year-section {
+            margin-bottom: 40px;
+            /* border: 1px solid rgb(255 255 255 / 50%);
+            background:transparent; */
+            /* background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%); */
+            /* backdrop-filter: blur(30px); */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .year-section h1 {
+            color: #ff7200;
+            font-weight: 900;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .semester-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid rgb(255 255 255 / 50%);
+            background: linear-gradient(to top right, rgba(195, 220, 220, 0.3) 10%, rgba(255, 255, 255, 0.15) 10%);
+            background: white(0.9);
+            backdrop-filter: blur(30px);
+            border-radius: 8px;
+        }
+        .semester-section h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .department-section {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.department-title {
+    color: #ff7200;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
         .note-date {
             font-size: 12px;
-            color: #666;
+            color:rgb(0, 0, 0);
             margin-bottom: 15px;
         }
         .action-buttons {
@@ -260,7 +275,7 @@ foreach ($notes as $note) {
                 <div class="breaker"></div>
                 <br><br>
                 
-                <li class="nav_item">
+                <li class="item">
                     <a href="#" class="nav_link submenu_item_active">
                         <span class="navlink_icon">
                             <i class="bx bx-home-alt"></i>
@@ -269,7 +284,7 @@ foreach ($notes as $note) {
                     </a>
                 </li>
 
-                <li class="nav_item">
+                <li class="item">
                     <a href="lecturedetails.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bxs-graduation'></i>
@@ -278,7 +293,7 @@ foreach ($notes as $note) {
                     </a>
                 </li>
 
-                <li class="nav_item">
+                <li class="item">
                     <a href="#" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
@@ -287,7 +302,7 @@ foreach ($notes as $note) {
                     </a>
                 </li>
 
-               <li class="nav_item">
+               <li class="item">
                     <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
                         <span class="navlink_icon">
                             <i class='bx bx-log-out'></i>
@@ -434,250 +449,4 @@ function signOut() {
 </body>
 </html>
 
-<?php
-function getModuleColor($module) {
-    $moduleColors = [
-         # Year 1 Semester 1 (CS)
-        'Professional English' => '#FF9AA2',
-        'Principles of Management' => '#FFB7B2',
-        'Introductory Statistics' => '#FFDAC1',
-        'Discrete Mathematics' => '#E2F0CB',
-        'Computer System Organization' => '#B5EAD7',
-        'Fundamentals of Programming' => '#C7CEEA',
-        'Introduction to Software Engineering' => '#F8B195',
-        'Leadership & Human Skills Development' => '#F67280',
-        
-        # Year 1 Semester 2 (CS)
-        'Web Development' => '#A2D2FF',
-        'Mathematics II' => '#BDE0FE',
-        'Object Oriented Programming' => '#CDB4DB',
-        'Database Management Systems' => '#FFC8DD',
-        'Data Structures and Algorithms' => '#FFAFCC',
-        'Object Oriented Analysis and Design' => '#B5E2FA',
-        'Computer System Architecture' => '#F9C74F',
-        'Rapid Application Development' => '#90BE6D',
-        'Algebra for Computing' => '#43AA8B',
-        
-        # Year 2 Semester 1 (CS)
-        'Group Project Part 1' => '#577590',
-        'Data Communication and Networks' => '#277DA1',
-        'Operating Systems' => '#FF9AA2',
-        'Web Technologies' => '#FFB7B2',
-        'Statistical Distribution and Inferences' => '#FFDAC1',
-        'Mathematics for Computer Science' => '#E2F0CB',
-        'Artificial Intelligence' => '#B5EAD7',
-        
-        # Year 2 Semester 2 (CS)
-        'Group Project Part 2' => '#C7CEEA',
-        'Computer Graphics' => '#F8B195',
-        'High Performance Computing' => '#F67280',
-        'Human Computer Interactions' => '#A2D2FF',
-        'Differential Equations' => '#BDE0FE',
-        'Service Oriented Web Applications' => '#CDB4DB',
-        'Industrial Internship' => '#FFC8DD',
-        'Software Architecture and Design Patterns 1' => '#FFAFCC',
-        'Software Architecture and Design Patterns 2' => '#B5E2FA',
-        'Software Architecture and Design Patterns 3' => '#F9C74F',
-        'Software Architecture and Design Patterns 4' => '#90BE6D',
-        
-        # Year 3 Semester 1 (CS)
-        'Data Analytics' => '#43AA8B',
-        'Social and Professional Issues in Information Technology' => '#577590',
-        'Knowledge Representation' => '#277DA1',
-        'Theory of Computation' => '#FF9AA2',
-        'Advanced Data Structures and Algorithms' => '#FFB7B2',
-        'Computer Security' => '#FFDAC1',
-        'Introduction to Machine Learning' => '#E2F0CB',
-        'Emerging Trends in Computing' => '#B5EAD7',
-        'Visual Computing' => '#C7CEEA',
-        'IT Project Management' => '#F8B195',
-        
-        # Year 3 Semester 2 (CS)
-        'Digital Image Processing' => '#F67280',
-        'Software Quality Assurance' => '#A2D2FF',
-        'Advanced Machine Learning' => '#BDE0FE',
-        'Theory of Programming Languages' => '#CDB4DB',
-        'Multimedia Systems' => '#FFC8DD',
-        'Nature Inspired Algorithms' => '#FFAFCC',
-        'Embedded Systems and Internet of Things' => '#B5E2FA',
-        'Game Development' => '#F9C74F',
-        'Middleware Architecture' => '#90BE6D',
-        'Mathematical Optimization' => '#43AA8B',
-        
-        # Year 4 Semester 1 (CS)
-        'Research Project Part I' => '#577590',
-        'Computational Biology' => '#277DA1',
-        'Independent Literature Review' => '#FF9AA2',
-        'Computer Vision' => '#FFB7B2',
-        'Cloud Computing' => '#FFDAC1',
-        'Big Data Technologies' => '#E2F0CB',
-        'Robotics' => '#B5EAD7',
-        'Natural Language Processing' => '#C7CEEA',
-        'Advanced Database Systems' => '#F8B195',
-        'Mobile Computing' => '#F67280',
-        
-        # Year 4 Semester 2 (CS)
-        'Industrial Training' => '#A2D2FF',
-        'Research Project Part II' => '#BDE0FE',
-
-        # Year 1 Semester 1 (SE)
-        'Professional English'=> '#FF9AA2',
-        'Principles of Management'=> '#FFB7B2',
-        'Introductory Statistics'=> '#FFDAC1',
-        'Discrete Mathematics'=> '#E2F0CB',
-        'Computer System Organization'=> '#B5EAD7',
-        'Fundamentals of Programming'=> '#C7CEEA',
-        'Introduction to Software Engineering'=> '#F8B195',
-        'Leadership & Human Skills Development'=>'#F67280',
-        
-        # Year 1 Semester 2 (SE)
-        'Object Oriented Programming'=> '#A2D2FF',
-        'Database Management Systems'=> '#BDE0FE',
-        'Data Structures and Algorithms'=> '#CDB4DB',
-        'Object Oriented Analysis and Design'=> '#FFC8DD',
-        'Operating Systems'=> '#FFAFCC',
-        'Rapid Application Development'=> '#B5E2FA',
-        'Advanced Mathematics'=> '#F9C74F',
-        
-        # Year 2 Semester 1 (SE)
-        'Group Project Part 1'=> '#90BE6D',
-        'Essentials in Computer Networking'=> '#43AA8B',
-        'Formal Methods in Software Development'=> '#577590',
-        'Web Technologies'=> '#277DA1',
-        'Software Design and Architecture'=> '#FF9AA2',
-        'Mathematics for Computing'=> '#FFB7B2',
-        'Artificial Intelligence'=> '#FFDAC1',
-        'Essentials of Computer Law'=> '#E2F0CB',
-        
-        # Year 2 Semester 2 (SE)
-        'Group Project Part 2'=> '#B5EAD7',
-        'Fundamentals of Software Security'=> '#C7CEEA',
-        'Software Testing and Validation'=> '#F8B195',
-        'Human Computer Interaction'=> '#F67280',
-        'Software Project Management'=> '#A2D2FF',
-        'Software Configuration Management'=> '#BDE0FE',
-        'Industrial Inspection'=> '#CDB4DB',
-        'Management Information Systems'=> '#FFC8DD',
-        
-        # Year 3 Semester 1 (SE)
-        'Software Safety and Reliability'=> '#FFAFCC',
-        'Social and Professional Issues in Information Technology'=> '#B5E2FA',
-        'Software Process Management'=>'#F9C74F',
-        'Group Project in Hardware'=> '#90BE6D',
-        'Software Evolution'=>'#43AA8B',
-        'Enterprise Information Systems'=> '#577590',
-        'Human Resource Management'=> '#277DA1',
-        'Visual Computing'=> '#FF9AA2',
-        'Introduction to Business Intelligence'=> '#FFB7B2',
-        'High Performance Computing'=> '#FFDAC1',
-        
-        # Year 3 Semester 2 (SE)
-        'System Development Project'=> '#E2F0CB',
-        'Introduction to Distributed Computing'=> '#B5EAD7',
-        'Software Quality Assurance'=> '#C7CEEA',
-        'Advanced Database Management Systems'=> '#F8B195',
-        'Software Design Patterns'=> '#F67280',
-        'Mobile Computing'=> '#A2D2FF',
-        'Machine Learning'=> '#BDE0FE',
-        'Game Designing and Development'=> '#CDB4DB',
-        'Middleware Architecture'=> '#FFC8DD',
-        'Social Computing'=> '#FFAFCC',
-        'Semantic Web'=> '#B5E2FA',
-        
-        # Year 4 Semester 1 (SE)
-        'Research Project Part I'=> '#F9C74F',
-        'Research Methodologies and Scientific Communication'=> '#90BE6D',
-        'Service Oriented Architecture'=> '#43AA8B',
-        'Software Engineering Economics'=> '#577590',
-        'Cloud Computing'=> '#277DA1',
-        'Big Data Technologies'=> '#FF9AA2',
-        'Robotics'=> '#FFB7B2',
-        'Selected Topics in Software Engineering'=> '#FFDAC1',
-        'Natural Language Processing'=> '#E2F0CB',
-        'Refactoring and Design'=> '#B5EAD7',
-        'Emerging Trends in Computing'=> '#C7CEEA',
-        
-        # Year 4 Semester 2 (SE)
-        'Industrial Training'=> '#F8B195',
-        'Research Project Part II'=> '#F67280',
-        # Year 1 Semester 1 (IS)
-        'Introductory Mathematics'=> '#FF9AA2',
-        'Fundamentals of Programming'=> '#FFB7B2',
-        'Principles of Management'=> '#FFDAC1',
-        'Introductory Statistics'=> '#E2F0CB',
-        'Fundamentals of Information Systems'=> '#B5EAD7',
-        'Introduction to Software Engineering'=> '#C7CEEA',
-        'Leadership & Human Skills Development'=> '#F8B195',
-        'Professional English'=> '#F67280',
-
-        # Year 1 Semester 2 (IS)
-        'Object Oriented Programming'=> '#A2D2FF',
-        'Database Management System'=> '#BDE0FE',
-        'Data Structures and Algorithms'=> '#CDB4DB',
-        'Advanced Software Engineering'=> '#FFC8DD',
-        'Economics & Accounting'=> '#FFAFCC',
-        'Rapid Application Development'=> '#B5E2FA',
-        'Business Communication'=> '#F9C74F',
-
-        # Year 2 Semester 1 (IS)
-        'Business Process Management'=> '#90BE6D',
-        'Operations Management'=> '#43AA8B',
-        'Marketing Management'=> '#577590',
-        'Information Systems Security'=> '#277DA1',
-        'Organizational Behaviour and Society'=> '#FF9AA2',
-        'System Administration and Maintenance'=> '#FFB7B2',
-        'Statistical Distribution and Inferences'=> '#FFDAC1',
-
-        # Year 2 Semester 2 (IS)
-        'Enterprise Applications'=> '#E2F0CB',
-        'Information System Risk Management'=> '#B5EAD7',
-        'Introduction to Entrepreneurship and SMEs'=> '#C7CEEA',
-        'Business Intelligence'=> '#F8B195',
-        'Operating System Concepts'=> '#F67280',
-        'Advanced Database Systems'=> '#A2D2FF',
-        'Industrial Inspection'=> '#BDE0FE',
-        'Personal Productivity with IS Technology'=> '#CDB4DB',
-
-        # Year 3 Semester 1 (IS)
-        'Group Project Part 1'=> '#FFC8DD',
-        'Social and Professional Issues in Information Technology'=> '#FFAFCC',
-        'Agile Software Development'=> '#B5E2FA',
-        'Software Quality Assurance'=> '#F9C74F',
-        'Design Patterns and Applications'=> '#90BE6D',
-        'Research Methodologies'=> '#43AA8B',
-        'Data Communication and Networks'=> '#577590',
-        'Software Engineering Economics'=> '#277DA1',
-        'Game Designing and Development'=> '#FF9AA2',
-        'Artificial Intelligence'=> '#FFB7B2',
-
-        # Year 3 Semester 2 (IS)
-        'IT Procurement Management'=> '#FFDAC1',
-        'Group Project Part 2'=> '#E2F0CB',
-        'Digital Business'=> '#B5EAD7',
-        'Web-based Application Development'=> '#C7CEEA',
-        'E-Learning and Instructional Design'=> '#F8B195',
-        'Mobile Computing'=> '#F67280',
-        'Machine Learning and Neural Computing'=> '#A2D2FF',
-        'Blockchain and Technologies'=> '#BDE0FE',
-        'Human Computer Interactions'=> '#CDB4DB',
-        'Middleware Architecture'=> '#FFC8DD',
-
-        # Year 4 Semester 1 (IS)
-        'Research Project Part I'=> '#FFAFCC',
-        'Introduction to Distributed Systems'=> '#B5E2FA',
-        'Ethical Issues and Legal Aspects of Information Technology'=> '#F9C74F',
-        'Human Resource Management'=> '#90BE6D',
-        'Cloud Computing'=> '#43AA8B',
-        'Data Mining and Applications'=> '#577590',
-        'Data Analytics'=> '#277DA1',
-        'Natural Language Processing'=> '#FF9AA2',
-        'Refactoring and Design'=> '#FFB7B2',
-        'High Performance Computing'=> '#FFDAC1',
-
-        # Year 4 Semester 2 (IS)
-        'Industrial Training'=> '#E2F0CB',
-        'Research Project Part II'=> '#B5EAD7',
-    ];
-    return $moduleColors[$module] ?? '#888888';
-}
-?>
+ 
