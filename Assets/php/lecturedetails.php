@@ -74,14 +74,14 @@ session_start(); // Start the session
                 <li class="nav_item">
                     <a href="myprofile.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
-                            <i class='bx bx-cog'></i>
+                            <i class='bx bx-user'></i>
                         </span>
-                        <span class="navlink">Settings</span>  
+                        <span class="navlink">My Profile</span>  
                     </a>
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
                         <span class="navlink_icon">
                             <i class='bx bx-log-out'></i>
                         </span>
@@ -256,5 +256,23 @@ session_start(); // Start the session
     </main>
 
     <script src="script.js"></script>
+     <script>
+function signOut() {
+    // Clear session data
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Send a request to server to invalidate the session
+    fetch('/logout', { method: 'POST' })
+        .then(() => {
+            // Redirect to home page with no-cache headers
+            window.location.replace("/study nest/HomePage.html");
+        });
+    
+    // Prevent default link behavior
+    return false;
+}
+</script>
+
 </body>
 </html>
