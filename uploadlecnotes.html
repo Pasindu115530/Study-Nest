@@ -132,14 +132,13 @@
 <script>
 function signOut() {
     // Clear session data
-    localStorage.clear();
-    sessionStorage.clear();
+  
     
     // Send a request to server to invalidate the session
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("HomePage.html");
+            window.location.replace("Assets/logout.php");
         });
     
     // Prevent default link behavior

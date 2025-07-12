@@ -287,14 +287,13 @@ session_start(); // Start the session
    <script>
 function signOut() {
     // Clear session data
-    localStorage.clear();
-    sessionStorage.clear();
+  
     
     // Send a request to server to invalidate the session
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("/study nest/HomePage.html");
+            window.location.replace("logout.php");
         });
     
     // Prevent default link behavior
