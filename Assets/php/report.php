@@ -7,51 +7,52 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch monthly visit data from database
+// Initialize variables with default values
 $visitsData = [];
 $months = [];
 $totalVisitors = 0;
 $avgVisitors = 0;
-$peakMonth = '';
+$peakMonth = 'No data';
 $peakValue = 0;
+$avgDailyHours = 0;
+$mostActiveDay = 'No data';
+$leastActiveDay = 'No data';
+$mostActiveCount = 0;
+$leastActiveCount = PHP_INT_MAX; // Initialize with maximum possible value
 
 // Get count of visits per month
 $visitQuery = "SELECT month, COUNT(*) as visit_count FROM datatime GROUP BY month ORDER BY id";
 $visitResult = $conn->query($visitQuery);
 
-if ($visitResult->num_rows > 0) {
+if ($visitResult && $visitResult->num_rows > 0) {
     while($row = $visitResult->fetch_assoc()) {
         $months[] = $row['month'];
         $visitsData[] = (int)$row['visit_count'];
     }
     
-    // Calculate statistics
-    $totalVisitors = array_sum($visitsData);
-    $avgVisitors = round($totalVisitors / count($visitsData));
-    $peakValue = max($visitsData);
-    $peakMonthIndex = array_search($peakValue, $visitsData);
-    $peakMonth = $months[$peakMonthIndex] . " (" . $peakValue . ")";
+    // Calculate statistics only if we have data
+    if (count($visitsData) > 0) {
+        $totalVisitors = array_sum($visitsData);
+        $avgVisitors = round($totalVisitors / count($visitsData));
+        $peakValue = max($visitsData);
+        $peakMonthIndex = array_search($peakValue, $visitsData);
+        $peakMonth = isset($months[$peakMonthIndex]) ? $months[$peakMonthIndex] . " (" . $peakValue . ")" : 'No data';
+    }
 }
-
-// Fetch screen time statistics
-$avgDailyHours = 0;
-$mostActiveDay = '';
-$leastActiveDay = '';
 
 // Get average duration per visit (if durations column exists)
 $screenQuery = "SELECT AVG(duration)/60 as avg_hours FROM datatime";
 $screenResult = $conn->query($screenQuery);
-if ($screenResult->num_rows > 0) {
+if ($screenResult && $screenResult->num_rows > 0) {
     $row = $screenResult->fetch_assoc();
     $avgDailyHours = round($row['avg_hours'], 1);
 }
 
-// For demonstration, using static values for active days
 // Get most and least active days
 $dayQuery = "SELECT day, COUNT(*) as day_count FROM datatime GROUP BY day";
 $dayResult = $conn->query($dayQuery);
 
-if ($dayResult->num_rows > 0) {
+if ($dayResult && $dayResult->num_rows > 0) {
     while($row = $dayResult->fetch_assoc()) {
         $count = (int)$row['day_count'];
         
@@ -68,13 +69,13 @@ if ($dayResult->num_rows > 0) {
         }
     }
     
-    // Format the output with counts if you want
-    $mostActiveDay = $mostActiveDay . " (" . $mostActiveCount . ")";
-    $leastActiveDay = $leastActiveDay . " (" . $leastActiveCount . ")";
-} else {
-    // Fallback values if no data
-    $mostActiveDay = "No data";
-    $leastActiveDay = "No data";
+    // Only format with counts if we found data
+    if ($mostActiveCount > 0) {
+        $mostActiveDay = $mostActiveDay . " (" . $mostActiveCount . ")";
+    }
+    if ($leastActiveCount < PHP_INT_MAX) { // Check if we found any data
+        $leastActiveDay = $leastActiveDay . " (" . $leastActiveCount . ")";
+    }
 }
 
 $conn->close();
@@ -97,7 +98,7 @@ $conn->close();
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color:rgb(0, 0, 0);
+            background-color:rgba(0, 0, 0, 1);
             margin: 0;
             padding: 20px;
         }
@@ -113,13 +114,13 @@ $conn->close();
         }
         h1, h2, h3 {
             margin-bottom: 1rem;
-            color: var(--blue);
+            color: white;
         }
 
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
-            border-bottom: 2px solid var(--blue);
+            border-bottom: 2px solid var(--black2);
             padding-bottom: 0.5rem;
         }
 
@@ -146,7 +147,7 @@ $conn->close();
         }
 
         .stat-card {
-            background: rgba(255, 114, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 15px;
             flex: 1;
@@ -154,7 +155,7 @@ $conn->close();
         }
 
         .stat-card h3 {
-            color: var(--blue);
+            color: white;
             font-size: 1rem;
             margin-bottom: 10px;
         }
@@ -162,7 +163,7 @@ $conn->close();
         .stat-card p {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--black1);
+            color: white;
         }
 
         .chart-container {
@@ -186,11 +187,11 @@ $conn->close();
         th {
             background-color: rgba(255, 114, 0, 0.1);
             font-weight: 600;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         tr:hover {
-            background: var(--blue);
+            background: var(--black2);
             color: var(--white);
         }
 
@@ -390,7 +391,7 @@ function signOut() {
                             color: 'rgba(0, 0, 0, 0.1)'
                         },
                         ticks: {
-                            color: 'var(--black1)'
+                            color: 'white'
                         }
                     },
                     x: {
@@ -398,14 +399,14 @@ function signOut() {
                             display: false
                         },
                         ticks: {
-                            color: 'var(--black1)'
+                            color: 'white'
                         }
                     }
                 },
                 plugins: {
                     legend: {
                         labels: {
-                            color: 'var(--black1)'
+                            color: 'white'
                         }
                     }
                 }

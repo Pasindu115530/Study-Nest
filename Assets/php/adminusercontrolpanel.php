@@ -13,7 +13,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
         :root {
-            --blue: #ff7200;
+            --black2: #ff7200;
             --white: #060606;
             --gray: #ff0000;
             --black1: #222;
@@ -46,8 +46,8 @@
             position: fixed;
             width: 300px;
             height: 100%;
-            background: var(--blue);
-            border-left: 10px solid var(--blue);
+            background: var(--black2);
+            border-left: 10px solid var(--black2);
             transition: 0.5s;
             overflow: hidden;
         }
@@ -92,7 +92,7 @@
 
         .navigation ul li:hover a,
         .navigation ul li.hovered a {
-            color: var(--blue);
+            color: var(--black2);
         }
 
         .navigation ul li a .icon {
@@ -135,10 +135,12 @@
             min-height: 100vh;
             background: var(--white);
             transition: 0.5s;
+            margin-top: 100px;
+            margin-left: 10px;
         }
 
         .main.active {
-            width: calc(100% - 80px);
+            width: calc(100% - 100px);
             left: 80px;
         }
 
@@ -231,17 +233,17 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            color: var(--black1);
+            color: var(--black2);
         }
 
         th {
             background-color: rgba(255, 114, 0, 0.1);
             font-weight: 600;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         tr:hover {
-            background: var(--blue);
+            background: var(--black2);
             color: var(--white);
         }
 
@@ -297,7 +299,7 @@
         label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--black1);
+            color: var(--black2);
         }
 
         input, select {
@@ -313,11 +315,11 @@
 
         input:focus, select:focus {
             outline: none;
-            border-color: var(--blue);
+            border-color: var(--black2);
         }
 
         .btn {
-            background-color: var(--blue);
+            background-color: var(--black2);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -343,13 +345,13 @@
 
         h1, h2, h3 {
             margin-bottom: 1rem;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
-            border-bottom: 1px solid var(--blue);
+            border-bottom: 1px solid var(--black2);
             padding-bottom: 0.5rem;
         }
 
@@ -390,7 +392,7 @@
             right: 20px;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         .close-popup:hover {
@@ -459,6 +461,11 @@
                 left: initial;
             }
         }
+
+        .container{
+            width: 80vw;
+        }
+
     </style>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -549,7 +556,7 @@
          <div class="left-semicircle"></div>
                 <div class="middle-circle"></div>
                 <div class="right"></div>
-        <div class="topbar">
+        <!-- <div class="topbar">
        
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
@@ -558,7 +565,7 @@
             <div class="user">
                 <img src="assets/images/image02.jpg" alt="">
             </div>
-        </div>
+        </div> -->
 
         <!-- ================= Main Content =================== -->
         <div class="container" style="padding: 1px;">
