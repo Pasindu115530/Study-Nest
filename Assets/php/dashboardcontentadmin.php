@@ -276,7 +276,7 @@ $conn->close();
                 </li>
 
             <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="report.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-report' ></i>
                         </span>

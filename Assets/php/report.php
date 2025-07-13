@@ -1,6 +1,83 @@
 <?php
 session_start();
 
+// Database connection
+$conn = new mysqli('localhost', 'root', '', 'userportal');
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch monthly visit data from database
+$visitsData = [];
+$months = [];
+$totalVisitors = 0;
+$avgVisitors = 0;
+$peakMonth = '';
+$peakValue = 0;
+
+// Get count of visits per month
+$visitQuery = "SELECT month, COUNT(*) as visit_count FROM datatime GROUP BY month ORDER BY id";
+$visitResult = $conn->query($visitQuery);
+
+if ($visitResult->num_rows > 0) {
+    while($row = $visitResult->fetch_assoc()) {
+        $months[] = $row['month'];
+        $visitsData[] = (int)$row['visit_count'];
+    }
+    
+    // Calculate statistics
+    $totalVisitors = array_sum($visitsData);
+    $avgVisitors = round($totalVisitors / count($visitsData));
+    $peakValue = max($visitsData);
+    $peakMonthIndex = array_search($peakValue, $visitsData);
+    $peakMonth = $months[$peakMonthIndex] . " (" . $peakValue . ")";
+}
+
+// Fetch screen time statistics
+$avgDailyHours = 0;
+$mostActiveDay = '';
+$leastActiveDay = '';
+
+// Get average duration per visit (if durations column exists)
+$screenQuery = "SELECT AVG(duration)/60 as avg_hours FROM datatime";
+$screenResult = $conn->query($screenQuery);
+if ($screenResult->num_rows > 0) {
+    $row = $screenResult->fetch_assoc();
+    $avgDailyHours = round($row['avg_hours'], 1);
+}
+
+// For demonstration, using static values for active days
+// Get most and least active days
+$dayQuery = "SELECT day, COUNT(*) as day_count FROM datatime GROUP BY day";
+$dayResult = $conn->query($dayQuery);
+
+if ($dayResult->num_rows > 0) {
+    while($row = $dayResult->fetch_assoc()) {
+        $count = (int)$row['day_count'];
+        
+        // Check for most active day
+        if ($count > $mostActiveCount) {
+            $mostActiveCount = $count;
+            $mostActiveDay = $row['day'];
+        }
+        
+        // Check for least active day
+        if ($count < $leastActiveCount) {
+            $leastActiveCount = $count;
+            $leastActiveDay = $row['day'];
+        }
+    }
+    
+    // Format the output with counts if you want
+    $mostActiveDay = $mostActiveDay . " (" . $mostActiveCount . ")";
+    $leastActiveDay = $leastActiveDay . " (" . $leastActiveCount . ")";
+} else {
+    // Fallback values if no data
+    $mostActiveDay = "No data";
+    $leastActiveDay = "No data";
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +88,7 @@ session_start();
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     <style>
         *{
             margin: 0;
@@ -125,46 +202,65 @@ session_start();
 </head>
 <body>
    
-    <header class="navbar">
-        <div class="logo_item">
-            <button id="sidebarOpen" aria-label="Toggle sidebar">
+     <header class="navbar">
+      <div class="logo_item">
+        <button id="sidebarOpen" aria-label="Toggle sidebar">
                 <i class="bx bx-menu"></i>
             </button>
-            <img src="../img/website-icon.png" alt="StudyNest Logo">
-            <span>Study Nest</span>
-        </div>
-        <div class="navbar_content">
-            <img src="../img/neon 5.png" alt="User profile" class="profile" />
-        </div>
+        <img src="../img/website-icon.png" alt="">
+        <span>Study Nest</span>
+      </div>
+      <div class="navbar_content">
+        <img src="../img/neon 5.png" alt="" class="profile" />
+      </div>
     </header>
+    
+    <nav class="sidebar"  aria-label="Main navigation">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="breaker"></div>
+          <br><br>
+          <!-- <div class="menu_title menu_dahsboard"></div> -->
+          
+         <li class="item">
+                    <a href="dashboardcontentadmin.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink"> Dashboard</span>  
+                    </a>
+                </li>
+            
+          
+        
+           <li class="item">
+                    <a href="adminusercontrolpanel.php" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bxs-user-account'></i>
+                        </span>
+                        <span class="navlink">Manage Users</span>  
+                    </a>
+                </li>
+           <li class="item">
+                    <a href="/study nest/uploadlecnotes.html" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                           <i class='bx bx-book-content' ></i>
+                        </span>
+                        <span class="navlink">Manage Content</span>  
+                    </a>
+                </li>
 
-    <!-- Sidebar -->
-    <nav class="sidebar" aria-label="Main navigation">
-        <div class="menu_content">
-            <ul class="menu_items">
-                <div class="breaker"></div>
-                <br><br>
-                
-                <li class="item">
+            <li class="item">
                     <a href="#" class="nav_link submenu_item_active">
                         <span class="navlink_icon">
-                            <i class="bx bx-home-alt"></i>
+                           <i class='bx bxs-report' ></i>
                         </span>
-                        <span class="navlink">Dashboard</span>
+                        <span class="navlink">Reports</span>  
                     </a>
                 </li>
 
-                <li class="item">
-                    <a href="lecturedetails.php" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class='bx bxs-graduation'></i>
-                        </span>
-                        <span class="navlink">Lectures Details</span>
-                    </a>
-                </li>
-
-                <li class="item">
-                    <a href="myprofile_user.php" class="nav_link submenu_item">
+           <li class="item">
+                    <a href="myprofile.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                             <i class='bx bx-user'></i>
                         </span>
@@ -172,7 +268,7 @@ session_start();
                     </a>
                 </li>
 
-               <li class="item">
+          <li class="item">
                     <a href="logout.php" class="nav_link submenu_item" onclick="signOut()">
                         <span class="navlink_icon">
                             <i class='bx bx-log-out'></i>
@@ -180,8 +276,9 @@ session_start();
                         <span class="navlink">Sign Out</span>  
                     </a>
                 </li>
-            </ul>
-        </div>
+          <!-- end -->
+        </ul>
+    </div>
     </nav>
     
     <div class="main">
@@ -212,15 +309,15 @@ session_start();
             <div class="stats-container">
                 <div class="stat-card">
                     <h3>Total Visitors</h3>
-                    <p id="totalVisitors">12,345</p>
+                    <p id="totalVisitors"><?php echo number_format($totalVisitors); ?></p>
                 </div>
                 <div class="stat-card">
                     <h3>Average Per Month</h3>
-                    <p id="avgVisitors">1,029</p>
+                    <p id="avgVisitors"><?php echo number_format($avgVisitors); ?></p>
                 </div>
                 <div class="stat-card">
                     <h3>Highest Month</h3>
-                    <p id="peakMonth">May (2,450)</p>
+                    <p id="peakMonth"><?php echo $peakMonth; ?></p>
                 </div>
             </div>
         </div>
@@ -229,35 +326,21 @@ session_start();
     <div class="stats-container">
         <div class="stat-card">
             <h3>Avg. Daily Hours</h3>
-            <p>2.8 hours</p>
+            <p><?php echo $avgDailyHours; ?> hours</p>
         </div>
         <div class="stat-card">
             <h3>Most Active Day</h3>
-            <p>Wednesday</p>
+            <p><?php echo $mostActiveDay; ?></p>
         </div>
         <div class="stat-card">
             <h3>Least Active Day</h3>
-            <p>Sunday</p>
+            <p><?php echo $leastActiveDay; ?></p>
         </div>
     </div>
         </div>
                                         </div></div>
    
 
-    <!-- <script>
-    
-
-        function signOut() {
-            localStorage.clear();
-            sessionStorage.clear();
-            fetch('/logout', { method: 'POST' })
-                .then(() => {
-                    window.location.replace("/study nest/HomePage.html");
-                });
-            return false;
-        }
-    </script> -->
-    
     <script src="assets/js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -271,7 +354,7 @@ function signOut() {
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("/study nest/HomePage.html");
+            window.location.replace("logout.php");
         });
     
     // Prevent default link behavior
@@ -281,18 +364,8 @@ function signOut() {
 <script>
         // Monthly Visits Chart
         const ctx = document.getElementById('visitsChart').getContext('2d');
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        const visitsData = [850, 920, 1100, 980, 2450, 2100, 1950, 2000, 1800, 1500, 1200, 1350];
-        
-        // Calculate stats
-        const totalVisitors = visitsData.reduce((a, b) => a + b, 0);
-        const avgVisitors = Math.round(totalVisitors / visitsData.length);
-        const peakMonthIndex = visitsData.indexOf(Math.max(...visitsData));
-        
-        // Update stats
-        document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
-        document.getElementById('avgVisitors').textContent = avgVisitors.toLocaleString();
-        document.getElementById('peakMonth').textContent = `${months[peakMonthIndex]} (${visitsData[peakMonthIndex].toLocaleString()})`;
+        const months = <?php echo json_encode($months); ?>;
+        const visitsData = <?php echo json_encode($visitsData); ?>;
         
         // Create chart
         const visitsChart = new Chart(ctx, {
@@ -341,5 +414,3 @@ function signOut() {
 
 </body>
 </html>
-
- 

@@ -132,7 +132,7 @@ session_start(); // Start the session
           <!-- <div class="menu_title menu_dahsboard"></div> -->
           
          <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="dashboardcontentadmin.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class="bx bx-home-alt"></i>
                         </span>
@@ -160,7 +160,7 @@ session_start(); // Start the session
                 </li>
 
             <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="report.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-report' ></i>
                         </span>

@@ -21,10 +21,13 @@ $logout_time = date('H:i:s');
     $minutes = floor(($duration % 3600) / 60);
     $seconds = $duration % 60;
     $formatted_duration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+    $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+$day = $days[date('w')]; 
+
     
     // Insert into datatime table
-    $stmt = $conn->prepare("INSERT INTO datatime (month, login_time, logout_time,duration) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss",$month, $login_time, $logout_time,$formatted_duration);
+    $stmt = $conn->prepare("INSERT INTO datatime (month, login_time, logout_time,duration,day) VALUES (?, ?, ?, ?,?)");
+    $stmt->bind_param("sssss",$month, $login_time, $logout_time,$formatted_duration,$day);
     $stmt->execute();
     $stmt->close();
 }
