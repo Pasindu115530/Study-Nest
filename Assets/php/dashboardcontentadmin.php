@@ -44,8 +44,8 @@ $conn->close();
             padding: 20px;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 80vw;
+            margin-left: auto;
         }
         .header {
             display: flex;
