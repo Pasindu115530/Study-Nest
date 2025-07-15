@@ -1,2 +1,0 @@
-<?php
-me-alt
