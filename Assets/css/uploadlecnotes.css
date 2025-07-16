@@ -1,169 +1,119 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top left, #ff7200 15%, transparent 25%),
-                radial-gradient(circle at bottom right, #ff7200 10%, transparent 20%),
-                #0d0d0d;
-    min-height: 100vh;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #ff7200 15%, transparent 25%),
+                        radial-gradient(circle at bottom right, #ff7200 10%, transparent 20%),
+                        #0d0d0d;
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 1rem;
-    margin-top: 60px;
-}
+        
 
-.upload-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1.25rem;
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 0 30px rgba(255, 114, 0, 0.2);
-    backdrop-filter: blur(10px);
-    margin: 0 1rem;
-}
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+        }
 
-.upload-card h2 {
-    color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    text-align: center;
-}
+        .upload-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 35px;
+            width: 80vw;
+            max-width: 600px;
+            box-shadow: 0 0 30px rgba(255, 114, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
 
-label {
-    display: block;
-    margin-top: 1.125rem;
-    margin-bottom: 0.375rem;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
+        .upload-card h2 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
 
-input[type="file"],
-select {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 0.625rem;
-    border: 1px solid #ff7200;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 0.9375rem;
-    transition: 0.3s;
-}
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
 
-input[type="file"]:focus,
-select:focus {
-    outline: none;
-    border-color: #fff;
-    box-shadow: 0 0 8px #ff7200;
-}
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ff7200;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-input[type="file"]::file-selector-button {
-    background-color: #ff7200;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 0.875rem;
-    margin-right: 0.625rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 0.875rem;
-}
+        input[type="file"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 8px #ff7200;
+        }
 
-input[type="file"]::file-selector-button:hover {
-    background-color: #fff;
-    color: #ff7200;
-}
+        input[type="file"]::file-selector-button {
+            background-color: #ff7200;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            margin-right: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-option {
-    color: black;
-}
+        input[type="file"]::file-selector-button:hover {
+            background-color: #fff;
+            color: #ff7200;
+        }
 
-input[type="submit"] {
-    width: 100%;
-    margin-top: 1.5rem;
-    padding: 0.875rem;
-    background-color: #ff7200;
-    color: #fff;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 0.75rem;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 15px rgba(255, 114, 0, 0.5);
-}
+        option {
+            color: black;
+        }
 
-input[type="submit"]:hover {
-    background-color: #fff;
-    color: #ff7200;
-    box-shadow: 0 0 18px #fff;
-}
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background-color: #ff7200;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 114, 0, 0.5);
+        }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    main {
-        padding: 1.5rem 1rem;
-        margin-top: 50px;
-    }
-    
-    .upload-card {
-        padding: 1.5rem;
-        border-radius: 1rem;
-        margin-left: 20px;
-    }
-    
-    .upload-card h2 {
-        font-size: 1.25rem;
-        margin-bottom: 1.25rem;
-    }
-    
-    input[type="submit"] {
-        padding: 0.75rem;
-        font-size: 0.9375rem;
-    }
-}
+        input[type="submit"]:hover {
+            background-color: #fff;
+            color: #ff7200;
+            box-shadow: 0 0 18px #fff;
+        }
 
-@media (max-width: 480px) {
-    main {
-        padding: 1rem 0.75rem;
-        margin-top: 40px;
-    }
-    
-    .upload-card {
-        padding: 1.25rem;
-        border-radius: 0.875rem;
-    }
-    
-    .upload-card h2 {
-        font-size: 1.125rem;
-    }
-    
-    label {
-        font-size: 0.875rem;
-    }
-    
-    input[type="file"],
-    select {
-        padding: 0.625rem;
-        font-size: 0.875rem;
-    }
-    
-    input[type="file"]::file-selector-button {
-        padding: 0.375rem 0.625rem;
-        font-size: 0.75rem;
-    }
-}
+        
+        @media (max-width: 480px) {
+            .upload-card {
+                padding: 25px 20px;
+            }
+        }
