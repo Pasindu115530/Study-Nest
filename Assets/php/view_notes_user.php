@@ -320,8 +320,7 @@ $conn->close();
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
-            <a href="main.html" class="upload-btn">Upload New Notes</a>
-        </div>
+            
 
         <?php if (!empty($successMsg)): ?>
             <div class="success-message"><?= htmlspecialchars($successMsg) ?></div>
@@ -352,7 +351,7 @@ $conn->close();
                         
                         <div class="note-date">Uploaded on <?= date('M d, Y H:i', strtotime($note['upload_date'])) ?></div>
                         <div class="action-buttons">
-                            <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn">Delete</a>
+                            <!-- <a href="delete.php?id=<?= $note['id'] ?>" class="delete-btn">Delete</a> -->
                             <a href="dowload.php?id=<?= $note['id'] ?>" class="download-btn">Download</a>
                         </div>
                     </div>

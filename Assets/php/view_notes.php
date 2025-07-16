@@ -341,7 +341,7 @@ $conn->close();
     <div class="container">
         <div class="header">
             <h1>Lecture Notes</h1>
-            <a href="main.html" class="upload-btn">Upload New Notes</a>
+            <a href="/study nest/uploadlecnotes.html" class="upload-btn">Upload New Notes</a>
         </div>
 
         <?php if (!empty($successMsg)): ?>
@@ -391,7 +391,7 @@ function signOut() {
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("/study nest/HomePage.html");
+            window.location.replace("/study nest/assets/logout.php");
         });
     
     // Prevent default link behavior
