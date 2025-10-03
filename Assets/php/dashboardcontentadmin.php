@@ -44,8 +44,8 @@ $conn->close();
             padding: 20px;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 80vw;
+            margin-left: auto;
         }
         .header {
             display: flex;
@@ -276,7 +276,7 @@ $conn->close();
                 </li>
 
             <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="report.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-report' ></i>
                         </span>
@@ -439,19 +439,19 @@ $conn->close();
     <script>
 function signOut() {
     // Clear session data
-    localStorage.clear();
-    sessionStorage.clear();
+  
     
     // Send a request to server to invalidate the session
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("/study nest/HomePage.html");
+            window.location.replace("logout.php");
         });
     
     // Prevent default link behavior
     return false;
 }
+
 </script>
 
 </body>

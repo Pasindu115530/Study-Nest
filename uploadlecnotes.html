@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Upload Lecture Notes | StudyNest</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/uploadlecnotes.css">
+    <link rel="stylesheet" href="Assets/css/uploadlecnotes.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/study nest/assets/css/dashboard.css">
     
@@ -59,7 +59,7 @@
                 </li>
 
             <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="Assets/php/report.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-report' ></i>
                         </span>
@@ -132,14 +132,13 @@
 <script>
 function signOut() {
     // Clear session data
-    localStorage.clear();
-    sessionStorage.clear();
+  
     
     // Send a request to server to invalidate the session
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("HomePage.html");
+            window.location.replace("Assets/logout.php");
         });
     
     // Prevent default link behavior

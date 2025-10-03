@@ -13,7 +13,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
         :root {
-            --blue: #ff7200;
+            --black2: #ff7200;
             --white: #060606;
             --gray: #ff0000;
             --black1: #222;
@@ -46,8 +46,8 @@
             position: fixed;
             width: 300px;
             height: 100%;
-            background: var(--blue);
-            border-left: 10px solid var(--blue);
+            background: var(--black2);
+            border-left: 10px solid var(--black2);
             transition: 0.5s;
             overflow: hidden;
         }
@@ -92,7 +92,7 @@
 
         .navigation ul li:hover a,
         .navigation ul li.hovered a {
-            color: var(--blue);
+            color: var(--black2);
         }
 
         .navigation ul li a .icon {
@@ -135,10 +135,12 @@
             min-height: 100vh;
             background: var(--white);
             transition: 0.5s;
+            margin-top: 100px;
+            margin-left: 10px;
         }
 
         .main.active {
-            width: calc(100% - 80px);
+            width: calc(100% - 100px);
             left: 80px;
         }
 
@@ -231,17 +233,17 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            color: var(--black1);
+            color: var(--black2);
         }
 
         th {
             background-color: rgba(255, 114, 0, 0.1);
             font-weight: 600;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         tr:hover {
-            background: var(--blue);
+            background: var(--black2);
             color: var(--white);
         }
 
@@ -297,7 +299,7 @@
         label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--black1);
+            color: var(--black2);
         }
 
         input, select {
@@ -313,11 +315,11 @@
 
         input:focus, select:focus {
             outline: none;
-            border-color: var(--blue);
+            border-color: var(--black2);
         }
 
         .btn {
-            background-color: var(--blue);
+            background-color: var(--black2);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -343,13 +345,13 @@
 
         h1, h2, h3 {
             margin-bottom: 1rem;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
-            border-bottom: 1px solid var(--blue);
+            border-bottom: 1px solid var(--black2);
             padding-bottom: 0.5rem;
         }
 
@@ -390,75 +392,238 @@
             right: 20px;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--blue);
+            color: var(--black2);
         }
 
         .close-popup:hover {
             color: var(--danger);
         }
 
-        /* Responsive Design */
-        @media (max-width: 991px) {
-            .navigation {
-                left: -300px;
-            }
-            .navigation.active {
-                width: 300px;
-                left: 0;
-            }
-            .main {
-                width: 100%;
-                left: 0;
-            }
-            .main.active {
-                left: 300px;
-            }
-        }
+        /* ================= Responsive Design ================= */
+/* Large laptops (992px and up) */
+@media (min-width: 992px) {
+    .container {
+        width: 85%;
+        margin: 0 auto;
+    }
+}
 
-        @media (max-width: 768px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            
-            th, td {
-                padding: 8px 10px;
-                font-size: 0.9rem;
-            }
-            
-            .action-btn {
-                margin: 0 2px;
-                font-size: 1rem;
-            }
-            
-            .search {
-                width: 200px;
-            }
-        }
+/* Tablets and small laptops (768px to 991px) */
+@media (max-width: 991px) {
+    .navigation {
+        left: -300px;
+        z-index: 1000;
+    }
+    
+    .navigation.active {
+        width: 300px;
+        left: 0;
+    }
+    
+    .main {
+        width: 100%;
+        left: 0;
+    }
+    
+    .main.active {
+        left: 300px;
+    }
+    
+    .container {
+        width: 90%;
+        padding: 0 15px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .search {
+        width: 250px;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
 
-        @media (max-width: 480px) {
-            .user {
-                min-width: 40px;
-            }
-            .navigation {
-                width: 100%;
-                left: -100%;
-                z-index: 1000;
-            }
-            .navigation.active {
-                width: 100%;
-                left: 0;
-            }
-            .toggle {
-                z-index: 10001;
-            }
-            .main.active .toggle {
-                color: #fff;
-                position: fixed;
-                right: 0;
-                left: initial;
-            }
-        }
+/* Large phones (576px to 767px) */
+@media (max-width: 767px) {
+    .topbar {
+        padding: 0 15px;
+    }
+    
+    .search {
+        width: 180px;
+        margin: 0 5px;
+    }
+    
+    .search label input {
+        font-size: 14px;
+        padding-left: 30px;
+    }
+    
+    .user {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .action-btn {
+        margin: 0 3px;
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 1.7rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    .popup-content {
+        width: 350px;
+        padding: 1.5rem;
+    }
+}
+
+/* Small phones (up to 575px) */
+@media (max-width: 575px) {
+    .navigation {
+        width: 100%;
+        left: -100%;
+    }
+    
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+    
+    .toggle {
+        z-index: 10001;
+    }
+    
+    .main.active .toggle {
+        position: fixed;
+        right: 15px;
+        left: initial;
+        color: #fff;
+    }
+    
+    .search {
+        width: 150px;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
+    .card {
+        padding: 0.8rem;
+    }
+    
+    th, td {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    .popup-content {
+        width: 90%;
+        padding: 1.2rem;
+    }
+    
+    input, select {
+        padding: 8px 12px;
+    }
+}
+
+/* Extra small devices (320px to 375px) */
+@media (max-width: 375px) {
+    .search {
+        display: none;
+    }
+    
+    .topbar {
+        justify-content: flex-end;
+    }
+    
+    .card {
+        border-radius: 15px;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .popup-content {
+        padding: 1rem;
+    }
+    
+    .close-popup {
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* Foldable devices (280px and below) */
+@media (max-width: 280px) {
+    .container {
+        width: 98%;
+        padding: 0 5px;
+    }
+    
+    .card {
+        padding: 0.5rem;
+    }
+    
+    th, td {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+    }
+    
+    .action-btn {
+        margin: 0 2px;
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+}
     </style>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -516,7 +681,7 @@
                 </li>
 
             <li class="item">
-                    <a href="#" class="nav_link submenu_item">
+                    <a href="report.php" class="nav_link submenu_item">
                         <span class="navlink_icon">
                            <i class='bx bxs-report' ></i>
                         </span>
@@ -549,7 +714,7 @@
          <div class="left-semicircle"></div>
                 <div class="middle-circle"></div>
                 <div class="right"></div>
-        <div class="topbar">
+        <!-- <div class="topbar">
        
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
@@ -558,7 +723,7 @@
             <div class="user">
                 <img src="assets/images/image02.jpg" alt="">
             </div>
-        </div>
+        </div> -->
 
         <!-- ================= Main Content =================== -->
         <div class="container" style="padding: 1px;">

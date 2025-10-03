@@ -427,15 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-        function signOut() {
-            localStorage.clear();
-            sessionStorage.clear();
-            fetch('/logout', { method: 'POST' })
-                .then(() => {
-                    window.location.replace("/study nest/HomePage.html");
-                });
-            return false;
-        }
+ 
     </script>
     
     <script src="assets/js/main.js"></script>
@@ -444,14 +436,13 @@ document.addEventListener('DOMContentLoaded', function() {
      <script>
 function signOut() {
     // Clear session data
-    localStorage.clear();
-    sessionStorage.clear();
+  
     
     // Send a request to server to invalidate the session
     fetch('/logout', { method: 'POST' })
         .then(() => {
             // Redirect to home page with no-cache headers
-            window.location.replace("/study nest/HomePage.html");
+            window.location.replace("logout.php");
         });
     
     // Prevent default link behavior

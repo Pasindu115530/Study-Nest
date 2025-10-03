@@ -26,12 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Store additional user info in session if needed
             $_SESSION['role'] = $role;
             $_SESSION['department'] = $department;
+
+            $current_month = date('F'); // e.g., "July 2023"
+            $login_time = date('H:i:s');  // e.g., "14:30:45"
+            
+            // Store time data in session to pass to next page
+            $_SESSION['login_month'] = $current_month;
+            $_SESSION['login_time'] = $login_time;
     
             // Redirect based on role
             if ($role === 'admin') {
                 header("Location: /Study Nest/Assets/php/dashboardcontentadmin.php?department=" . urlencode($department));
+           
             } else {
                 header("Location: /Study Nest/Assets/php/dashboardcontentuser.php?department=" . urlencode($department));
+              
             }
             exit();
         } else {
